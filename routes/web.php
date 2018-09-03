@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/useractive/{id}', 'AdminCmsUsersController@useractive'); 
+Route::get('/userdeactive/{id}', 'AdminCmsUsersController@userdeactive'); 
+Route::post('/reject/', 'SystemController@reject'); 

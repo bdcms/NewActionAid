@@ -5,12 +5,12 @@
 	use DB;
 	use CRUDBooster;
 
-	class AdminDemoTestController extends \crocodicstudio\crudbooster\controllers\CBController {
+	class AdminAiIndicatorsController extends \crocodicstudio\crudbooster\controllers\CBController {
 
 	    public function cbInit() {
 
 			# START CONFIGURATION DO NOT REMOVE THIS LINE
-			$this->title_field = "title";
+			$this->title_field = "ind_name";
 			$this->limit = "20";
 			$this->orderby = "id,desc";
 			$this->global_privilege = false;
@@ -25,58 +25,31 @@
 			$this->button_filter = true;
 			$this->button_import = false;
 			$this->button_export = false;
-			$this->table = "demo_test";
+			$this->table = "ai_indicators";
 			# END CONFIGURATION DO NOT REMOVE THIS LINE
 
 			# START COLUMNS DO NOT REMOVE THIS LINE
 			$this->col = [];
-			$this->col[] = ["label"=>"Title","name"=>"title","width"=>"150"];
-			$this->col[] = ["label"=>"Description","name"=>"description","width"=>"600","callback_php"=>'str_limit(strip_tags($row->description,150))'];
+			$this->col[] = ["label"=>"Indicator Name","name"=>"ind_name","width"=>"300"];
+			$this->col[] = ["label"=>"Indicator Definitions","name"=>"ind_definations","width"=>"200"];
+			$this->col[] = ["label"=>"Priority Name","name"=>"pri_id","join"=>"ai_priorityarea,pri_name","width"=>"150"];
+			$this->col[] = ["label"=>"Focus Name","name"=>"foc_id","join"=>"ai_focusarea,foc_name","width"=>"200"];
 			# END COLUMNS DO NOT REMOVE THIS LINE
-
-			if(CRUDBooster::isSuperadmin()){
-			$this->col[] = ["label"=>"User Name","name"=>"user_id","join" => "cms_users,name","width"=>"150"];
-			} 
-			 $this->col[] = ["label"=>"Status","name"=>"status","callback" => function($row){
-			 	if(CRUDBooster::myPrivilegeId() == 11){ //pc
-			 		if($row->status == '1'){
-						return '<span class="label label-warning">Pending</span>';
-					}elseif($row->status == '99'){
-						return '<span class="label label-danger">Rejected</span>';
-					}elseif($row->status == '100'){
-						return '<span class="label label-primary">Approved</span>';
-					}					
-			 	}elseif (CRUDBooster::myPrivilegeId() == 10) { //line manger
-			 		if($row->status == '1'){
-						return '<span class="label label-info">New</span>';
-					}elseif($row->status == '2'){
-						return '<span class="label label-warning">Pending</span>';
-					}elseif($row->status == '100'){
-						return '<span class="label label-primary">Approved</span>';
-					}
-			 	}elseif (CRUDBooster::myPrivilegeId() == 5) { //hopp
-			 		if($row->status == '2'){
-						return '<span class="label label-info">New</span>';
-					}elseif($row->status == '100'){
-						return '<span class="label label-primary">Approved</span>';
-					}
-			 	}else{ //admin and hord
-			 		return '<span class="label label-primary">Approved</span>';
-			 	} 
-			}];
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
-			$this->form[] = ['label'=>'Title','name'=>'title','type'=>'text','validation'=>'required|min:0','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Description','name'=>'description','type'=>'wysiwyg','validation'=>'required|min:5|max:5000','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Line Manager','name'=>'flow_id','type'=>'select','width'=>'col-sm-10','datatable'=>'cms_users,name','datatable_where'=>'id_cms_privileges=10'];
+			$this->form[] = ['label'=>'Indicator Name','name'=>'ind_name','type'=>'textarea','validation'=>'required|string|min:5|max:500','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Indicator Definitions','name'=>'ind_definations','type'=>'textarea','validation'=>'required|min:1|max:500','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Priority Name','name'=>'pri_id','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'ai_priorityarea,pri_name','default'=>'Please Select Priority Area'];
+			$this->form[] = ['label'=>'Focus Name','name'=>'foc_id','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'ai_focusarea,foc_name','parent_select'=>'pri_id','default'=>'Please Select Focus Area'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
 			//$this->form = [];
-			//$this->form[] = ['label'=>'Title','name'=>'title','type'=>'multitext','validation'=>'required|min:0','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Description','name'=>'description','type'=>'upload','validation'=>'required|min:5|max:5000','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Line Manager','name'=>'flow_id','type'=>'select','width'=>'col-sm-10','datatable'=>'cms_users,name','datatable_where'=>'id_cms_privileges=10'];
+			//$this->form[] = ['label'=>'Indicator Name','name'=>'ind_name','type'=>'textarea','validation'=>'required|string|min:5|max:500','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Indicator Definitions','name'=>'ind_definations','type'=>'text','validation'=>'required|min:1|max:500','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Priority Name','name'=>'pri_id','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'ai_priorityarea,pri_name','default'=>'Please Select Priority Area'];
+			//$this->form[] = ['label'=>'Focus Name','name'=>'foc_id','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'ai_focusarea,foc_name','parent_select'=>'pri_id','default'=>'Please Select Focus Area'];
 			# OLD END FORM
 
 			/* 
@@ -104,19 +77,10 @@
 	        | @color 	   = Default is primary. (primary, warning, succecss, info)     
 	        | @showIf 	   = If condition when action show. Use field alias. e.g : [id] == 1
 	        | 
-	        */  
-	        //if(CRUDBooster::myPrivilegeId() == 10){
-		        $this->addaction = array(
-			        	// [
-			        	// 	'label' => 'adsf',
-			        	// 	'url'	=> '#',//url('/useractive/[id]'),
-			        	// 	'icon'=>'fa fa-facebook',
-			        	// 	'color'=>'primary',
-			        	// 	'showIf'=> '[status] == 0',
-			        	// 	'confirmation' => true
-			        	// ],
-		        	);	
-		      // }
+	        */
+	        $this->addaction = array();
+
+
 	        /* 
 	        | ---------------------------------------------------------------------- 
 	        | Add More Button Selected
@@ -127,7 +91,7 @@
 	        | Then about the action, you should code at actionButtonSelected method 
 	        | 
 	        */
-	        $this->button_selected = array();//['label'=>'Aktifkan','icon'=>'fa fa-check','name'=>'aktifkan']);
+	        $this->button_selected = array();
 
 	                
 	        /* 
@@ -151,7 +115,7 @@
 	        | @icon  = Icon from Awesome.
 	        | 
 	        */
-	        $this->index_button = array();//["label"=>"Print Report","icon"=>"fa fa-print","url"=>CRUDBooster::mainpath('print-report')];
+	        $this->index_button = array();
 
 
 
@@ -273,18 +237,6 @@
 	    */
 	    public function hook_query_index(&$query) {
 	        //Your code here
-	        //else{
-	        // 	$query->where('demo_test.status','100');
-	        // }
-	        if(CRUDBooster::isSuperadmin() || CRUDBooster::myPrivilegeId() == 5 || CRUDBooster::myPrivilegeId() == 6){
-	        	$query->where('demo_test.status',100);
-	        }elseif(!CRUDBooster::isSuperadmin() || CRUDBooster::myPrivilegeId() != 5 || CRUDBooster::myPrivilegeId() != 6){
-	        	$query->where('user_id',CRUDBooster::myId())->orwhere('flow_id',CRUDBooster::myId())->where('demo_test.status','!=','99');
-	        }
-
-	        // if(CRUDBooster::isSuperadmin()){
-	        // 	$query->where('demo_test.status',100);
-	        // }
 	            
 	    }
 
@@ -307,10 +259,7 @@
 	    */
 	    public function hook_before_add(&$postdata) {        
 	        //Your code here
-	    	$postdata['user_id'] = CRUDBooster::myId();
-	    	if(CRUDBooster::isSuperadmin() || CRUDBooster::myPrivilegeId() == 5){
-	    		$postdata['status'] = '100';
-	    	}
+
 	    }
 
 	    /* 
@@ -374,24 +323,9 @@
 
 	    }
 
+
+
 	    //By the way, you can still create your own method in here... :) 
 
-	    public function getDetail($id) {
-		  //Create an Auth
-		  if(!CRUDBooster::isRead() && $this->global_privilege==FALSE || $this->button_edit==FALSE) {    
-		    CRUDBooster::redirect(CRUDBooster::adminPath(),trans("crudbooster.denied_access"));
-		  }
-		  
-		  $data = [];
-		  $data['page_title'] = 'Detail Data';
-		  $result = DB::table('demo_test')->where('id',$id)->first();
-		  $data['row'] = $result;
-		  $data['created']	= DB::table('cms_users')->where('id',$result->user_id)->first();
-		  	if(!empty($result->rejected_by)){
-		  		$data['rejected']	= DB::table('cms_users')->where('id',$result->rejected_by)->first();
-			}
-		  //Please use cbView method instead view method from laravel
-		  $this->cbView('admin.testDeatil',$data);
-		}
 
-}
+	}

@@ -18,3 +18,6 @@ Route::get('/', function () {
 Route::get('/useractive/{id}', 'AdminCmsUsersController@useractive'); 
 Route::get('/userdeactive/{id}', 'AdminCmsUsersController@userdeactive'); 
 Route::post('/reject/', 'SystemController@reject'); 
+
+//ajax request
+Route::get('/checkVenue/{value}', 'SystemController@checkVenue'); 

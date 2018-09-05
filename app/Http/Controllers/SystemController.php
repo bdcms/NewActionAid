@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use DB;
 use Illuminate\Http\Request;
 
 class SystemController extends Controller{
@@ -27,6 +27,22 @@ class SystemController extends Controller{
 			\CRUDBooster::redirect($to,$message,$type);
 			//return redirect()->route('demo_test')->with('message', trans("crudbooster.message_forgot_password"));
 		}
+	}
+
+	public function checkVenue($value){
+		$getVenue = DB::table('ai_activity_report')->where('ar_venue','like','%'.$value.'%')->get();
+		//dd($getVenue);
+		$result = '';
+		$result .= '<div class = "skill"><ul>';
+		if(!empty($getVenue)){
+			 foreach ($getVenue as $value) { 
+				$result.='<li>'.$value->ar_venue.'</li>';
+			}
+		}else{
+			$result .= '<li>Result Not Found</li>';
+		}
+		$result .= '</ul></div>';
+		echo $result; 
 	}
 
 }

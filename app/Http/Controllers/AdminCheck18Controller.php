@@ -5,12 +5,12 @@
 	use DB;
 	use CRUDBooster;
 
-	class AdminDemoTestController extends \crocodicstudio\crudbooster\controllers\CBController {
+	class AdminCheck18Controller extends \crocodicstudio\crudbooster\controllers\CBController {
 
 	    public function cbInit() {
 
 			# START CONFIGURATION DO NOT REMOVE THIS LINE
-			$this->title_field = "title";
+			$this->title_field = "name";
 			$this->limit = "20";
 			$this->orderby = "id,desc";
 			$this->global_privilege = false;
@@ -24,33 +24,23 @@
 			$this->button_show = true;
 			$this->button_filter = true;
 			$this->button_import = false;
-			$this->button_export = true;
-			$this->table = "demo_test";
+			$this->button_export = false;
+			$this->table = "check";
 			# END CONFIGURATION DO NOT REMOVE THIS LINE
 
 			# START COLUMNS DO NOT REMOVE THIS LINE
 			$this->col = [];
-			$this->col[] = ["label"=>"Title","name"=>"title","width"=>"150"];
-			$this->col[] = ["label"=>"Description","name"=>"description","width"=>"600","callback_php"=>'str_limit(strip_tags($row->description,150))'];
+			$this->col[] = ["label"=>"Name","name"=>"name"];
 			# END COLUMNS DO NOT REMOVE THIS LINE
-
-			if(CRUDBooster::isSuperadmin()){
-			$this->col[] = ["label"=>"User Name","name"=>"user_id","join" => "cms_users,name","width"=>"150"];
-			} 
-			 $this->col[] = ["label"=>"Status","name"=>"status"];
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
-			$this->form[] = ['label'=>'Title','name'=>'title','type'=>'datamodal','validation'=>'required|min:0','width'=>'col-sm-10','datamodal_table'=>'sss','datamodal_columns'=>'level,value','datamodal_size'=>'small','datamodal_columns_alias_name'=>'Level,Value','datamodal_select_to'=>'value:value'];
-			$this->form[] = ['label'=>'Description','name'=>'description','type'=>'wysiwyg','validation'=>'required|min:5|max:5000','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Line Manager','name'=>'flow_id','type'=>'select','width'=>'col-sm-10','datatable'=>'cms_users,name','datatable_where'=>'id_cms_privileges=10'];
+			$this->form[] = ['label'=>'Name','name'=>'name','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10','placeholder'=>'You can only enter the letter only'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
 			//$this->form = [];
-			//$this->form[] = ['label'=>'Title','name'=>'title','type'=>'datamodal','validation'=>'required|min:0','width'=>'col-sm-10','datamodal_table'=>'sss','datamodal_columns'=>'level,value','datamodal_size'=>'small'];
-			//$this->form[] = ['label'=>'Description','name'=>'description','type'=>'wysiwyg','validation'=>'required|min:5|max:5000','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Line Manager','name'=>'flow_id','type'=>'select','width'=>'col-sm-10','datatable'=>'cms_users,name','datatable_where'=>'id_cms_privileges=10'];
+			//$this->form[] = ["label"=>"Name","name"=>"name","type"=>"text","required"=>TRUE,"validation"=>"required|string|min:3|max:70","placeholder"=>"You can only enter the letter only"];
 			# OLD END FORM
 
 			/* 
@@ -78,19 +68,10 @@
 	        | @color 	   = Default is primary. (primary, warning, succecss, info)     
 	        | @showIf 	   = If condition when action show. Use field alias. e.g : [id] == 1
 	        | 
-	        */  
-	        //if(CRUDBooster::myPrivilegeId() == 10){
-		        $this->addaction = array(
-			        	// [
-			        	// 	'label' => 'adsf',
-			        	// 	'url'	=> '#',//url('/useractive/[id]'),
-			        	// 	'icon'=>'fa fa-facebook',
-			        	// 	'color'=>'primary',
-			        	// 	'showIf'=> '[status] == 0',
-			        	// 	'confirmation' => true
-			        	// ],
-		        	);	
-		      // }
+	        */
+	        $this->addaction = array();
+
+
 	        /* 
 	        | ---------------------------------------------------------------------- 
 	        | Add More Button Selected
@@ -101,7 +82,7 @@
 	        | Then about the action, you should code at actionButtonSelected method 
 	        | 
 	        */
-	        $this->button_selected = array();//['label'=>'Aktifkan','icon'=>'fa fa-check','name'=>'aktifkan']);
+	        $this->button_selected = array();
 
 	                
 	        /* 
@@ -125,7 +106,7 @@
 	        | @icon  = Icon from Awesome.
 	        | 
 	        */
-	        $this->index_button = array();//["label"=>"Print Report","icon"=>"fa fa-print","url"=>CRUDBooster::mainpath('print-report')];
+	        $this->index_button = array();
 
 
 
@@ -234,24 +215,10 @@
 	    */
 	    public function actionButtonSelected($id_selected,$button_name) {
 	        //Your code here
+
 	            
 	    }
 
-		public function hook_html_index(&$html_contents) {
-
-		    // If you want get data from each row, $html_contents['data']
-
-		    foreach($html_contents['html'] as &$row) {
-		        // In this example, we want to coloring of status if Active then Green, Else then Red
-		        // First you should know where the status columns row locations (index of array) 
-		        $status = $row[3];
-		        if($status == '100') {
-		            $row[3] = "<span class='label label-success'>Active</span>";
-		        }else{
-		            $row[3] = "<span class='label label-danger'>Pending</span>";
-		        }
-		    }
-		}
 
 	    /*
 	    | ---------------------------------------------------------------------- 
@@ -262,18 +229,6 @@
 	    */
 	    public function hook_query_index(&$query) {
 	        //Your code here
-	        //else{
-	        // 	$query->where('demo_test.status','100');
-	        // }
-	        if(CRUDBooster::isSuperadmin() || CRUDBooster::myPrivilegeId() == 5 || CRUDBooster::myPrivilegeId() == 6){
-	        	$query->where('demo_test.status',100);
-	        }elseif(!CRUDBooster::isSuperadmin() || CRUDBooster::myPrivilegeId() != 5 || CRUDBooster::myPrivilegeId() != 6){
-	        	$query->where('user_id',CRUDBooster::myId())->orwhere('flow_id',CRUDBooster::myId())->where('demo_test.status','!=','99');
-	        }
-
-	        // if(CRUDBooster::isSuperadmin()){
-	        // 	$query->where('demo_test.status',100);
-	        // }
 	            
 	    }
 
@@ -295,26 +250,9 @@
 	    |
 	    */
 	    public function hook_before_add(&$postdata) {        
-	    	if($postdata['title'] != '2'){
-	    		CRUDBooster::redirectBack(
-               	 'Los comparendos <b>electrónicos automáticos</b>, es decir, '
-                    . 'que son generados por este sistema, <b>no se pueden editar</b>.'
-         	   );
-	    	}
-
 	        //Your code here
-	    	$postdata['user_id'] = CRUDBooster::myId();
-	    	if(CRUDBooster::isSuperadmin() || CRUDBooster::myPrivilegeId() == 5){
-	    		$postdata['status'] = '100';
-	    	}
-	    	$flow_id =  $postdata['flow_id']; 
-	    	CRUDBooster::sendNotification($config=[
-	        	'content' 		=> 'Conducts An Activities',
-	        	'to'			=>	CRUDBooster::mainpath(),
-	        	'id_cms_users'	=>	[$flow_id],
-	        ]);
-	        //$data = ['name'=>'John Doe','address'=>'Lorem ipsum dolor...'];
-			//CRUDBooster::sendEmail(['to'=>'john@gmail.com','data'=>$data,'template'=>'order_success']);
+
+
 	    }
 
 	    /* 
@@ -326,13 +264,8 @@
 	    */
 	    public function hook_after_add($id) {        
 	        //Your code here
-	         // $row = CRUDBooster::first($this->table,$id);
-	         // dd($row);
-	        //  CRUDBooster::sendNotification($config=[
-	        // 	'content' 		=> 'Conducts An Activities',
-	        // 	'to'			=>	url("admin/ai_activity_report/detail/$id"),
-	        // 	'id_cms_users'	=>	$row->flow_id,
-	        // ]);
+	        $row = CRUDBooster::first($this->table,$id);
+	         dd($row);
 
 	    }
 
@@ -358,8 +291,8 @@
 	    */
 	    public function hook_after_edit($id) {
 	        //Your code here 
-	        // $row = CRUDBooster::first($this->table,$id);
-	        //  dd($row);
+	        $row = CRUDBooster::first($this->table,$id);
+	         dd($row);
 
 	    }
 
@@ -387,24 +320,9 @@
 
 	    }
 
+
+
 	    //By the way, you can still create your own method in here... :) 
 
-	    public function getDetail($id) {
-		  //Create an Auth
-		  if(!CRUDBooster::isRead() && $this->global_privilege==FALSE || $this->button_edit==FALSE) {    
-		    CRUDBooster::redirect(CRUDBooster::adminPath(),trans("crudbooster.denied_access"));
-		  }
-		  
-		  $data = [];
-		  $data['page_title'] = 'Detail Data';
-		  $result = DB::table('demo_test')->where('id',$id)->first();
-		  $data['row'] = $result;
-		  $data['created']	= DB::table('cms_users')->where('id',$result->user_id)->first();
-		  	if(!empty($result->rejected_by)){
-		  		$data['rejected']	= DB::table('cms_users')->where('id',$result->rejected_by)->first();
-			}
-		  //Please use cbView method instead view method from laravel
-		  $this->cbView('admin.testDeatil',$data);
-		}
 
-}
+	}

@@ -30,7 +30,7 @@ class SystemController extends Controller{
 	}
 
 	public function checkVenue($value){
-		$getVenue = DB::table('ai_activity_report')->where('ar_venue','like','%'.$value.'%')->get();
+		$getVenue = DB::table('ai_activity_report')->select('ar_venue')->distinct()->where('ar_venue','like','%'.$value.'%')->get();
 		//dd($getVenue);
 		$result = '';
 		$result .= '<div class = "skill"><ul>';

@@ -45,7 +45,7 @@
 			$this->form[] = ['label'=>'Focus Area','name'=>'foc_id','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'ai_focusarea,foc_name','parent_select'=>'pri_id','default'=>'Select Focus Area'];
 			$this->form[] = ['label'=>'Indicator Name','name'=>'ind_id','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'ai_indicators,ind_name','parent_select'=>'foc_id','default'=>'Select Indicator Name'];
 			$this->form[] = ['label'=>'Activities Name','name'=>'act_id','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'ai_activities,act_name','datatable_where'=>'act_status = 1','parent_select'=>'ind_id','default'=>'Select Activities Name'];
-			$this->form[] = ['label'=>'Line Manager','name'=>'flow_id','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'cms_users,name','help'=>'Select a Line Manager who responsible for this report.','datatable_where'=>'id_cms_privileges=10','default'=>'Please Select Line Manager'];
+			$this->form[] = ['label'=>'Line Manager','name'=>'flow_id','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'cms_users,name','help'=>'Select a Line Manager who responsible for this report.','datatable_where'=>'id_cms_privileges=10 && status = "Active"','default'=>'Please Select Line Manager'];
 			$this->form[] = ['label'=>'Activities Date','name'=>'ar_date','type'=>'date','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			$id = CRUDBooster::getCurrentId();
 			$row = CRUDBooster::first($this->table,$id);
@@ -246,7 +246,9 @@
 	        | $this->style_css = ".style{....}";
 	        |
 	        */
-	        $this->style_css = "";
+	        $this->style_css = "
+	        	.className{margin:10px;}
+	        ";
 	        
 	        
 	        

@@ -235,6 +235,7 @@
             <p><span class="text-primary">ON </span> {{$row->ar_date}}</p>
          </div>
             <a href="{{url('admin/ai_activity_report/')}}" class="btn btn-primary">Back</a>
+            <a href="{{url('makePDF/'.CRUDBooster::getCurrentId())}}" target="_blank" class="btn btn-primary">Print</a>
           
 
 

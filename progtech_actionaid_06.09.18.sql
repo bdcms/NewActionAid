@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 06, 2018 at 09:26 PM
+-- Generation Time: Sep 05, 2018 at 07:31 AM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.10
 
@@ -109,64 +109,7 @@ CREATE TABLE `ai_activity_report` (
 
 INSERT INTO `ai_activity_report` (`id`, `pri_id`, `foc_id`, `ind_id`, `act_id`, `user_id`, `ar_date`, `ar_venue`, `ar_implementingUnit`, `ar_ap_female`, `ar_ap_male`, `ar_ap_child_m`, `ar_ap_youth_m`, `ar_ap_adult_m`, `ar_ap_child_f`, `ar_ap_youth_f`, `ar_ap_adult_f`, `ar_ap_total`, `ar_comments`, `ar_ac_aims`, `ar_ac_follow`, `ar_ac_process`, `ar_ac_challenges`, `ar_ac_improve`, `ar_ac_ies`, `ar_ac_comments`, `ar_at_attendence`, `ar_at_minute`, `ar_at_pic1`, `ar_at_pic2`, `ar_at_pic3`, `ar_at_pic4`, `ar_at_pic5`, `ar_at_link`, `ar_at_actionPlan`, `ar_at_others`, `flow_id`, `ar_status`, `created_at`, `updated_at`) VALUES
 (1, 4, 3, 3, 2, 1, '2018-09-17', 'Lukasa', 'Azz', 20, 15, 15, 18, 35, NULL, NULL, NULL, 100, 'this good', 'Activities Aims', 'Activities Follow', 'Activities Process', 'Activities Challenge', 'ctivities Improva sfdasdf asd', 'ctivities Improvs dfasdf', 'ctivities Improvdsaf asdf', '', '', 'uploads/1/2018-09/screenshot_1.png', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 6, 1, '2018-09-03 14:18:04', '2018-09-03 20:18:04'),
-(3, 4, 3, 3, 2, 1, '2018-09-05', 'Khulna', 'Azz', 50, 40, 15, 25, 15, 5, 25, 5, 90, 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.', 'uploads/1/Bio.docx', 'uploads/1/Bio_k.docx', 'uploads/1/2018-09/desert.jpg', 'uploads/1/2018-09/hydrangeas.jpg', NULL, NULL, NULL, NULL, NULL, NULL, 6, 1, '2018-09-05 00:01:59', '2018-09-05 06:01:59'),
-(4, 4, 3, 3, 2, 7, '2018-09-05', 'Lukasa', 'AZZ', 20, 15, 5, 5, 5, 5, 5, 10, 35, 'adfsasdf', 'adsfasdf', 'adsfaasfdasd', 'asdf asdf', 'asdf asdf', 'asfd asdf asdf', 'a sdfadsfadsf', 'adsfasdfadsf', 'uploads/7/7__PHP___Database_bangla.pdf', 'uploads/7/mysqlbasics-sample.pdf', 'uploads/7/2018-09/tulips.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 5, 1, '2018-09-05 03:11:40', '2018-09-05 09:11:40'),
-(5, 5, 5, 4, 3, 7, '2018-09-05', 'Comilla', 'AZZ', 5, 45, 10, 10, 5, 10, 10, 5, 50, 'sdfasdfasd', 'asdf asdfa sdf', 'asdf asdf adsf a', 'a sdfasdf asdf', 'a sfdasdf asdf', 'asfd asdf asdf', 'a sfdasdf asdf asd', 'a sfdasdf afsd', 'uploads/7/7__PHP___Database_bangla.pdf', 'uploads/7/mysqlbasics-sample.pdf', 'uploads/7/2018-09/lighthouse.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 5, 1, '2018-09-05 03:22:50', '2018-09-05 09:22:50'),
-(6, 5, 5, 4, 3, 7, '2018-09-05', 'Comilla', 'AZZ', 5, 45, 10, 10, 5, 10, 10, 5, 50, 'sdfasdfasd', 'asdf asdfa sdf', 'asdf asdf adsf a', 'a sdfasdf asdf', 'a sfdasdf asdf', 'asfd asdf asdf', 'a sfdasdf asdf asd', 'a sfdasdf afsd', 'uploads/7/7__PHP___Database_bangla.pdf', 'uploads/7/mysqlbasics-sample.pdf', 'uploads/7/2018-09/hydrangeas.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 5, 1, '2018-09-05 03:23:48', '2018-09-05 09:23:48'),
-(7, 5, 5, 4, 3, 7, '2018-09-05', 'Khulna', 'AZZ', 5, 45, 10, 10, 5, 10, 10, 5, 50, 'sdfasdfasd', 'asdf asdfa sdf', 'asdf asdf adsf a', 'a sdfasdf asdf', 'a sfdasdf asdf', 'asfd asdf asdf', 'a sfdasdf asdf asd', 'a sfdasdf afsd', 'uploads/7/7__PHP___Database_bangla.pdf', 'uploads/7/mysqlbasics-sample.pdf', 'uploads/7/2018-09/desert.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 5, 1, '2018-09-05 03:24:39', '2018-09-05 09:24:39'),
-(8, 5, 5, 4, 3, 7, '2018-09-05', 'Comilla', 'AZZ', 5, 45, 10, 10, 5, 10, 10, 5, 50, 'sdfasdfasd', 'asdf asdfa sdf', 'asdf asdf adsf a', 'a sdfasdf asdf', 'a sfdasdf asdf', 'asfd asdf asdf', 'a sfdasdf asdf asd', 'a sfdasdf afsd', 'uploads/7/7__PHP___Database_bangla.pdf', 'uploads/7/mysqlbasics-sample.pdf', 'uploads/7/2018-09/jellyfish.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 5, 1, '2018-09-05 03:31:11', '2018-09-05 09:31:11'),
-(9, 5, 5, 4, 3, 7, '2018-09-05', 'Lukasa', 'AZZ', 30, 30, 5, 20, 10, 5, 10, 10, 60, 'dsfasdfasdf', 'asdfasdf', 'asdfasdfasdfasdf', 'asdfasdfasdfasdf', 'asdf asdfa sdfa sdf ads', 'asdf asdf asdf asd', 'asdf asdf asdf ads', 'a sdfasdf asdf as', 'uploads/7/7__PHP___Database_bangla.pdf', 'uploads/7/7__PHP___Database_bangla.pdf', 'uploads/7/2018-09/koala.jpg', 'uploads/7/2018-09/lighthouse.jpg', 'uploads/7/2018-09/desert.jpg', 'uploads/7/2018-09/penguins.jpg', 'uploads/7/2018-09/desert.jpg', NULL, NULL, NULL, 6, 1, '2018-09-05 05:04:25', '2018-09-05 11:04:25'),
-(10, 5, 5, 4, 3, 7, '2018-09-05', 'Dhaka', 'AZZ', 45, 15, 5, 20, 10, 5, 10, 10, 60, 'dsfasdfasdf', 'asdfasdf', 'asdfasdfasdfasdf', 'asdfasdfasdfasdf', 'asdf asdfa sdfa sdf ads', 'asdf asdf asdf asd', 'asdf asdf asdf ads', 'a sdfasdf asdf as', 'uploads/uploads/uploads/uploads/7/7__PHP___Database_bangla.pdf', 'uploads/uploads/uploads/uploads/7/7__PHP___Database_bangla.pdf', 'uploads/7/2018-09/tulips.jpg', 'uploads/7/2018-09/jellyfish.jpg', NULL, NULL, NULL, NULL, NULL, NULL, 6, 1, '2018-09-05 05:05:22', '2018-09-05 19:21:48'),
-(11, 5, 5, 4, 3, 9, '2018-09-06', 'Dhaka', 'AZZ', 10, 100, 5, 5, 0, 5, 0, 5, 20, 'asdf', 'afdsasdf', 'asdfasdfas', 'asfdasdf', 'asdfasdfasd', 'asdfasdfasd', 'asdf asdf asdf as', 'asdf asdf asd', 'uploads/uploads/uploads/9/5-php-bangla-tutorial-php-basic.pdf', 'uploads/uploads/uploads/9/7__PHP___Database_bangla.pdf', 'uploads/9/2018-09/koala.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 6, 1, '2018-09-05 18:37:08', '2018-09-05 19:19:33');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `ai_concept_note`
---
-
-CREATE TABLE `ai_concept_note` (
-  `id` int(11) NOT NULL,
-  `acn_name` tinytext NOT NULL,
-  `acn_date` varchar(255) NOT NULL,
-  `acn_venue` varchar(255) NOT NULL,
-  `acn_implementUnit` varchar(255) NOT NULL,
-  `acn_ap_male` int(4) NOT NULL DEFAULT '0',
-  `acn_ap_female` int(4) NOT NULL DEFAULT '0',
-  `acn_ap_child_m` int(4) NOT NULL DEFAULT '0',
-  `acn_ap_child_f` int(4) NOT NULL DEFAULT '0',
-  `acn_ap_youth_m` int(4) NOT NULL DEFAULT '0',
-  `acn_ap_youth_f` int(4) NOT NULL DEFAULT '0',
-  `acn_ap_adult_m` int(4) NOT NULL DEFAULT '0',
-  `acn_ap_adult_f` int(4) NOT NULL DEFAULT '0',
-  `acn_ap_total` int(8) NOT NULL,
-  `acn_aim` text NOT NULL,
-  `acn_objective` text NOT NULL,
-  `acn_ies` tinytext NOT NULL,
-  `acn_outcome` tinytext NOT NULL,
-  `acn_follow` tinytext NOT NULL,
-  `acn_budget` int(12) NOT NULL,
-  `acn_budgetCode` varchar(255) NOT NULL,
-  `userId` int(4) NOT NULL,
-  `lineManager` int(4) NOT NULL,
-  `meOfficer` int(4) DEFAULT NULL,
-  `headOfficer` int(4) DEFAULT NULL,
-  `line_date` varchar(255) DEFAULT NULL,
-  `me_date` varchar(255) DEFAULT NULL,
-  `head_date` varchar(255) DEFAULT NULL,
-  `rejected_by` int(4) DEFAULT NULL,
-  `rejected_date` varchar(255) DEFAULT NULL,
-  `rejected_comment` tinytext,
-  `acn_status` int(4) NOT NULL DEFAULT '1'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `ai_concept_note`
---
-
-INSERT INTO `ai_concept_note` (`id`, `acn_name`, `acn_date`, `acn_venue`, `acn_implementUnit`, `acn_ap_male`, `acn_ap_female`, `acn_ap_child_m`, `acn_ap_child_f`, `acn_ap_youth_m`, `acn_ap_youth_f`, `acn_ap_adult_m`, `acn_ap_adult_f`, `acn_ap_total`, `acn_aim`, `acn_objective`, `acn_ies`, `acn_outcome`, `acn_follow`, `acn_budget`, `acn_budgetCode`, `userId`, `lineManager`, `meOfficer`, `headOfficer`, `line_date`, `me_date`, `head_date`, `rejected_by`, `rejected_date`, `rejected_comment`, `acn_status`) VALUES
-(1, 'New concept note', '2018-09-06', 'Dhaka', 'Azz', 20, 110, 5, 5, 5, 5, 5, 5, 30, '<p>sadf asdf asdf</p>', '<p>asd fasdf asdf&nbsp;</p>', '<p>asdf asdf asdf ads</p>', '<p>as dfasdf asdf adsf adsf asd</p>', '<p>as fasdf asdf asdf adsf</p>', 15000, 'asfe', 1, 5, NULL, NULL, NULL, NULL, NULL, 5, '2018-09-06 10:09:10', 'Some thing is going to woring!', 99),
-(2, 'Kalyndo Concept note', '2018-09-06', 'asdf asdf', 'asdf asd', 10, 20, 5, 5, 5, 5, 7, 3, 30, '<p>asdf asdfa sdf<br></p>', '<p>as fdasdf asdf asd<br></p>', '<p>as dfasd asdf asdf<br></p>', '<p>s dafasdf asdf ads<br></p>', '<p>a sfdas dfasdf asdf<br></p>', 50000, 'asefs23', 9, 5, 11, NULL, '2018-09-06 16:09:07', NULL, NULL, NULL, NULL, NULL, 2);
+(2, 5, 5, 4, 3, 1, '2018-09-03', 'Khulna', 'Azz', 20, 30, 3, 20, 40, NULL, NULL, NULL, 100, 'dfgsdfgsdfg', 'dfgsd', 'sdgfs', 'sdfgsdfgsdf', 'dfgsdfgsfdg', 'sdfgsdfg', 'sdfgsdfgsdfg', 'dfgsdfgsdfg', '', '', 'uploads/1/2018-09/hydrangeas.jpg', 'uploads/1/2018-09/tulips.jpg', NULL, NULL, NULL, NULL, NULL, NULL, 6, 1, '2018-09-03 15:01:15', '2018-09-03 21:01:16');
 
 -- --------------------------------------------------------
 
@@ -598,114 +541,7 @@ INSERT INTO `cms_logs` (`id`, `ipaddress`, `useragent`, `url`, `description`, `d
 (191, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36', 'http://localhost/actionaid/public/admin/ai_activity_report/add-save', 'Add New Data  at Activities Reports', '', 1, '2018-09-04 12:04:10', NULL),
 (192, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36', 'http://localhost/actionaid/public/admin/ai_activity_report/add-save', 'Add New Data  at Activities Reports', '', 1, '2018-09-04 14:47:48', NULL),
 (193, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36', 'http://localhost/actionaid/public/admin/ai_activity_report/delete/3', 'Delete data 3 at Activities Reports', '', 1, '2018-09-04 15:05:09', NULL),
-(194, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36', 'http://localhost/actionaid/public/admin/ai_activity_report/delete/4', 'Delete data 4 at Activities Reports', '', 1, '2018-09-04 15:05:16', NULL),
-(195, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36', 'http://localhost/actionaid/public/admin/login', 'admin@gmail.com login with IP Address ::1', '', 1, '2018-09-04 23:39:43', NULL),
-(196, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36', 'http://localhost/actionaid/public/admin/ai_activity_report/add-save', 'Add New Data  at Activities Reports', '', 1, '2018-09-05 00:01:59', NULL),
-(197, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36', 'http://localhost/actionaid/public/admin/menu_management/edit-save/15', 'Update data Activities Reports at Menu Management', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>sorting</td><td>6</td><td></td></tr></tbody></table>', 1, '2018-09-05 00:29:20', NULL),
-(198, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/login', 'kalyndo@gmail.com login with IP Address ::1', '', 9, '2018-09-05 00:30:51', NULL),
-(199, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/logout', 'kalyndo@gmail.com logout', '', 9, '2018-09-05 00:35:19', NULL),
-(200, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/login', 'pob@gmail.com login with IP Address ::1', '', 5, '2018-09-05 00:35:24', NULL),
-(201, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36', 'http://localhost/actionaid/public/admin/menu_management/edit-save/15', 'Update data Activities Reports at Menu Management', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>sorting</td><td>6</td><td></td></tr></tbody></table>', 1, '2018-09-05 00:36:34', NULL),
-(202, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/ai_activity_report', 'Try view the data :name at Activities Reports', '', 5, '2018-09-05 00:36:47', NULL),
-(203, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/ai_activity_report', 'Try view the data :name at Activities Reports', '', 5, '2018-09-05 00:38:17', NULL),
-(204, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/ai_activity_report', 'Try view the data :name at Activities Reports', '', 5, '2018-09-05 00:38:25', NULL),
-(205, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/ai_activity_report', 'Try view the data :name at Activities Reports', '', 5, '2018-09-05 00:38:33', NULL),
-(206, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/logout', 'pob@gmail.com logout', '', 5, '2018-09-05 00:38:56', NULL),
-(207, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/login', 'pob@gmail.com login with IP Address ::1', '', 5, '2018-09-05 00:39:00', NULL),
-(208, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/logout', 'pob@gmail.com logout', '', 5, '2018-09-05 00:40:37', NULL),
-(209, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/login', 'richard@gmail.com login with IP Address ::1', '', 6, '2018-09-05 00:40:41', NULL),
-(210, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/logout', 'richard@gmail.com logout', '', 6, '2018-09-05 03:07:57', NULL),
-(211, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/login', 'sad@gmail.com login with IP Address ::1', '', 7, '2018-09-05 03:08:38', NULL),
-(212, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/ai_activity_report/add-save', 'Add New Data  at Activities Reports', '', 7, '2018-09-05 03:11:40', NULL),
-(213, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/demo_test/add-save', 'Add New Data  at Demo Test', '', 7, '2018-09-05 03:33:40', NULL),
-(214, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/login', 'sad@gmail.com login with IP Address ::1', '', 7, '2018-09-05 04:52:22', NULL),
-(215, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/ai_activity_report/delete/2', 'Delete data 2 at Activities Reports', '', 7, '2018-09-05 04:53:57', NULL),
-(216, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/ai_activity_report/add-save', 'Add New Data  at Activities Reports', '', 7, '2018-09-05 05:05:22', NULL),
-(217, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/logout', 'sad@gmail.com logout', '', 7, '2018-09-05 05:07:13', NULL),
-(218, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/login', 'richard@gmail.com login with IP Address ::1', '', 6, '2018-09-05 05:07:18', NULL),
-(219, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36', 'http://localhost/actionaid/public/admin/login', 'admin@gmail.com login with IP Address ::1', '', 1, '2018-09-05 16:39:44', NULL),
-(220, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36', 'http://localhost/actionaid/public/admin/sss/add-save', 'Add New Data  at sss', '', 1, '2018-09-05 16:58:02', NULL),
-(221, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36', 'http://localhost/actionaid/public/admin/login', 'admin@gmail.com login with IP Address ::1', '', 1, '2018-09-05 17:12:22', NULL),
-(222, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36', 'http://localhost/admin/public/admin/login', 'admin@gmail.com login with IP Address ::1', '', 1, '2018-09-05 17:28:06', NULL),
-(223, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36', 'http://localhost/admin/public/admin/module_generator/delete/23', 'Delete data sss at Module Generator', '', 1, '2018-09-05 17:28:51', NULL),
-(224, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36', 'http://localhost/admin/public/admin/sss24/add-save', 'Add New Data 11 at sss', '', 1, '2018-09-05 17:29:16', NULL),
-(225, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36', 'http://localhost/actionaid/public/admin/login', 'admin@gmail.com login with IP Address ::1', '', 1, '2018-09-05 17:44:59', NULL),
-(226, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/login', 'admin@gmail.com login with IP Address ::1', '', 1, '2018-09-05 17:46:38', NULL),
-(227, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/ttt/add-save', 'Add New Data  at ttt', '', 1, '2018-09-05 17:47:13', NULL),
-(228, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/logout', 'admin@gmail.com logout', '', 1, '2018-09-05 17:56:49', NULL),
-(229, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/login', 'admin@gmail.com login with IP Address ::1', '', 1, '2018-09-05 17:57:01', NULL),
-(230, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/module_generator/delete/25', 'Delete data ttt at Module Generator', '', 1, '2018-09-05 17:57:11', NULL),
-(231, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/module_generator/delete/24', 'Delete data sss at Module Generator', '', 1, '2018-09-05 17:57:16', NULL),
-(232, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/logout', 'admin@gmail.com logout', '', 1, '2018-09-05 18:00:53', NULL),
-(233, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/login', 'kalyndo@gmail.com login with IP Address ::1', '', 9, '2018-09-05 18:00:59', NULL),
-(234, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/logout', 'kalyndo@gmail.com logout', '', 9, '2018-09-05 18:12:24', NULL),
-(235, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/login', 'pob@gmail.com login with IP Address ::1', '', 5, '2018-09-05 18:12:30', NULL),
-(236, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/logout', 'pob@gmail.com logout', '', 5, '2018-09-05 18:17:12', NULL),
-(237, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/login', 'kalyndo@gmail.com login with IP Address ::1', '', 9, '2018-09-05 18:17:17', NULL),
-(238, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/ai_activity_report/add-save', 'Add New Data  at Activities Reports', '', 9, '2018-09-05 18:37:08', NULL),
-(239, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/ai_activity_report/edit-save/11', 'Update data  at Activities Reports', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>user_id</td><td>9</td><td></td></tr><tr><td>ar_at_attendence</td><td>uploads/9/5-php-bangla-tutorial-php-basic.pdf</td><td>uploads/uploads/9/5-php-bangla-tutorial-php-basic.pdf</td></tr><tr><td>ar_at_minute</td><td>uploads/9/7__PHP___Database_bangla.pdf</td><td>uploads/uploads/9/7__PHP___Database_bangla.pdf</td></tr><tr><td>ar_status</td><td>1</td><td></td></tr></tbody></table>', 9, '2018-09-05 18:37:49', NULL),
-(240, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36', 'http://localhost/actionaid/public/admin/login', 'admin@gmail.com login with IP Address ::1', '', 1, '2018-09-05 19:11:30', NULL),
-(241, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36', 'http://localhost/actionaid/public/admin/demo_test/add-save', 'Add New Data 2 at Demo Test', '', 1, '2018-09-05 19:11:52', NULL),
-(242, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36', 'http://localhost/actionaid/public/admin/ai_activity_report/edit-save/11', 'Update data  at Activities Reports', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>user_id</td><td>9</td><td></td></tr><tr><td>ar_at_attendence</td><td>uploads/uploads/9/5-php-bangla-tutorial-php-basic.pdf</td><td>uploads/uploads/uploads/9/5-php-bangla-tutorial-php-basic.pdf</td></tr><tr><td>ar_at_minute</td><td>uploads/uploads/9/7__PHP___Database_bangla.pdf</td><td>uploads/uploads/uploads/9/7__PHP___Database_bangla.pdf</td></tr><tr><td>ar_status</td><td>1</td><td></td></tr></tbody></table>', 1, '2018-09-05 19:19:33', NULL),
-(243, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36', 'http://localhost/actionaid/public/admin/ai_activity_report/edit-save/10', 'Update data  at Activities Reports', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>user_id</td><td>7</td><td></td></tr><tr><td>ar_venue</td><td>Lukasa</td><td>Dhaka</td></tr><tr><td>ar_at_attendence</td><td>uploads/7/7__PHP___Database_bangla.pdf</td><td>uploads/uploads/7/7__PHP___Database_bangla.pdf</td></tr><tr><td>ar_at_minute</td><td>uploads/7/7__PHP___Database_bangla.pdf</td><td>uploads/uploads/7/7__PHP___Database_bangla.pdf</td></tr><tr><td>ar_status</td><td>1</td><td></td></tr></tbody></table>', 1, '2018-09-05 19:19:48', NULL),
-(244, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36', 'http://localhost/actionaid/public/admin/ai_activity_report/edit-save/10', 'Update data  at Activities Reports', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>user_id</td><td>7</td><td></td></tr><tr><td>ar_at_attendence</td><td>uploads/uploads/7/7__PHP___Database_bangla.pdf</td><td>uploads/uploads/uploads/7/7__PHP___Database_bangla.pdf</td></tr><tr><td>ar_at_minute</td><td>uploads/uploads/7/7__PHP___Database_bangla.pdf</td><td>uploads/uploads/uploads/7/7__PHP___Database_bangla.pdf</td></tr><tr><td>ar_status</td><td>1</td><td></td></tr></tbody></table>', 1, '2018-09-05 19:20:31', NULL),
-(245, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36', 'http://localhost/actionaid/public/admin/ai_activity_report/edit-save/10', 'Update data  at Activities Reports', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>user_id</td><td>7</td><td></td></tr><tr><td>ar_ap_female</td><td>30</td><td>45</td></tr><tr><td>ar_ap_male</td><td>300</td><td>15</td></tr><tr><td>ar_at_attendence</td><td>uploads/uploads/uploads/7/7__PHP___Database_bangla.pdf</td><td>uploads/uploads/uploads/uploads/7/7__PHP___Database_bangla.pdf</td></tr><tr><td>ar_at_minute</td><td>uploads/uploads/uploads/7/7__PHP___Database_bangla.pdf</td><td>uploads/uploads/uploads/uploads/7/7__PHP___Database_bangla.pdf</td></tr><tr><td>ar_status</td><td>1</td><td></td></tr></tbody></table>', 1, '2018-09-05 19:21:48', NULL),
-(246, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36', 'http://localhost/actionaid/public/admin/users/add-save', 'Add New Data Quality Officer at Users Management', '', 1, '2018-09-06 00:07:47', NULL),
-(247, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36', 'http://localhost/actionaid/public/admin/ai_concept_note/add-save', 'Add New Data New concept note at Activities Concept Note', '', 1, '2018-09-06 00:48:29', NULL),
-(248, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36', 'http://localhost/actionaid/public/admin/ai_concept_note/edit-save/1', 'Update data New concept note at Activities Concept Note', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>acn_ap_female</td><td>10</td><td>110</td></tr><tr><td>userId</td><td>1</td><td></td></tr><tr><td>meOfficer</td><td></td><td></td></tr><tr><td>headOfficer</td><td></td><td></td></tr><tr><td>line_date</td><td></td><td></td></tr><tr><td>me_date</td><td></td><td></td></tr><tr><td>head_date</td><td></td><td></td></tr><tr><td>acn_status</td><td>1</td><td></td></tr></tbody></table>', 1, '2018-09-06 00:49:07', NULL),
-(249, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/logout', ' logout', '', NULL, '2018-09-06 03:07:44', NULL),
-(250, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/login', 'richard@gmail.com login with IP Address ::1', '', 6, '2018-09-06 03:07:58', NULL),
-(251, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/ai_concept_note', 'Try view the data :name at Activities Concept Note', '', 6, '2018-09-06 03:10:47', NULL),
-(252, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36', 'http://localhost/actionaid/public/admin/menu_management/edit-save/16', 'Update data Activities Concept Note at Menu Management', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>color</td><td></td><td>normal</td></tr><tr><td>sorting</td><td>7</td><td></td></tr></tbody></table>', 1, '2018-09-06 03:12:29', NULL),
-(253, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/ai_concept_note', 'Try view the data :name at Activities Concept Note', '', 6, '2018-09-06 03:13:17', NULL),
-(254, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/logout', 'richard@gmail.com logout', '', 6, '2018-09-06 03:13:26', NULL),
-(255, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/login', 'richard@gmail.com login with IP Address ::1', '', 6, '2018-09-06 03:13:31', NULL),
-(256, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/logout', 'richard@gmail.com logout', '', 6, '2018-09-06 03:55:05', NULL),
-(257, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/login', 'pob@gmail.com login with IP Address ::1', '', 5, '2018-09-06 03:55:13', NULL),
-(258, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/logout', 'pob@gmail.com logout', '', 5, '2018-09-06 04:09:25', NULL),
-(259, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/login', 'kalyndo@gmail.com login with IP Address ::1', '', 9, '2018-09-06 04:09:49', NULL),
-(260, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/ai_concept_note/add-save', 'Add New Data Kalyndo Concept note at Activities Concept Note', '', 9, '2018-09-06 04:10:56', NULL),
-(261, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/logout', 'kalyndo@gmail.com logout', '', 9, '2018-09-06 04:11:32', NULL),
-(262, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/login', 'pob@gmail.com login with IP Address ::1', '', 5, '2018-09-06 04:11:36', NULL),
-(263, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/logout', 'pob@gmail.com logout', '', 5, '2018-09-06 04:13:44', NULL),
-(264, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/login', 'kalyndo@gmail.com login with IP Address ::1', '', 9, '2018-09-06 04:13:47', NULL),
-(265, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/logout', 'kalyndo@gmail.com logout', '', 9, '2018-09-06 04:14:41', NULL),
-(266, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/login', 'pob@gmail.com login with IP Address ::1', '', 5, '2018-09-06 04:14:44', NULL),
-(267, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/logout', 'pob@gmail.com logout', '', 5, '2018-09-06 04:32:35', NULL),
-(268, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/login', 'kalyndo@gmail.com login with IP Address ::1', '', 9, '2018-09-06 04:32:39', NULL),
-(269, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/logout', 'kalyndo@gmail.com logout', '', 9, '2018-09-06 05:00:45', NULL),
-(270, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/login', 'pob@gmail.com login with IP Address ::1', '', 5, '2018-09-06 05:01:03', NULL),
-(271, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/logout', 'pob@gmail.com logout', '', 5, '2018-09-06 05:21:06', NULL),
-(272, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/login', 'kalyndo@gmail.com login with IP Address ::1', '', 9, '2018-09-06 05:21:13', NULL),
-(273, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/login', 'kalyndo@gmail.com login with IP Address ::1', '', 9, '2018-09-06 07:29:54', NULL),
-(274, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/logout', 'kalyndo@gmail.com logout', '', 9, '2018-09-06 07:35:31', NULL),
-(275, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/login', 'me@gmail.com login with IP Address ::1', '', 11, '2018-09-06 07:35:44', NULL),
-(276, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36', 'http://localhost/actionaid/public/admin/menu_management/edit-save/16', 'Update data Activities Concept Note at Menu Management', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>sorting</td><td>7</td><td></td></tr></tbody></table>', 1, '2018-09-06 07:36:10', NULL),
-(277, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/ai_concept_note', 'Try view the data :name at Activities Concept Note', '', 11, '2018-09-06 07:36:47', NULL),
-(278, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/logout', 'me@gmail.com logout', '', 11, '2018-09-06 07:36:53', NULL),
-(279, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/login', 'me@gmail.com login with IP Address ::1', '', 11, '2018-09-06 07:36:57', NULL),
-(280, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/logout', 'me@gmail.com logout', '', 11, '2018-09-06 07:41:58', NULL),
-(281, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/login', 'pob@gmail.com login with IP Address ::1', '', 5, '2018-09-06 07:42:05', NULL),
-(282, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/logout', 'pob@gmail.com logout', '', 5, '2018-09-06 07:42:17', NULL),
-(283, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/login', 'kalyndo@gmail.com login with IP Address ::1', '', 9, '2018-09-06 07:42:21', NULL),
-(284, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 UBrowser/7.0.185.1002 Safari/537.36', 'http://localhost/actionaid/public/admin/login', 'pob@gmail.com login with IP Address ::1', '', 5, '2018-09-06 07:54:28', NULL),
-(285, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/ai_concept_note/edit-save/2', 'Update data Kalyndo Concept notesa at Activities Concept Note', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>acn_name</td><td>Kalyndo Concept notes</td><td>Kalyndo Concept notesa</td></tr><tr><td>meOfficer</td><td></td><td></td></tr><tr><td>headOfficer</td><td></td><td></td></tr><tr><td>line_date</td><td></td><td></td></tr><tr><td>me_date</td><td></td><td></td></tr><tr><td>head_date</td><td></td><td></td></tr><tr><td>rejected_date</td><td>2018-09-06 10:09:02</td><td></td></tr><tr><td>rejected_comment</td><td>May be it\'s ok!</td><td></td></tr><tr><td>acn_status</td><td>99</td><td></td></tr></tbody></table>', 9, '2018-09-06 08:13:15', NULL),
-(286, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/ai_concept_note/edit-save/2', 'Update data Kalyndo Concept note at Activities Concept Note', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>acn_name</td><td>Kalyndo Concept notesa</td><td>Kalyndo Concept note</td></tr><tr><td>meOfficer</td><td></td><td></td></tr><tr><td>headOfficer</td><td></td><td></td></tr><tr><td>line_date</td><td></td><td></td></tr><tr><td>me_date</td><td></td><td></td></tr><tr><td>head_date</td><td></td><td></td></tr><tr><td>rejected_date</td><td>2018-09-06 10:09:02</td><td></td></tr><tr><td>rejected_comment</td><td>May be it\'s ok!</td><td></td></tr><tr><td>acn_status</td><td>99</td><td></td></tr></tbody></table>', 9, '2018-09-06 09:23:23', NULL),
-(287, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/ai_concept_note/edit-save/2', 'Update data Kalyndo Concept notes at Activities Concept Note', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>meOfficer</td><td></td><td></td></tr><tr><td>headOfficer</td><td></td><td></td></tr><tr><td>line_date</td><td></td><td></td></tr><tr><td>me_date</td><td></td><td></td></tr><tr><td>head_date</td><td></td><td></td></tr><tr><td>rejected_date</td><td>2018-09-06 10:09:02</td><td></td></tr><tr><td>rejected_comment</td><td>May be it\'s ok!</td><td></td></tr><tr><td>acn_status</td><td>99</td><td></td></tr></tbody></table>', 9, '2018-09-06 09:37:48', NULL),
-(288, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 UBrowser/7.0.185.1002 Safari/537.36', 'http://localhost/actionaid/public/admin/logout', 'pob@gmail.com logout', '', 5, '2018-09-06 09:51:43', NULL),
-(289, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 UBrowser/7.0.185.1002 Safari/537.36', 'http://localhost/actionaid/public/admin/login', 'pob@gmail.com login with IP Address ::1', '', 5, '2018-09-06 09:51:47', NULL),
-(290, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:61.0) Gecko/20100101 Firefox/61.0', 'http://localhost/actionaid/public/admin/ai_concept_note/edit-save/2', 'Update data Kalyndo Concept note at Activities Concept Note', '<table class=\"table table-striped\"><thead><tr><th>Key</th><th>Old Value</th><th>New Value</th></thead><tbody><tr><td>acn_name</td><td>Kalyndo Concept notes</td><td>Kalyndo Concept note</td></tr><tr><td>meOfficer</td><td></td><td></td></tr><tr><td>headOfficer</td><td></td><td></td></tr><tr><td>line_date</td><td></td><td></td></tr><tr><td>me_date</td><td></td><td></td></tr><tr><td>head_date</td><td></td><td></td></tr><tr><td>rejected_date</td><td>2018-09-06 15:09:51</td><td></td></tr><tr><td>rejected_comment</td><td>Ki koro miya paro na...</td><td></td></tr><tr><td>acn_status</td><td>99</td><td></td></tr></tbody></table>', 9, '2018-09-06 09:55:11', NULL),
-(291, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36', 'http://localhost/actionaid/public/admin/logout', 'admin@gmail.com logout', '', 1, '2018-09-06 10:24:02', NULL),
-(292, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36', 'http://localhost/actionaid/public/admin/login', 'me@gmail.com login with IP Address ::1', '', 11, '2018-09-06 10:24:14', NULL),
-(293, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 UBrowser/7.0.185.1002 Safari/537.36', 'http://localhost/actionaid/public/admin/logout', 'pob@gmail.com logout', '', 5, '2018-09-06 11:13:53', NULL),
-(294, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 UBrowser/7.0.185.1002 Safari/537.36', 'http://localhost/actionaid/public/admin/login', 'me@gmail.com login with IP Address ::1', '', 11, '2018-09-06 11:14:32', NULL),
-(295, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36', 'http://localhost/actionaid/public/admin/logout', 'me@gmail.com logout', '', 11, '2018-09-06 11:22:16', NULL),
-(296, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36', 'http://localhost/actionaid/public/admin/login', 'me@gmail.com login with IP Address ::1', '', 11, '2018-09-06 11:22:43', NULL),
-(297, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36', 'http://localhost/actionaid/public/admin/logout', 'me@gmail.com logout', '', 11, '2018-09-06 11:22:58', NULL),
-(298, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36', 'http://localhost/actionaid/public/admin/login', 'admin@gmail.com login with IP Address ::1', '', 1, '2018-09-06 11:23:08', NULL),
-(299, '::1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 UBrowser/7.0.185.1002 Safari/537.36', 'http://localhost/actionaid/public/admin/ai_activities/add-save', 'Try add the data asdf asd data at Activities', '', 11, '2018-09-06 11:34:27', NULL),
-(300, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36', 'http://localhost/actionaid/public/admin/logout', 'admin@gmail.com logout', '', 1, '2018-09-06 13:07:00', NULL),
-(301, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36', 'http://localhost/actionaid/public/admin/login', 'me@gmail.com login with IP Address ::1', '', 11, '2018-09-06 13:07:13', NULL);
+(194, '::1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36', 'http://localhost/actionaid/public/admin/ai_activity_report/delete/4', 'Delete data 4 at Activities Reports', '', 1, '2018-09-04 15:05:16', NULL);
 
 -- --------------------------------------------------------
 
@@ -743,8 +579,7 @@ INSERT INTO `cms_menus` (`id`, `name`, `type`, `path`, `color`, `icon`, `parent_
 (10, 'Focus Areas', 'Route', 'AdminAiFocusareaControllerGetIndex', NULL, 'fa fa-tasks', 6, 1, 0, 1, 3, '2018-09-03 09:25:42', NULL),
 (12, 'Indicators', 'Route', 'AdminAiIndicatorsControllerGetIndex', NULL, 'fa fa-tasks', 6, 1, 0, 1, 4, '2018-09-03 10:24:23', NULL),
 (13, 'Activities Lists', 'Route', 'AdminAiActivitiesControllerGetIndex', 'normal', 'fa fa-tasks', 6, 1, 0, 1, 1, '2018-09-03 10:37:13', '2018-09-03 11:04:19'),
-(15, 'Activities Reports', 'Route', 'AdminAiActivityReportControllerGetIndex', 'normal', 'fa fa-bar-chart-o', 0, 1, 0, 1, 6, '2018-09-03 13:20:50', '2018-09-05 00:36:33'),
-(16, 'Activities Concept Note', 'Route', 'AdminAiConceptNoteControllerGetIndex', 'normal', 'fa fa-list-alt', 0, 1, 0, 1, 7, '2018-09-06 00:09:19', '2018-09-06 07:36:09');
+(15, 'Activities Reports', 'Route', 'AdminAiActivityReportControllerGetIndex', 'normal', 'fa fa-bar-chart-o', 0, 1, 0, 1, 6, '2018-09-03 13:20:50', '2018-09-03 15:05:09');
 
 -- --------------------------------------------------------
 
@@ -782,15 +617,7 @@ INSERT INTO `cms_menus_privileges` (`id`, `id_cms_menus`, `id_cms_privileges`) V
 (35, 12, 1),
 (37, 13, 1),
 (38, 14, 1),
-(43, 15, 10),
-(44, 15, 11),
-(45, 15, 1),
-(47, 17, 1),
-(48, 18, 1),
-(53, 16, 10),
-(54, 16, 13),
-(55, 16, 11),
-(56, 16, 1);
+(40, 15, 1);
 
 -- --------------------------------------------------------
 
@@ -838,11 +665,7 @@ INSERT INTO `cms_moduls` (`id`, `name`, `icon`, `path`, `table_name`, `controlle
 (19, 'Focus Areas', 'fa fa-tasks', 'ai_focusarea', 'ai_focusarea', 'AdminAiFocusareaController', 0, 0, '2018-09-03 09:25:42', NULL, NULL),
 (20, 'Indicators', 'fa fa-tasks', 'ai_indicators', 'ai_indicators', 'AdminAiIndicatorsController', 0, 0, '2018-09-03 10:24:23', NULL, NULL),
 (21, 'Activities', 'fa fa-tasks', 'ai_activities', 'ai_activities', 'AdminAiActivitiesController', 0, 0, '2018-09-03 10:37:12', NULL, NULL),
-(22, 'Activities Reports', 'fa fa-trash-o', 'ai_activity_report', 'ai_activity_report', 'AdminAiActivityReportController', 0, 0, '2018-09-03 13:20:50', NULL, NULL),
-(23, 'sss', 'fa fa-glass', 'sss', 'sss', 'AdminSssController', 0, 0, '2018-09-05 16:57:38', NULL, '2018-09-05 17:28:51'),
-(24, 'sss', 'fa fa-glass', 'sss24', 'sss', 'AdminSss24Controller', 0, 0, '2018-09-05 17:29:03', NULL, '2018-09-05 17:57:16'),
-(25, 'ttt', 'fa fa-glass', 'ttt', 'ttt', 'AdminTttController', 0, 0, '2018-09-05 17:46:57', NULL, '2018-09-05 17:57:12'),
-(26, 'Activities Concept Note', 'fa fa-list-alt', 'ai_concept_note', 'ai_concept_note', 'AdminAiConceptNoteController', 0, 0, '2018-09-06 00:09:18', NULL, NULL);
+(22, 'Activities Reports', 'fa fa-trash-o', 'ai_activity_report', 'ai_activity_report', 'AdminAiActivityReportController', 0, 0, '2018-09-03 13:20:50', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -872,19 +695,7 @@ INSERT INTO `cms_notifications` (`id`, `id_cms_users`, `content`, `url`, `is_rea
 (5, 4, 'Kalyndo\'s contract will be expaire today.', 'http://localhost/actionaid/public/admin/users/edit/9', 0, '2018-08-31 20:10:14', '2018-08-31 20:10:14'),
 (6, 1, 'Kalyndo\'s contract will be expaire today.', 'http://localhost/actionaid/public/admin/users/edit/9', 1, '2018-08-31 20:10:14', '2018-08-31 20:10:14'),
 (7, 4, 'Kalyndo\'s contract will be expaire today.', 'http://localhost/actionaid/public/admin/users/edit/9', 0, '2018-09-01 16:07:16', '2018-09-01 16:07:16'),
-(8, 1, 'Kalyndo\'s contract will be expaire today.', 'http://localhost/actionaid/public/admin/users/edit/9', 1, '2018-09-01 16:07:16', '2018-09-01 16:07:16'),
-(9, 7, 'Conducts An Activities', 'http://localhost/actionaid/public/admin/ai_activity_report/detail', 1, '2018-09-05 03:11:40', '2018-09-05 09:11:40'),
-(10, 7, 'Conducts An Activities', 'http://localhost/actionaid/public/admin/ai_activity_report/detail', 1, '2018-09-05 03:33:39', '2018-09-05 09:33:39'),
-(11, 5, 'Conducts An Activities', 'http://localhost/actionaid/public/admin/demo_test', 1, '2018-09-05 18:11:43', '2018-09-06 00:11:43'),
-(12, 5, 'Conducts An Activities', 'http://localhost/actionaid/public/admin/demo_test', 1, '2018-09-05 18:11:54', '2018-09-06 00:11:54'),
-(13, 6, 'Conducts An Activities', 'http://localhost/actionaid/public/admin/ai_activity_report', 0, '2018-09-05 18:37:08', '2018-09-06 00:37:08'),
-(14, 6, 'Conducts An Activities', 'http://localhost/actionaid/public/admin/demo_test', 0, '2018-09-05 19:11:52', '2018-09-06 01:11:52'),
-(15, 6, 'Conducted An Concept Note...', 'http://localhost/actionaid/public/admin/ai_concept_note', 1, '2018-09-06 00:48:28', '2018-09-06 06:48:28'),
-(16, 5, 'Conducted An Concept Note...', 'http://localhost/actionaid/public/admin/ai_concept_note', 1, '2018-09-06 04:10:55', '2018-09-06 10:10:55'),
-(17, 9, 'Your concept note is rejected!...', 'http://localhost/actionaid/public/detail/2', 1, '2018-09-06 04:30:09', '2018-09-06 10:30:09'),
-(29, 9, 'Your concept note is rejected!...', 'http://localhost/actionaid/public/admin/ai_concept_note/detail/2', 1, '2018-09-06 09:53:52', '2018-09-06 15:53:52'),
-(30, 5, 'A rejected concept is back to review again...', 'http://localhost/actionaid/public/admin/ai_concept_note/detail/2', 1, '2018-09-06 09:55:10', '2018-09-06 15:55:10'),
-(31, 11, 'Waiting a Concept Note For Check...', 'http://localhost/actionaid/public/admin/ai_concept_note/detail/2', 1, '2018-09-06 10:14:07', '2018-09-06 16:14:07');
+(8, 1, 'Kalyndo\'s contract will be expaire today.', 'http://localhost/actionaid/public/admin/users/edit/9', 1, '2018-09-01 16:07:16', '2018-09-01 16:07:16');
 
 -- --------------------------------------------------------
 
@@ -971,8 +782,14 @@ INSERT INTO `cms_privileges_roles` (`id`, `is_visible`, `is_create`, `is_read`, 
 (29, 1, 1, 1, 1, 1, 9, 4, NULL, NULL),
 (34, 1, 1, 1, 1, 0, 12, 12, NULL, NULL),
 (35, 1, 1, 1, 1, 1, 12, 4, NULL, NULL),
+(36, 1, 1, 1, 1, 0, 13, 12, NULL, NULL),
+(37, 1, 1, 1, 1, 1, 13, 4, NULL, NULL),
+(38, 1, 1, 1, 1, 1, 11, 12, NULL, NULL),
+(39, 1, 1, 1, 1, 1, 11, 4, NULL, NULL),
 (40, 1, 1, 1, 1, 1, 1, 13, NULL, NULL),
 (41, 1, 1, 1, 1, 1, 1, 14, NULL, NULL),
+(42, 1, 0, 1, 0, 0, 10, 12, NULL, NULL),
+(43, 1, 1, 1, 1, 1, 10, 4, NULL, NULL),
 (44, 1, 1, 1, 1, 1, 1, 15, NULL, NULL),
 (45, 1, 1, 1, 1, 1, 1, 16, NULL, NULL),
 (46, 1, 1, 1, 1, 1, 1, 17, NULL, NULL),
@@ -982,22 +799,7 @@ INSERT INTO `cms_privileges_roles` (`id`, `is_visible`, `is_create`, `is_read`, 
 (50, 1, 1, 1, 1, 1, 1, 20, NULL, NULL),
 (51, 1, 1, 1, 1, 1, 1, 21, NULL, NULL),
 (52, 1, 1, 1, 1, 1, 1, 22, NULL, NULL),
-(53, 1, 1, 1, 1, 1, 1, 22, NULL, NULL),
-(60, 1, 1, 1, 1, 1, 1, 23, NULL, NULL),
-(61, 1, 1, 1, 1, 1, 1, 24, NULL, NULL),
-(62, 1, 1, 1, 1, 1, 1, 25, NULL, NULL),
-(63, 1, 1, 1, 1, 1, 1, 26, NULL, NULL),
-(64, 1, 1, 1, 1, 1, 11, 26, NULL, NULL),
-(65, 1, 1, 1, 1, 1, 11, 22, NULL, NULL),
-(66, 1, 1, 1, 1, 1, 11, 12, NULL, NULL),
-(67, 1, 1, 1, 1, 1, 11, 4, NULL, NULL),
-(68, 1, 0, 1, 0, 0, 10, 26, NULL, NULL),
-(69, 1, 0, 1, 0, 0, 10, 22, NULL, NULL),
-(70, 1, 0, 1, 0, 0, 10, 12, NULL, NULL),
-(71, 1, 1, 1, 1, 1, 10, 4, NULL, NULL),
-(72, 1, 0, 1, 0, 0, 13, 26, NULL, NULL),
-(73, 1, 1, 1, 1, 0, 13, 12, NULL, NULL),
-(74, 1, 1, 1, 1, 1, 13, 4, NULL, NULL);
+(53, 1, 1, 1, 1, 1, 1, 22, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1129,8 +931,7 @@ INSERT INTO `cms_users` (`id`, `name`, `email`, `mobile`, `man_number`, `locatio
 (7, 'Sad', 'sad@gmail.com', '31534836541384', 'asdf_315', 'Pupka', 'English Department', '2018-08-06', '2018-08-20', '2020-09-01', 'uploads/1/2018-08/hydrangeas.jpg', '$2y$10$iXEsEBQOj2OBLgwRv4lg4.2kQoAPmDAs/K8RqY0KMtWPjUZo75bFW', '729', 11, '2018-08-31 12:54:08', NULL, 'Active'),
 (8, 'Joya', 'joya@gmail.com', '1351345131354', 'asdf_315', 'Pupka', 'English Department', '2018-09-24', '2018-09-19', '2020-01-01', 'uploads/1/2018-08/tulips.jpg', '$2y$10$sFUcjH7sYbHcx/pSWTixVOj3YwOBqvM/zYiw6LQAbFjNGi32.gbQu', '485', 5, '2018-08-31 12:56:59', NULL, 'Active'),
 (9, 'Kalyndo', 'kalyndo@gmail.com', '31353135131', 'khaf353', 'Zambia', 'Computer Science & Engineering', '2018-02-13', '2010-06-28', '2018-08-31', 'uploads/1/2018-08/lighthouse.jpg', '$2y$10$GAI6ccA4804DJjlQSxVFqeJT/154h52aYXbtnzpDxM0Cg7knCeHRu', '3', 11, '2018-08-31 14:01:00', NULL, 'Active'),
-(10, 'Khatun', 'kahtun@gmail.com', '313513513.15', 'asfwea', '3', '1', '2018-09-10', '2018-09-18', '2018-09-19', 'uploads/1/2018-09/koala.jpg', '$2y$10$kbu9iVm6Oua2WcUewMsXse49NrZQtTOKdtjdW5Hq/NfBs9iXs4FBG', NULL, 9, '2018-09-01 09:05:09', NULL, 'Active'),
-(11, 'Quality Officer', 'me@gmail.com', '880196926500', 'asdf_315', '2', '1', '2018-09-01', '2018-09-12', '2019-04-25', 'uploads/1/2018-09/tulips.jpg', '$2y$10$DD63BbNp1C7FJ/LArBsFxO5tj7dhYOOsB8nOjNGolmNnU6PTXBqAG', NULL, 13, '2018-09-06 00:07:47', NULL, 'Active');
+(10, 'Khatun', 'kahtun@gmail.com', '313513513.15', 'asfwea', '3', '1', '2018-09-10', '2018-09-18', '2018-09-19', 'uploads/1/2018-09/koala.jpg', '$2y$10$kbu9iVm6Oua2WcUewMsXse49NrZQtTOKdtjdW5Hq/NfBs9iXs4FBG', NULL, 9, '2018-09-01 09:05:09', NULL, 'Active');
 
 -- --------------------------------------------------------
 
@@ -1171,14 +972,7 @@ INSERT INTO `demo_test` (`id`, `title`, `description`, `status`, `user_id`, `flo
 (14, 'asdfasdf|asfdasdf|asfasdfasdf', '<p>&nbsp;fasdf asdf asdf asd</p>', 100, 1, 5, NULL, NULL, NULL),
 (15, '0', '<p>adgdfg dfs gsdf gsdfg s</p>', 100, 1, 5, NULL, NULL, NULL),
 (16, '0', 'uploads/1/2018-09/penguins.jpg', 100, 1, 5, NULL, NULL, NULL),
-(17, 'fasd|asdfasdf|asdfasdf', 'uploads/1/2018-09/koala.jpg', 100, 1, 6, NULL, NULL, NULL),
-(18, '', '<p>asdf asdf asdf a<br></p>', 1, 7, 5, NULL, NULL, NULL),
-(19, '', '<p>sadf asdf asd<br></p>', 1, 7, 5, NULL, NULL, NULL),
-(20, '7', '<p>sdf asdf asd</p>', 100, 1, 5, NULL, NULL, NULL),
-(21, '7', '<p>asf dasdf&nbsp;</p>', 100, 1, 5, NULL, NULL, NULL),
-(22, '2', '<p>asfd asdf asd asdf asdf<br></p>', 1, 9, 5, NULL, NULL, NULL),
-(23, '2', '<p>asfd asdf asd asdf asdf<br></p>', 1, 9, 5, NULL, NULL, NULL),
-(24, '2', '<p>dsfgdgfadf</p>', 100, 1, 6, NULL, NULL, NULL);
+(17, 'fasd|asdfasdf|asdfasdf', 'uploads/1/2018-09/koala.jpg', 100, 1, 6, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1231,17 +1025,23 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 
 CREATE TABLE `sss` (
   `id` int(11) NOT NULL,
-  `lavel` int(255) NOT NULL,
-  `value` int(255) NOT NULL
+  `level` varchar(255) NOT NULL,
+  `value` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `sss`
 --
 
-INSERT INTO `sss` (`id`, `lavel`, `value`) VALUES
-(1, 500, 300),
-(2, 135, 351);
+INSERT INTO `sss` (`id`, `level`, `value`) VALUES
+(1, '1', '500'),
+(2, '2', '300'),
+(3, '5', '200'),
+(4, '9', '800'),
+(5, '8', '360'),
+(6, '4', '450'),
+(7, '3', '950'),
+(8, '2', '335');
 
 --
 -- Indexes for dumped tables
@@ -1257,12 +1057,6 @@ ALTER TABLE `ai_activities`
 -- Indexes for table `ai_activity_report`
 --
 ALTER TABLE `ai_activity_report`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `ai_concept_note`
---
-ALTER TABLE `ai_concept_note`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1423,12 +1217,6 @@ ALTER TABLE `ai_activities`
 -- AUTO_INCREMENT for table `ai_activity_report`
 --
 ALTER TABLE `ai_activity_report`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
---
--- AUTO_INCREMENT for table `ai_concept_note`
---
-ALTER TABLE `ai_concept_note`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
@@ -1495,31 +1283,31 @@ ALTER TABLE `cms_email_templates`
 -- AUTO_INCREMENT for table `cms_logs`
 --
 ALTER TABLE `cms_logs`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=302;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=195;
 
 --
 -- AUTO_INCREMENT for table `cms_menus`
 --
 ALTER TABLE `cms_menus`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `cms_menus_privileges`
 --
 ALTER TABLE `cms_menus_privileges`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `cms_moduls`
 --
 ALTER TABLE `cms_moduls`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `cms_notifications`
 --
 ALTER TABLE `cms_notifications`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `cms_privileges`
@@ -1531,7 +1319,7 @@ ALTER TABLE `cms_privileges`
 -- AUTO_INCREMENT for table `cms_privileges_roles`
 --
 ALTER TABLE `cms_privileges_roles`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT for table `cms_settings`
@@ -1555,13 +1343,13 @@ ALTER TABLE `cms_statistic_components`
 -- AUTO_INCREMENT for table `cms_users`
 --
 ALTER TABLE `cms_users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `demo_test`
 --
 ALTER TABLE `demo_test`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -1573,7 +1361,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `sss`
 --
 ALTER TABLE `sss`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

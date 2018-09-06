@@ -37,7 +37,33 @@
 			if(CRUDBooster::isSuperadmin()){
 			$this->col[] = ["label"=>"User Name","name"=>"user_id","join" => "cms_users,name","width"=>"150"];
 			} 
-			 $this->col[] = ["label"=>"Status","name"=>"status"];
+			 $this->col[] = ["label"=>"Status","name"=>"status","callback" => function($row){
+			 	if(CRUDBooster::myPrivilegeId() == 11){ //pc
+			 		if($row->status == '1'){
+						return '<span class="label label-warning">Pending</span>';
+					}elseif($row->status == '99'){
+						return '<span class="label label-danger">Rejected</span>';
+					}elseif($row->status == '100'){
+						return '<span class="label label-primary">Approved</span>';
+					}					
+			 	}elseif (CRUDBooster::myPrivilegeId() == 10) { //line manger
+			 		if($row->status == '1'){
+						return '<span class="label label-info">New</span>';
+					}elseif($row->status == '2'){
+						return '<span class="label label-warning">Pending</span>';
+					}elseif($row->status == '100'){
+						return '<span class="label label-primary">Approved</span>';
+					}
+			 	}elseif (CRUDBooster::myPrivilegeId() == 5) { //hopp
+			 		if($row->status == '2'){
+						return '<span class="label label-info">New</span>';
+					}elseif($row->status == '100'){
+						return '<span class="label label-primary">Approved</span>';
+					}
+			 	}else{ //admin and hord
+			 		return '<span class="label label-primary">Approved</span>';
+			 	} 
+			}];
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
@@ -237,21 +263,21 @@
 	            
 	    }
 
-		public function hook_html_index(&$html_contents) {
+		// public function hook_html_index(&$html_contents) {
 
-		    // If you want get data from each row, $html_contents['data']
+		//     // If you want get data from each row, $html_contents['data']
 
-		    foreach($html_contents['html'] as &$row) {
-		        // In this example, we want to coloring of status if Active then Green, Else then Red
-		        // First you should know where the status columns row locations (index of array) 
-		        $status = $row[3];
-		        if($status == '100') {
-		            $row[3] = "<span class='label label-success'>Active</span>";
-		        }else{
-		            $row[3] = "<span class='label label-danger'>Pending</span>";
-		        }
-		    }
-		}
+		//     foreach($html_contents['html'] as &$row) {
+		//         // In this example, we want to coloring of status if Active then Green, Else then Red
+		//         // First you should know where the status columns row locations (index of array) 
+		//         $status = $row[3];
+		//         if($status == '100') {
+		//             $row[3] = "<span class='label label-success'>Active</span>";
+		//         }else{
+		//             $row[3] = "<span class='label label-danger'>Pending</span>";
+		//         }
+		//     }
+		// }
 
 	    /*
 	    | ---------------------------------------------------------------------- 

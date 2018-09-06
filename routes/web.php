@@ -17,7 +17,13 @@ Route::get('/', function () {
 
 Route::get('/useractive/{id}', 'AdminCmsUsersController@useractive'); 
 Route::get('/userdeactive/{id}', 'AdminCmsUsersController@userdeactive'); 
-Route::post('/reject/', 'SystemController@reject'); 
+Route::post('/CNreject/', 'SystemController@CNreject'); 
+
+
+Route::get('/lmApprove/{cNid}', 'SystemController@is_LineManagerApprove'); 
 
 //ajax request
 Route::get('/checkVenue/{value}', 'SystemController@checkVenue'); 
+
+//pdf request
+Route::get('/makePDF/{id}','SystemController@makePDF');

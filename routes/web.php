@@ -21,9 +21,12 @@ Route::post('/CNreject/', 'SystemController@CNreject');
 
 
 Route::get('/lmApprove/{cNid}', 'SystemController@is_LineManagerApprove'); 
+Route::post('/meApprove/', 'SystemController@is_MEOfficerApprove'); 
+Route::get('/headApprove/{cNid}/{userId}', 'SystemController@is_HeadOfficerApprove'); 
 
 //ajax request
 Route::get('/checkVenue/{value}', 'SystemController@checkVenue'); 
+Route::get('admin/ai_activity_report/getDataTable1/{fk_value}', 'SystemController@getDataTable1'); 
 
 //pdf request
 Route::get('/makePDF/{id}','SystemController@makePDF');

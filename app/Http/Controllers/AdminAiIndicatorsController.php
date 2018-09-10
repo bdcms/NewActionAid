@@ -41,15 +41,15 @@
 			$this->form[] = ['label'=>'Indicator Name','name'=>'ind_name','type'=>'textarea','validation'=>'required|string|min:5|max:500','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Indicator Definitions','name'=>'ind_definations','type'=>'textarea','validation'=>'required|min:1|max:500','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Priority Name','name'=>'pri_id','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'ai_priorityarea,pri_name','default'=>'Please Select Priority Area'];
-			$this->form[] = ['label'=>'Focus Name','name'=>'foc_id','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'ai_focusarea,foc_name','parent_select'=>'pri_id','default'=>'Please Select Focus Area'];
+			$this->form[] = ['label'=>'Focus Name','name'=>'foc_id','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'ai_focusarea,foc_name','datatable_where'=>'pri_id = 4  && id = 3','parent_select'=>'pri_id','default'=>'Please Select Focus Area'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
 			//$this->form = [];
 			//$this->form[] = ['label'=>'Indicator Name','name'=>'ind_name','type'=>'textarea','validation'=>'required|string|min:5|max:500','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Indicator Definitions','name'=>'ind_definations','type'=>'text','validation'=>'required|min:1|max:500','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Indicator Definitions','name'=>'ind_definations','type'=>'textarea','validation'=>'required|min:1|max:500','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Priority Name','name'=>'pri_id','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'ai_priorityarea,pri_name','default'=>'Please Select Priority Area'];
-			//$this->form[] = ['label'=>'Focus Name','name'=>'foc_id','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'ai_focusarea,foc_name','parent_select'=>'pri_id','default'=>'Please Select Focus Area'];
+			//$this->form[] = ['label'=>'Focus Name','name'=>'foc_id','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'ai_focusarea,foc_name','datatable_where'=>'id = 3 && pri_id = 4','parent_select'=>'pri_id','default'=>'Please Select Focus Area'];
 			# OLD END FORM
 
 			/* 

@@ -68,7 +68,7 @@
 			//$this->form[] = ['label'=>'Activity Assumption','name'=>'act_assumption','type'=>'textarea','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Priority Area','name'=>'pri_id','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'ai_priorityarea,pri_name','default'=>'Select Priority Area'];
 			//$this->form[] = ['label'=>'Focus Area','name'=>'foc_id','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'ai_focusarea,foc_name','parent_select'=>'pri_id','default'=>'Select Focus Area'];
-			//$this->form[] = ['label'=>'Indicator Area','name'=>'ind_id','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'ai_indicators,ind_name','parent_select'=>'foc_id','default'=>'Select an Indicator'];
+			//$this->form[] = ['label'=>'Indicator Area','name'=>'ind_id','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'ai_indicators,ind_name','datatable_where'=>'id = 2','parent_select'=>'foc_id','default'=>'Select an Indicator'];
 			# OLD END FORM
 
 			/* 
@@ -256,7 +256,8 @@
 	    */
 	    public function hook_query_index(&$query) {
 	        //Your code here
-	            
+	        $query->where('is_parent',NULL);    
+
 	    }
 
 	    /*

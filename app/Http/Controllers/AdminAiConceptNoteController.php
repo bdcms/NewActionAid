@@ -38,26 +38,26 @@
 			$this->col[] = ["label"=>"Lead By","name"=>"userId","join"=>"cms_users,name","width"=>"150"];
 			$this->col[] = ["label"=>"Status","name"=>"acn_status","width"=>"100","callback" => function($row){
 			 	if(CRUDBooster::myPrivilegeId() == 11){ //pc
-			 		if($row->acn_status == '1'){
+			 		if($row->acn_status == '1' || $row->acn_status == '2' || $row->acn_status == '3'){
 						return '<span class="label label-warning">Pending</span>';
 					}elseif($row->acn_status == '99'){
 						return '<span class="label label-danger">Rejected</span>';
 					}elseif($row->acn_status == '100'){
 						return '<span class="label label-primary">Approved</span>';
 					}elseif($row->acn_status == '101'){
-						return '<span class="label label-primary">Conducted</span>';
+						return '<span class="label label-success">Conducted</span>';
 					} 
 			 	}elseif (CRUDBooster::myPrivilegeId() == 10) { //line manger
 			 		if($row->acn_status == '1'){
 						return '<span class="label label-info">New</span>';
-					}elseif($row->acn_status == '2'){
+					}elseif($row->acn_status == '2' || $row->acn_status == '3'){
 						return '<span class="label label-warning">Pending</span>';
 					}elseif($row->acn_status == '99'){
 						return '<span class="label label-danger">Rejected</span>';
 					}elseif($row->acn_status == '100'){
 						return '<span class="label label-primary">Approved</span>';
 					}elseif($row->acn_status == '101'){
-						return '<span class="label label-primary">Conducted</span>';
+						return '<span class="label label-success">Conducted</span>';
 					} 
 			 	}elseif (CRUDBooster::myPrivilegeId() == 13) { //M&E Officer
 			 		if($row->acn_status == '2'){
@@ -69,15 +69,17 @@
 					}elseif($row->acn_status == '100'){
 						return '<span class="label label-primary">Approved</span>';
 					}elseif($row->acn_status == '101'){
-						return '<span class="label label-primary">Conducted</span>';
+						return '<span class="label label-success">Conducted</span>';
 					} 
 			 	}elseif (CRUDBooster::myPrivilegeId() == 5 || CRUDBooster::myPrivilegeId() == 6) { //hopp & Hord
 			 		if($row->acn_status == '3'){
 						return '<span class="label label-info">New</span>';
+					}elseif($row->acn_status == '99'){
+						return '<span class="label label-danger">Rejected</span>';
 					}elseif($row->acn_status == '100'){
 						return '<span class="label label-primary">Approved</span>';
 					}elseif($row->acn_status == '101'){
-						return '<span class="label label-primary">Conducted</span>';
+						return '<span class="label label-success">Conducted</span>';
 					} 
 			 	}elseif(CRUDBooster::isSuperadmin()){ //Super Admin
 			 		if($row->acn_status == '1' || $row->acn_status == '2' || $row->acn_status == '3'){
@@ -87,7 +89,7 @@
 					}elseif($row->acn_status == '100'){
 						return '<span class="label label-primary">Approved</span>';
 					}elseif($row->acn_status == '101'){
-						return '<span class="label label-primary">Conducted</span>';
+						return '<span class="label label-success">Conducted</span>';
 					} 
 			 	}else{ //admin and hord
 			 		return '<span class="label label-primary">Approved1</span>';
@@ -97,9 +99,9 @@
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
-			$this->form[] = ['label'=>'Concept Note Name','name'=>'acn_name','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10','placeholder'=>'Name of your concept note..'];
-			$this->form[] = ['label'=>'Concept Note Date','name'=>'acn_date','type'=>'date','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Concept Note Venue','name'=>'acn_venue','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10','placeholder'=>'Type your venue'];
+			$this->form[] = ['label'=>'Activities Name','name'=>'acn_name','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10','placeholder'=>'Name of your concept note..'];
+			$this->form[] = ['label'=>'Date to Conduct','name'=>'acn_date','type'=>'date','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Activities Venue','name'=>'acn_venue','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10','placeholder'=>'Type your venue'];
 			$this->form[] = ['label'=>'Implement Unit','name'=>'acn_implementUnit','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10','placeholder'=>'Implementing Unit'];
 			$this->form[] = ['label'=>'Participant Male','name'=>'acn_ap_male','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-5'];
 			$this->form[] = ['label'=>'Participant Female','name'=>'acn_ap_female','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-5'];

@@ -44,7 +44,7 @@
 			$this->form[] = ['label'=>'Priority Area','name'=>'pri_id','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'ai_priorityarea,pri_name','default'=>'Select Priority Area'];
 			$this->form[] = ['label'=>'Focus Area','name'=>'foc_id','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'ai_focusarea,foc_name','parent_select'=>'pri_id','default'=>'Select Focus Area'];
 			$this->form[] = ['label'=>'Indicator Name','name'=>'ind_id','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'ai_indicators,ind_name','parent_select'=>'foc_id','default'=>'Select Indicator Name'];
-			$this->form[] = ['label'=>'Activities Name','name'=>'act_id','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'ai_activities,act_name','datatable_where'=>'act_status = 1','parent_select'=>'ind_id','default'=>'Select Activities Name'];
+			$this->form[] = ['label'=>'Activities Name','name'=>'act_id','type'=>'select1','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'ai_activities,act_name','datatable_where'=>'act_status = 1','parent_select'=>'ind_id','default'=>'Select Activities Name'];
 			$this->form[] = ['label'=>'Line Manager','name'=>'flow_id','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'cms_users,name','help'=>'Select a Line Manager who responsible for this report.','datatable_where'=>'id_cms_privileges=10 && status = "Active"','default'=>'Please Select Line Manager'];
 			$this->form[] = ['label'=>'Activities Date','name'=>'ar_date','type'=>'date','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			$id = CRUDBooster::getCurrentId();
@@ -70,7 +70,7 @@
 			$this->form[] = ['label'=>'Activities Ies','name'=>'ar_ac_ies','type'=>'textarea','validation'=>'required|min:1|max:255','width'=>'col-sm-10','placeholder'=>'Follow up activity(ies)/Date *'];
 			$this->form[] = ['label'=>'Activities Recommendations','name'=>'ar_ac_comments','type'=>'textarea','validation'=>'required|min:1|max:255','width'=>'col-sm-10','placeholder'=>'Additional comments/recommendations on the activity: *'];
 			$this->form[] = ['label'=>'Attendance Register','name'=>'ar_at_attendence','type'=>'filemanager','validation'=>'required|min:1|max:255','width'=>'col-sm-10','filemanager_type'=>'file','help'=>'Allowed only pdf or docx copy'];
-			$this->form[] = ['label'=>'Activities Minutes','name'=>'ar_at_minute','type'=>'filemanager','validation'=>'required|min:1|max:255','width'=>'col-sm-10','help'=>'Allowed only pdf or docx copy'];
+			$this->form[] = ['label'=>'Activities Minutes','name'=>'ar_at_minute','type'=>'filemanager','validation'=>'required|min:1|max:255','width'=>'col-sm-10','filemanager_type'=>'file','help'=>'Allowed only pdf or docx copy'];
 			$this->form[] = ['label'=>'Cover Picture','name'=>'ar_at_pic1','type'=>'upload','validation'=>'required|min:1|max:1000','width'=>'col-sm-10','help'=>'Allowed max size is 1000kb.'];
 			$this->form[] = ['label'=>'Picture Two','name'=>'ar_at_pic2','type'=>'upload','width'=>'col-sm-10','help'=>'Allowed max size is 1000kb.'];
 			$this->form[] = ['label'=>'Picture Three','name'=>'ar_at_pic3','type'=>'upload','width'=>'col-sm-10','help'=>'Allowed max size is 1000kb.'];
@@ -321,6 +321,14 @@
 	    		CRUDBooster::redirectBack(
                	 'Sorry Your Total Participant Dose not match!' 
          	   );
+	    	}
+	    	$Cn = $postdata['act_id'];
+	    	$Cnn = DB::table('ai_activities')->where('id',$Cn)->first();
+	    	if($Cnn->is_parent != NULL){
+		    	$conducted	 =	DB::table('ai_activities')->where('id',$Cn)->update(['is_conduct'=> 0]);	
+		    	if($conducted){
+		    		DB::table('ai_concept_note')->where('act_id',$Cn)->update(['acn_status'=> 101]);	
+		    	}
 	    	}
 
 	        $flow_id =  $postdata['flow_id']; 

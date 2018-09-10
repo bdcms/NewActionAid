@@ -64,7 +64,82 @@ class SystemController extends Controller{
 		}	
 	}
 
+	public function is_MEOfficerApprove(Request $request){
+		//dd($request);
+		// $this->validate($request,[ 
+	 //            'comment'	=> 'required',   
+	 //        ]);
+		$data = [
+			'act_number'		=> 		$request->act_number,
+			'act_name'			=> 		$request->act_name,
+			'act_baseline'		=> 		$request->act_baseline,
+			'act_target2022'	=> 		$request->act_target2022,
+			'act_target2018'	=> 		$request->act_target2018,
+			'act_mov'			=> 		$request->act_mov,
+			'act_dataCollection'=> 		$request->act_dataCollection,
+			'act_frequency'		=> 		$request->act_frequency,
+			'act_assumption'	=> 		$request->act_assumption,
+			'pri_id'			=> 		$request->pri_id,
+			'foc_id'			=> 		$request->foc_id,
+			'ind_id'			=> 		$request->ind_id, 
+			'is_parent'			=> 		$request->act_id,
+			'is_user'			=> 		$request->is_user,
+			//'headOfficer'		=>		$request->headOfficer,
+			'is_conduct'		=> 		1,
+		]; 
+		//dd($data);
+		$act_id = DB::table('ai_activities')->insertGetId($data);
 
+		if($act_id){
+			$time = time();
+			$time = date("Y-m-d H:m:s",$time);  
+			$dataCN = [
+				'acn_status'			=> 		3,
+				'headOfficer'			=> 		$request->headOfficer, 
+				'me_date'				=> 		$time,
+				'act_id'				=> 		$act_id,
+			];
+			$done = DB::table('ai_concept_note')->where('id',$request->cNid)->update($dataCN);
+
+			if($done){
+				\CRUDBooster::sendNotification($config=[
+					'content'	=> 'Waiting a Concept Note For Check...',
+					'to'		=> url('admin/ai_concept_note/detail/'.$request->cNid),
+					'id_cms_users'	=> [$request->headOfficer],
+				]);
+				$to = url('/admin/ai_concept_note');
+				$message = "Approved Successfull";
+				$type	= "info";
+				\CRUDBooster::redirect($to,$message,$type);
+			}
+
+
+		}
+
+
+	}
+
+	public function is_HeadOfficerApprove($cNid,$userId){
+		//echo $cNid;
+		$time = time();
+		$time = date("Y-m-d H:m:s",$time);  
+		$data = [
+			'acn_status'			=> 100, 
+			'head_date'				=> $time,
+		]; 
+		$done = \DB::table('ai_concept_note')->where('id',$cNid)->update($data); 
+		if($done){
+			\CRUDBooster::sendNotification($config=[
+				'content'	=> 'Your Concept Note is Approved..',
+				'to'		=> url('admin/ai_concept_note/detail/'.$cNid),
+				'id_cms_users'	=> [$userId],
+			]);
+			$to = url('/admin/ai_concept_note');
+			$message = "Approved Successfull";
+			$type	= "info";
+			\CRUDBooster::redirect($to,$message,$type);
+		}	
+	}
 
 
 //ajax request
@@ -85,6 +160,32 @@ class SystemController extends Controller{
 	}
 
 
+
+
+	public function getDataTable1($fk_value){
+        $table = 'ai_activities';
+        $label = 'act_name'; 
+        $foreign_key_name = 'ind_id';
+        $foreign_key_value = $fk_value;
+        if ($table && $label && $foreign_key_name && $foreign_key_value) {
+        	$data = "<option  value=' '>Select an Activities</option>"; 
+        	$query = DB::table($table)->where($foreign_key_name, $foreign_key_value)->get(); 
+            	foreach ($query as $value) { 
+            		if($value->is_parent == NULL){
+            			$data .= "<option  value='".$value->id."'>".$value->act_name."</option>"; 
+            		}elseif($value->is_user == \CRUDBooster::myId() && $value->is_conduct == 1){
+            			$data .= "<option  value='".$value->id."'>".$value->act_name."</option>"; 
+            		}
+            	}
+            return response()->json($data);
+        } else {
+            return response()->json([]);
+        }
+    }
+
+
+
+
 	//pdf
 
 	public function makePDF($id){
@@ -99,3 +200,39 @@ class SystemController extends Controller{
     }
 
 }
+
+// //$query->select('id as select_value', $label.' as select_label','is_parent as parent','is_user as user','is_conduct as conduct');
+            // $query->where($foreign_key_name, $foreign_key_value);
+            // $query->orderby($label, 'asc');
+            // $all = $query->get();
+            //dd($all);
+            // $i = 0; 
+            // foreach ($all as $value) {
+            // 	 if($value->is_parent == NULL){
+            // 	 	echo $i.' ';
+            // 	 	$data = [
+            // 	 		$i 	=>	[
+            // 	 			'select_value' => $value->id,
+	           //  			'select_label' => $value->act_name, 
+            // 	 		],
+            // 	 	];
+            // 	 }
+            // 	 $i++;
+            // 	 echo $i;
+          //  }
+         //    $some = [
+
+	        // '0'	=>  [
+	        //     	'select_value' => 4,
+	        //     	'select_label' => 'asdfa', 
+	        //     ],
+
+	        // '1'	=>  [
+	        //     	'select_value' => 5,
+	        //     	'select_label' => '31', 
+	        //     ],    
+	        // ];    
+            //  $data = (object) $data;
+            // echo "<pre>"; 
+            // print_r($data);
+            // echo "</pre>";

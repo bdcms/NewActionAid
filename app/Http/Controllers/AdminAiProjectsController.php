@@ -5,12 +5,12 @@
 	use DB;
 	use CRUDBooster;
 
-	class AdminAiIndicatorsController extends \crocodicstudio\crudbooster\controllers\CBController {
+	class AdminAiProjectsController extends \crocodicstudio\crudbooster\controllers\CBController {
 
 	    public function cbInit() {
 
 			# START CONFIGURATION DO NOT REMOVE THIS LINE
-			$this->title_field = "ind_name";
+			$this->title_field = "pro_name";
 			$this->limit = "20";
 			$this->orderby = "id,desc";
 			$this->global_privilege = false;
@@ -25,31 +25,36 @@
 			$this->button_filter = true;
 			$this->button_import = false;
 			$this->button_export = false;
-			$this->table = "ai_indicators";
+			$this->table = "ai_projects";
 			# END CONFIGURATION DO NOT REMOVE THIS LINE
 
 			# START COLUMNS DO NOT REMOVE THIS LINE
 			$this->col = [];
-			$this->col[] = ["label"=>"Indicator Name","name"=>"ind_name","width"=>"300"];
-			$this->col[] = ["label"=>"Indicator Definitions","name"=>"ind_definations","width"=>"200"];
-			$this->col[] = ["label"=>"Priority Name","name"=>"pri_id","join"=>"ai_priorityarea,pri_name","width"=>"150"];
-			$this->col[] = ["label"=>"Focus Name","name"=>"foc_id","join"=>"ai_focusarea,foc_name","width"=>"200"];
+			$this->col[] = ["label"=>"Name","name"=>"pro_name","width"=>"200"];
+			$this->col[] = ["label"=>"Descriptions","name"=>"pro_desc","width"=>"300","callback_php"=>'str_limit(strip_tags($row->pro_desc,150))'];
+			$this->col[] = ["label"=>"Prioriry Area","name"=>"priotiryId","join"=>"ai_priorityarea,pri_name","width"=>"150"];
+			$this->col[] = ["label"=>"Donor","name"=>"donorId","join"=>"ai_donor,don_name","width"=>"150"];
+			$this->col[] = ["label"=>"Contract No.","name"=>"pro_contractNo","width"=>"100"];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
-			$this->form[] = ['label'=>'Indicator Name','name'=>'ind_name','type'=>'textarea','validation'=>'required|string|min:5|max:500','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Indicator Definitions','name'=>'ind_definations','type'=>'textarea','validation'=>'required|min:1|max:500','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Priority Name','name'=>'pri_id','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'ai_priorityarea,pri_name','default'=>'Please Select Priority Area'];
-			$this->form[] = ['label'=>'Focus Name','name'=>'foc_id','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'ai_focusarea,foc_name','parent_select'=>'pri_id','default'=>'Please Select Focus Area'];
+			$this->form[] = ['label'=>'Project Name','name'=>'pro_name','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Project Descriptions','name'=>'pro_desc','type'=>'wysiwyg','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Prioriry Area','name'=>'priotiryId','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'ai_priorityarea,pri_name'];
+			$this->form[] = ['label'=>'Donor','name'=>'donorId','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'ai_donor,don_name'];
+			$this->form[] = ['label'=>'Partners','name'=>'patnerId','type'=>'checkbox','validation'=>'required|min:1|max:255','width'=>'col-sm-10','datatable'=>'ai_implementing_patner,imp_name'];
+			$this->form[] = ['label'=>'Project Contract No.','name'=>'pro_contractNo','type'=>'number','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
 			//$this->form = [];
-			//$this->form[] = ['label'=>'Indicator Name','name'=>'ind_name','type'=>'textarea','validation'=>'required|string|min:5|max:500','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Indicator Definitions','name'=>'ind_definations','type'=>'textarea','validation'=>'required|min:1|max:500','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Priority Name','name'=>'pri_id','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'ai_priorityarea,pri_name','default'=>'Please Select Priority Area'];
-			//$this->form[] = ['label'=>'Focus Name','name'=>'foc_id','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'ai_focusarea,foc_name','datatable_where'=>'pri_id = 4  && id = 3','parent_select'=>'pri_id','default'=>'Please Select Focus Area'];
+			//$this->form[] = ['label'=>'Project Name','name'=>'pro_name','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Project Descriptions','name'=>'pro_desc','type'=>'wysiwyg','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Prioriry Area','name'=>'priotiryId','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'ai_priorityarea,pri_name'];
+			//$this->form[] = ['label'=>'Donor','name'=>'donorId','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'ai_donor,don_name'];
+			//$this->form[] = ['label'=>'PatnerId','name'=>'patnerId','type'=>'checkbox','validation'=>'required|min:1|max:255','width'=>'col-sm-10','datatable'=>'ai_implementing_patner,imp_name'];
+			//$this->form[] = ['label'=>'Pro ContractNo','name'=>'pro_contractNo','type'=>'number','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			# OLD END FORM
 
 			/* 
@@ -237,6 +242,9 @@
 	    */
 	    public function hook_query_index(&$query) {
 	        //Your code here
+	        if(!CRUDBooster::isSuperadmin()){
+	        	$query->where('userId',CRUDBooster::myId());
+	        }	
 	            
 	    }
 
@@ -259,6 +267,11 @@
 	    */
 	    public function hook_before_add(&$postdata) {        
 	        //Your code here
+	        $time = time();
+			$time = date("Y-m-d H:m:s",$time); 
+			$postdata['pro_date']	= $time;
+	        $postdata['userId'] = CRUDBooster::myId();
+
 
 	    }
 
@@ -322,6 +335,23 @@
 	        //Your code here
 
 	    }
+
+	    public function getDetail($id) {
+		  //Create an Auth
+		  if(!CRUDBooster::isRead() && $this->global_privilege==FALSE || $this->button_edit==FALSE) {    
+		    CRUDBooster::redirect(CRUDBooster::adminPath(),trans("crudbooster.denied_access"));
+		  }
+		  
+		  $data = [];
+		  $data['page_title'] = 'Detail Data';
+		  $data['row'] = DB::table('ai_projects')
+		  	->join('ai_priorityarea', 'ai_priorityarea.id', '=', 'ai_projects.priotiryId') 
+		  	->join('ai_donor', 'ai_donor.id', '=', 'ai_projects.donorId') 
+		  	->join('cms_users', 'cms_users.id', '=', 'ai_projects.userId') 
+		  	->where('ai_projects.id',$id)->first(); 
+
+		  $this->cbView('admin.DetailsProject',$data);
+		}
 
 
 

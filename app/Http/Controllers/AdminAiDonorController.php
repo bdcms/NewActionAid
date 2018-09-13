@@ -5,12 +5,12 @@
 	use DB;
 	use CRUDBooster;
 
-	class AdminAiIndicatorsController extends \crocodicstudio\crudbooster\controllers\CBController {
+	class AdminAiDonorController extends \crocodicstudio\crudbooster\controllers\CBController {
 
 	    public function cbInit() {
 
 			# START CONFIGURATION DO NOT REMOVE THIS LINE
-			$this->title_field = "ind_name";
+			$this->title_field = "don_name";
 			$this->limit = "20";
 			$this->orderby = "id,desc";
 			$this->global_privilege = false;
@@ -25,31 +25,47 @@
 			$this->button_filter = true;
 			$this->button_import = false;
 			$this->button_export = false;
-			$this->table = "ai_indicators";
+			$this->table = "ai_donor";
 			# END CONFIGURATION DO NOT REMOVE THIS LINE
 
 			# START COLUMNS DO NOT REMOVE THIS LINE
 			$this->col = [];
-			$this->col[] = ["label"=>"Indicator Name","name"=>"ind_name","width"=>"300"];
-			$this->col[] = ["label"=>"Indicator Definitions","name"=>"ind_definations","width"=>"200"];
-			$this->col[] = ["label"=>"Priority Name","name"=>"pri_id","join"=>"ai_priorityarea,pri_name","width"=>"150"];
-			$this->col[] = ["label"=>"Focus Name","name"=>"foc_id","join"=>"ai_focusarea,foc_name","width"=>"200"];
+			$this->col[] = ["label"=>"Name","name"=>"don_name","width"=>"200"];
+			$this->col[] = ["label"=>"Email","name"=>"don_email","width"=>"200"];
+			$this->col[] = ["label"=>"Start Date","name"=>"don_startDate","width"=>"100"];
+			$this->col[] = ["label"=>"End Date","name"=>"don_endDate","width"=>"100"];
+			$this->col[] = ["label"=>"Reporting Date","name"=>"don_reportingDate","width"=>"150"];
+			$this->col[] = ["label"=>"Don GrantValue","name"=>"don_grantValue","width"=>"150"];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
-			$this->form[] = ['label'=>'Indicator Name','name'=>'ind_name','type'=>'textarea','validation'=>'required|string|min:5|max:500','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Indicator Definitions','name'=>'ind_definations','type'=>'textarea','validation'=>'required|min:1|max:500','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Priority Name','name'=>'pri_id','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'ai_priorityarea,pri_name','default'=>'Please Select Priority Area'];
-			$this->form[] = ['label'=>'Focus Name','name'=>'foc_id','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'ai_focusarea,foc_name','parent_select'=>'pri_id','default'=>'Please Select Focus Area'];
+			$this->form[] = ['label'=>'Donor Name','name'=>'don_name','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Donor Email','name'=>'don_email','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Donor Location','name'=>'don_location','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Donor Start Date','name'=>'don_startDate','type'=>'date','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Donor End Date','name'=>'don_endDate','type'=>'date','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Donor Reporting Date','name'=>'don_reportingDate','type'=>'date','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Donor Grant Value','name'=>'don_grantValue','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Donor Co-Finance','name'=>'don_cFinance','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Donor Currency','name'=>'don_currency','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Donor Contact','name'=>'don_contact','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Donor GrantLead','name'=>'don_grantLead','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
 			//$this->form = [];
-			//$this->form[] = ['label'=>'Indicator Name','name'=>'ind_name','type'=>'textarea','validation'=>'required|string|min:5|max:500','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Indicator Definitions','name'=>'ind_definations','type'=>'textarea','validation'=>'required|min:1|max:500','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Priority Name','name'=>'pri_id','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'ai_priorityarea,pri_name','default'=>'Please Select Priority Area'];
-			//$this->form[] = ['label'=>'Focus Name','name'=>'foc_id','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'ai_focusarea,foc_name','datatable_where'=>'pri_id = 4  && id = 3','parent_select'=>'pri_id','default'=>'Please Select Focus Area'];
+			//$this->form[] = ['label'=>'Donor Name','name'=>'don_name','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Donor Email','name'=>'don_email','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Donor Location','name'=>'don_location','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Donor Start Date','name'=>'don_startDate','type'=>'date','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Donor End Date','name'=>'don_endDate','type'=>'date','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Donor Reporting Date','name'=>'don_reportingDate','type'=>'date','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Donor Grant Value','name'=>'don_grantValue','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Donor Co-Finance','name'=>'don_cFinance','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Donor Currency','name'=>'don_currency','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Donor Contact','name'=>'don_contact','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Donor GrantLead','name'=>'don_grantLead','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			# OLD END FORM
 
 			/* 

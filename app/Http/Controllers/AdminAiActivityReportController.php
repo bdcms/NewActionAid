@@ -337,8 +337,9 @@
 	        	'to'			=>	CRUDBooster::mainpath(),
 	        	'id_cms_users'	=>	[$flow_id],
 	        ]);
-	        //$data = ['name'=>'John Doe','address'=>'Lorem ipsum dolor...'];
-			//CRUDBooster::sendEmail(['to'=>'john@gmail.com','data'=>$data,'template'=>'order_success']);
+
+	  		//$data = ['name'=>'John Doe','address'=>'Lorem ipsum dolor...'];
+			// CRUDBooster::sendEmail(['to'=>'john@gmail.com','data'=>$data,'template'=>'order_success']);
 
 	    }
 

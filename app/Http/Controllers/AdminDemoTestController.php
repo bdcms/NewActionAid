@@ -67,7 +67,12 @@
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
-			$this->form[] = ['label'=>'Title','name'=>'title','type'=>'datamodal','validation'=>'required|min:0','width'=>'col-sm-10','datamodal_table'=>'sss','datamodal_columns'=>'level,value','datamodal_size'=>'small','datamodal_columns_alias_name'=>'Level,Value','datamodal_select_to'=>'value:value'];
+			// $id = CRUDBooster::getCurrentId();
+			// $row = CRUDBooster::first($this->table,$id);
+			// $custom_element = view('admin.MultitextInput',compact('row'))->render(); 
+
+			// $this->form[] = ['label'=>'Title','name'=>'title','type'=>'custom','validation'=>'required|min:1|max:255','width'=>'col-sm-10','html'=>$custom_element];
+			$this->form[] = ['label'=>'Title','name'=>'title','type'=>'checkbox','datatable'=>'sss,value'];
 			$this->form[] = ['label'=>'Description','name'=>'description','type'=>'wysiwyg','validation'=>'required|min:5|max:5000','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Line Manager','name'=>'flow_id','type'=>'select','width'=>'col-sm-10','datatable'=>'cms_users,name','datatable_where'=>'id_cms_privileges=10'];
 			# END FORM DO NOT REMOVE THIS LINE
@@ -320,13 +325,14 @@
 	    | @arr
 	    |
 	    */
-	    public function hook_before_add(&$postdata) {        
-	    	if($postdata['title'] != '2'){
-	    		CRUDBooster::redirectBack(
-               	 'Los comparendos <b>electrónicos automáticos</b>, es decir, '
-                    . 'que son generados por este sistema, <b>no se pueden editar</b>.'
-         	   );
-	    	}
+	    public function hook_before_add(&$postdata) {   
+	    //dd($postdata);     
+	    	// if($postdata['title'] != '2'){
+	    	// 	CRUDBooster::redirectBack(
+      //          	 'Los comparendos <b>electrónicos automáticos</b>, es decir, '
+      //               . 'que son generados por este sistema, <b>no se pueden editar</b>.'
+      //    	   );
+	    	// }
 
 	        //Your code here
 	    	$postdata['user_id'] = CRUDBooster::myId();
@@ -352,8 +358,9 @@
 	    */
 	    public function hook_after_add($id) {        
 	        //Your code here
-	         // $row = CRUDBooster::first($this->table,$id);
-	         // dd($row);
+	        echo $id.' Id';
+	         $row = CRUDBooster::first($this->table,$id);
+	         dd($row);
 	        //  CRUDBooster::sendNotification($config=[
 	        // 	'content' 		=> 'Conducts An Activities',
 	        // 	'to'			=>	url("admin/ai_activity_report/detail/$id"),

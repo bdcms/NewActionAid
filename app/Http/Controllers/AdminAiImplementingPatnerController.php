@@ -5,12 +5,12 @@
 	use DB;
 	use CRUDBooster;
 
-	class AdminAiIndicatorsController extends \crocodicstudio\crudbooster\controllers\CBController {
+	class AdminAiImplementingPatnerController extends \crocodicstudio\crudbooster\controllers\CBController {
 
 	    public function cbInit() {
 
 			# START CONFIGURATION DO NOT REMOVE THIS LINE
-			$this->title_field = "ind_name";
+			$this->title_field = "imp_name";
 			$this->limit = "20";
 			$this->orderby = "id,desc";
 			$this->global_privilege = false;
@@ -25,31 +25,43 @@
 			$this->button_filter = true;
 			$this->button_import = false;
 			$this->button_export = false;
-			$this->table = "ai_indicators";
+			$this->table = "ai_implementing_patner";
 			# END CONFIGURATION DO NOT REMOVE THIS LINE
 
 			# START COLUMNS DO NOT REMOVE THIS LINE
 			$this->col = [];
-			$this->col[] = ["label"=>"Indicator Name","name"=>"ind_name","width"=>"300"];
-			$this->col[] = ["label"=>"Indicator Definitions","name"=>"ind_definations","width"=>"200"];
-			$this->col[] = ["label"=>"Priority Name","name"=>"pri_id","join"=>"ai_priorityarea,pri_name","width"=>"150"];
-			$this->col[] = ["label"=>"Focus Name","name"=>"foc_id","join"=>"ai_focusarea,foc_name","width"=>"200"];
+			$this->col[] = ["label"=>"Name","name"=>"imp_name","width"=>"200"];
+			$this->col[] = ["label"=>"Email","name"=>"imp_email","width"=>"200"];
+			$this->col[] = ["label"=>"MouStart","name"=>"imp_mouStart","width"=>"100"];
+			$this->col[] = ["label"=>"MouEnd","name"=>"imp_mouEnd","width"=>"100"];
+			$this->col[] = ["label"=>"Implementin Area","name"=>"imp_area","width"=>"150"];
+			$this->col[] = ["label"=>"Amount","name"=>"imp_amount","width"=>"100"];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
-			$this->form[] = ['label'=>'Indicator Name','name'=>'ind_name','type'=>'textarea','validation'=>'required|string|min:5|max:500','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Indicator Definitions','name'=>'ind_definations','type'=>'textarea','validation'=>'required|min:1|max:500','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Priority Name','name'=>'pri_id','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'ai_priorityarea,pri_name','default'=>'Please Select Priority Area'];
-			$this->form[] = ['label'=>'Focus Name','name'=>'foc_id','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'ai_focusarea,foc_name','parent_select'=>'pri_id','default'=>'Please Select Focus Area'];
+			$this->form[] = ['label'=>'Partner Name','name'=>'imp_name','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Partner Email','name'=>'imp_email','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Partner Location','name'=>'imp_location','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Partner MouStart','name'=>'imp_mouStart','type'=>'date','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Partner MouEnd','name'=>'imp_mouEnd','type'=>'date','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Implementing Area','name'=>'imp_area','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Amount Allocated','name'=>'imp_amount','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Partner Reporting Date','name'=>'imp_reportingDate','type'=>'date','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Partner Contact','name'=>'imp_contact','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
 			//$this->form = [];
-			//$this->form[] = ['label'=>'Indicator Name','name'=>'ind_name','type'=>'textarea','validation'=>'required|string|min:5|max:500','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Indicator Definitions','name'=>'ind_definations','type'=>'textarea','validation'=>'required|min:1|max:500','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Priority Name','name'=>'pri_id','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'ai_priorityarea,pri_name','default'=>'Please Select Priority Area'];
-			//$this->form[] = ['label'=>'Focus Name','name'=>'foc_id','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'ai_focusarea,foc_name','datatable_where'=>'pri_id = 4  && id = 3','parent_select'=>'pri_id','default'=>'Please Select Focus Area'];
+			//$this->form[] = ["label"=>"Imp Name","name"=>"imp_name","type"=>"text","required"=>TRUE,"validation"=>"required|min:1|max:255"];
+			//$this->form[] = ["label"=>"Imp Email","name"=>"imp_email","type"=>"text","required"=>TRUE,"validation"=>"required|min:1|max:255"];
+			//$this->form[] = ["label"=>"Imp Location","name"=>"imp_location","type"=>"text","required"=>TRUE,"validation"=>"required|min:1|max:255"];
+			//$this->form[] = ["label"=>"Imp MouStart","name"=>"imp_mouStart","type"=>"text","required"=>TRUE,"validation"=>"required|min:1|max:255"];
+			//$this->form[] = ["label"=>"Imp MouEnd","name"=>"imp_mouEnd","type"=>"text","required"=>TRUE,"validation"=>"required|min:1|max:255"];
+			//$this->form[] = ["label"=>"Imp Area","name"=>"imp_area","type"=>"text","required"=>TRUE,"validation"=>"required|min:1|max:255"];
+			//$this->form[] = ["label"=>"Imp Amount","name"=>"imp_amount","type"=>"number","required"=>TRUE,"validation"=>"required|integer|min:0"];
+			//$this->form[] = ["label"=>"Imp ReportingDate","name"=>"imp_reportingDate","type"=>"text","required"=>TRUE,"validation"=>"required|min:1|max:255"];
+			//$this->form[] = ["label"=>"Imp Contact","name"=>"imp_contact","type"=>"text","required"=>TRUE,"validation"=>"required|min:1|max:255"];
 			# OLD END FORM
 
 			/* 

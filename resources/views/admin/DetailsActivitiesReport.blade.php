@@ -25,7 +25,7 @@
   </style>
   
 <div class='panel panel-default'>
-  <div class='panel-heading'>Test Demo Detail Page</div>
+  <div class='panel-heading'>Activities Detail Page</div>
     <div class='panel-body'>  
       
             <ul class="nav">

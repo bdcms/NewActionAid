@@ -31,41 +31,41 @@
 			# START COLUMNS DO NOT REMOVE THIS LINE
 			$this->col = [];
 			$this->col[] = ["label"=>"Name","name"=>"don_name","width"=>"200"];
-			$this->col[] = ["label"=>"Email","name"=>"don_email","width"=>"200"];
 			$this->col[] = ["label"=>"Start Date","name"=>"don_startDate","width"=>"100"];
 			$this->col[] = ["label"=>"End Date","name"=>"don_endDate","width"=>"100"];
 			$this->col[] = ["label"=>"Reporting Date","name"=>"don_reportingDate","width"=>"150"];
 			$this->col[] = ["label"=>"Don GrantValue","name"=>"don_grantValue","width"=>"150"];
+			$this->col[] = ["label"=>"Donor Contact","name"=>"co_person_donor","width"=>"200"];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
 			$this->form[] = ['label'=>'Donor Name','name'=>'don_name','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Donor Email','name'=>'don_email','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Donor Location','name'=>'don_location','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Lead Grantee','name'=>'don_grantLead','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Sub Grantee','name'=>'sub-grante','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Donor Start Date','name'=>'don_startDate','type'=>'date','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Donor End Date','name'=>'don_endDate','type'=>'date','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Donor Reporting Date','name'=>'don_reportingDate','type'=>'date','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Donor Grant Value','name'=>'don_grantValue','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Donor Co-Finance','name'=>'don_cFinance','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Donor Currency','name'=>'don_currency','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Donor Contact','name'=>'don_contact','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Donor GrantLead','name'=>'don_grantLead','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Grant Value','name'=>'don_grantValue','type'=>'number','validation'=>'required|min:1','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Co-Finance','name'=>'don_cFinance','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Currency','name'=>'don_currency','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Donor Contact Person','name'=>'co_person_donor','type'=>'textarea','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Donor Contact AAZ','name'=>'co_person_aaz','type'=>'textarea','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
 			//$this->form = [];
 			//$this->form[] = ['label'=>'Donor Name','name'=>'don_name','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Donor Email','name'=>'don_email','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Donor Location','name'=>'don_location','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Lead Grantee','name'=>'don_grantLead','type'=>'text','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Sub Grantee','name'=>'sub-grante','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Donor Start Date','name'=>'don_startDate','type'=>'date','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Donor End Date','name'=>'don_endDate','type'=>'date','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Donor Reporting Date','name'=>'don_reportingDate','type'=>'date','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Donor Grant Value','name'=>'don_grantValue','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Donor Co-Finance','name'=>'don_cFinance','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Donor Currency','name'=>'don_currency','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Donor Contact','name'=>'don_contact','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Donor GrantLead','name'=>'don_grantLead','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Grant Value','name'=>'don_grantValue','type'=>'number','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Co-Finance','name'=>'don_cFinance','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Currency','name'=>'don_currency','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Donor Contact Person','name'=>'co_person_donor','type'=>'textarea','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Donor Contact AAZ','name'=>'co_person_aaz','type'=>'textarea','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			# OLD END FORM
 
 			/* 

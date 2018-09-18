@@ -190,13 +190,24 @@ class SystemController extends Controller{
 
 	public function makePDF($id){
     	$data['row'] = DB::table('ai_activity_report')
-		  	->join('ai_activities', 'ai_activities.id', '=', 'ai_activity_report.act_id') 
+		  	->join('ai_activities', 'ai_activities.id', '=', 'ai_activity_report.p_act_id') 
 		  	->join('cms_users', 'cms_users.id', '=', 'ai_activity_report.user_id') 
 		  	->where('ai_activity_report.id',$id)->first(); 
     	
     	$pdf = PDF::loadView('admin.pdf.ActivitiesPdf', $data);
     	//return $pdf->stream();
 		return $pdf->stream('ActivitiesPdf.pdf');
+    }
+
+    public function makeCnPDF($id){
+		  	 $data['row'] = DB::table('ai_concept_note')
+		  	->join('ai_activities', 'ai_activities.id', '=', 'ai_concept_note.p_act_id') 
+		  	->join('cms_users', 'cms_users.id', '=', 'ai_concept_note.userId') 
+		  	->where('ai_concept_note.id',$id)->first(); 
+    	
+    	$pdf = PDF::loadView('admin.pdf.CnPdf', $data);
+    	//return $pdf->stream();
+		return $pdf->stream('CnPdf.pdf');
     }
 
 }

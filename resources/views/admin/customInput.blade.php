@@ -1,6 +1,6 @@
 
         <input type='text' title="Activities Venue"
-               required  placeholder='Type your venuess'  maxlength=255 class='form-control'
+               required  placeholder='Type your venue'  maxlength=255 class='form-control'
                name="ar_venue" id="ar_venue" value='{{$row->ar_venue}}'/>
 
         <div class="text-danger"></div>

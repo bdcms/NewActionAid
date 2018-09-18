@@ -256,7 +256,7 @@
 	    */
 	    public function hook_query_index(&$query) {
 	        //Your code here
-	        $query->where('is_parent',NULL);    
+	        //$query->where('is_parent',NULL);    
 
 	    }
 

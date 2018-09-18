@@ -24,37 +24,44 @@
 			$this->button_show = true;
 			$this->button_filter = true;
 			$this->button_import = false;
-			$this->button_export = false;
+			$this->button_export = true;
 			$this->table = "ai_projects";
 			# END CONFIGURATION DO NOT REMOVE THIS LINE
 
 			# START COLUMNS DO NOT REMOVE THIS LINE
+		 	
 			$this->col = [];
 			$this->col[] = ["label"=>"Name","name"=>"pro_name","width"=>"200"];
 			$this->col[] = ["label"=>"Descriptions","name"=>"pro_desc","width"=>"300","callback_php"=>'str_limit(strip_tags($row->pro_desc,150))'];
 			$this->col[] = ["label"=>"Prioriry Area","name"=>"priotiryId","join"=>"ai_priorityarea,pri_name","width"=>"150"];
 			$this->col[] = ["label"=>"Donor","name"=>"donorId","join"=>"ai_donor,don_name","width"=>"150"];
-			$this->col[] = ["label"=>"Contract No.","name"=>"pro_contractNo","width"=>"100"];
+			//$this->col[] = ["label"=>"Contract No.","name"=>"pro_contractNo","width"=>"100"];
+			
+			$this->col[] = ["label"=>"Partner Id","name"=>"patnerId","width"=>"150"];
+
+			
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
 			$this->form[] = ['label'=>'Project Name','name'=>'pro_name','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Grant Id','name'=>'pro_grant','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-9'];
 			$this->form[] = ['label'=>'Project Descriptions','name'=>'pro_desc','type'=>'wysiwyg','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Prioriry Area','name'=>'priotiryId','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'ai_priorityarea,pri_name'];
 			$this->form[] = ['label'=>'Donor','name'=>'donorId','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'ai_donor,don_name'];
 			$this->form[] = ['label'=>'Partners','name'=>'patnerId','type'=>'checkbox','validation'=>'required|min:1|max:255','width'=>'col-sm-10','datatable'=>'ai_implementing_patner,imp_name'];
-			$this->form[] = ['label'=>'Project Contract No.','name'=>'pro_contractNo','type'=>'number','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Project Contract No.','name'=>'pro_contractNo','type'=>'number','validation'=>'required|min:1','width'=>'col-sm-10'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
 			//$this->form = [];
 			//$this->form[] = ['label'=>'Project Name','name'=>'pro_name','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Grant Id','name'=>'pro_grant','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-9'];
 			//$this->form[] = ['label'=>'Project Descriptions','name'=>'pro_desc','type'=>'wysiwyg','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Prioriry Area','name'=>'priotiryId','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'ai_priorityarea,pri_name'];
+			//$this->form[] = ['label'=>'Prioriry Area','name'=>'priotiryId','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'ai_donor,don_name'];
 			//$this->form[] = ['label'=>'Donor','name'=>'donorId','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'ai_donor,don_name'];
-			//$this->form[] = ['label'=>'PatnerId','name'=>'patnerId','type'=>'checkbox','validation'=>'required|min:1|max:255','width'=>'col-sm-10','datatable'=>'ai_implementing_patner,imp_name'];
-			//$this->form[] = ['label'=>'Pro ContractNo','name'=>'pro_contractNo','type'=>'number','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Partners','name'=>'patnerId','type'=>'checkbox','validation'=>'required|min:1|max:255','width'=>'col-sm-10','datatable'=>'ai_implementing_patner,imp_name'];
+			//$this->form[] = ['label'=>'Project Contract No.','name'=>'pro_contractNo','type'=>'number','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			# OLD END FORM
 
 			/* 
@@ -69,8 +76,8 @@
 			| @parent_columns = Sparate with comma, e.g : name,created_at
 	        | 
 	        */
-	        $this->sub_module = array();
-
+	       //$this->sub_module = array('label'=>'Donor','path'=>'ai_donor','parent_columns'=>'pro_name,pro_desc','foreign_key'=>'donorId','button_color'=>'success','button_icon'=>'fa fa-bars');
+	       // $this->sub_module[] = ['label'=>'Photos','path'=>'ai_donor','parent_columns'=>'pro_name,pro_desc','foreign_key'=>'id','button_color'=>'success','button_icon'=>'fa fa-bars'];
 
 	        /* 
 	        | ---------------------------------------------------------------------- 
@@ -96,7 +103,7 @@
 	        | Then about the action, you should code at actionButtonSelected method 
 	        | 
 	        */
-	        $this->button_selected = array();
+	       $this->button_selected[] = ['label'=>'Set Active','icon'=>'fa fa-check','name'=>'set_active'];
 
 	                
 	        /* 

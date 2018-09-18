@@ -30,3 +30,4 @@ Route::get('admin/ai_activity_report/getDataTable1/{fk_value}', 'SystemControlle
 
 //pdf request
 Route::get('/makePDF/{id}','SystemController@makePDF');
+Route::get('/makeCnPDF/{id}','SystemController@makeCnPDF');

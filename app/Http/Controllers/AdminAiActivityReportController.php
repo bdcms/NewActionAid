@@ -30,57 +30,82 @@
 
 			# START COLUMNS DO NOT REMOVE THIS LINE
 			$this->col = [];
-			$this->col[] = ["label"=>"Cover Picture","name"=>"ar_at_pic1","image"=>true,"width"=>"120"];
-			$this->col[] = ["label"=>"Activities Name","name"=>"act_id","join"=>"ai_activities,act_name","width"=>"200"];
-			$this->col[] = ["label"=>"Date","name"=>"ar_date","width"=>"80"];
-			$this->col[] = ["label"=>"Venue","name"=>"ar_venue","width"=>"150"];
-			$this->col[] = ["label"=>"Implementing Unit","name"=>"ar_implementingUnit","width"=>"150"];
-			$this->col[] = ["label"=>"Total Participant","name"=>"ar_ap_total","width"=>"150"];
-			$this->col[] = ["label"=>"User Name","name"=>"user_id","join"=>"cms_users,name","width"=>"100"];
+			$this->col[] = ["label"=>"Parent Act.","name"=>"p_act_id","join"=>"ai_activities,act_name","width"=>"220"];
+			$this->col[] = ["label"=>"Act. Name","name"=>"cn_id","join"=>"ai_concept_note,acn_name","width"=>"200"];
+			$this->col[] = ["label"=>"Vanue","name"=>"ar_venue","width"=>"100"];
+			$this->col[] = ["label"=>"Implementer","name"=>"ar_implementingUnit","width"=>"150"];
+			$this->col[] = ["label"=>"Attendence","name"=>"ar_ap_total","width"=>"150"];
+			$this->col[] = ["label"=>"Lead By","name"=>"user_id","join"=>"cms_users,name","width"=>"150"];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
-			$this->form[] = ['label'=>'Priority Area','name'=>'pri_id','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'ai_priorityarea,pri_name','default'=>'Select Priority Area'];
-			$this->form[] = ['label'=>'Focus Area','name'=>'foc_id','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'ai_focusarea,foc_name','parent_select'=>'pri_id','default'=>'Select Focus Area'];
-			$this->form[] = ['label'=>'Indicator Name','name'=>'ind_id','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'ai_indicators,ind_name','parent_select'=>'foc_id','default'=>'Select Indicator Name'];
-			$this->form[] = ['label'=>'Activities Name','name'=>'act_id','type'=>'select1','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'ai_activities,act_name','datatable_where'=>'act_status = 1','parent_select'=>'ind_id','default'=>'Select Activities Name'];
-			$this->form[] = ['label'=>'Line Manager','name'=>'flow_id','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'cms_users,name','help'=>'Select a Line Manager who responsible for this report.','datatable_where'=>'id_cms_privileges=10 && status = "Active"','default'=>'Please Select Line Manager'];
+			$this->form[] = ['label'=>'Activities Name','name'=>'cn_id','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'ai_concept_note,acn_name','help'=>'For conducted must approve your concept note.','datatable_where'=>'acn_status = 100 && userId ='.CRUDBooster::myId()];
+			$this->form[] = ['label'=>'Line Manager','name'=>'flow_id','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'cms_users,name','datatable_where'=>'id_cms_privileges=10 && status = "Active"'];
 			$this->form[] = ['label'=>'Activities Date','name'=>'ar_date','type'=>'date','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			$id = CRUDBooster::getCurrentId();
-			$row = CRUDBooster::first($this->table,$id);
-			$custom_element = view('admin.customInput',compact('row'))->render();
-			$this->form[] = ['label'=>'Activities Venue','name'=>'ar_venue','type'=>'custom','validation'=>'required|min:1|max:255','width'=>'col-sm-10','html'=>$custom_element];
-			$this->form[] = ['label'=>'Ar ImplementingUnit','name'=>'ar_implementingUnit','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10','placeholder'=>'Implementing Unit'];
-			$this->form[] = ['label'=>'Total  Male','name'=>'ar_ap_male','type'=>'number','validation'=>'required|integer','width'=>'col-sm-5','placeholder'=>'participant total female.'];
-			$this->form[] = ['label'=>'Total Female','name'=>'ar_ap_female','type'=>'number','validation'=>'required|integer','width'=>'col-sm-5','placeholder'=>'participant total male.'];
-			$this->form[] = ['label'=>'Children Male','name'=>'ar_ap_child_m','type'=>'number','validation'=>'required|integer','width'=>'col-sm-5','placeholder'=>'Under 15 years male'];
-			$this->form[] = ['label'=>'Children Female','name'=>'ar_ap_child_f','type'=>'number','validation'=>'required|integer','width'=>'col-sm-5','placeholder'=>'Under 15 years female'];
-			$this->form[] = ['label'=>'Youth Male','name'=>'ar_ap_youth_m','type'=>'number','validation'=>'required|integer','width'=>'col-sm-5','placeholder'=>'Between 15-35 years male'];
-			$this->form[] = ['label'=>'Youth Female','name'=>'ar_ap_youth_f','type'=>'number','validation'=>'required|integer','width'=>'col-sm-5','placeholder'=>'Between 15-35 years female'];
-			$this->form[] = ['label'=>'Adult Male','name'=>'ar_ap_adult_m','type'=>'number','validation'=>'required|integer','width'=>'col-sm-5','placeholder'=>'Above 35 years male'];
-			$this->form[] = ['label'=>'Adult Female','name'=>'ar_ap_adult_f','type'=>'number','validation'=>'required|integer','width'=>'col-sm-5','placeholder'=>'Above 35 years female'];
-			$this->form[] = ['label'=>'Participant Total','name'=>'ar_ap_total','type'=>'text','validation'=>'required','width'=>'col-sm-5','readonly'=>'true'];
-			$this->form[] = ['label'=>'Activities Comment','name'=>'ar_comments','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10','placeholder'=>'Comments..'];
-			$this->form[] = ['label'=>'Activities Aims','name'=>'ar_ac_aims','type'=>'textarea','validation'=>'required|min:1|max:255','width'=>'col-sm-10','placeholder'=>'Were the activity aims met?*If yes, how? If not, why?'];
-			$this->form[] = ['label'=>'Activities Follow','name'=>'ar_ac_follow','type'=>'textarea','validation'=>'required|min:1|max:255','width'=>'col-sm-10','placeholder'=>'How does the activity follow on from previous interventions, if any? *'];
-			$this->form[] = ['label'=>'Activities Process','name'=>'ar_ac_process','type'=>'textarea','validation'=>'required|min:1|max:255','width'=>'col-sm-10','placeholder'=>'Activity Process: What took place? What went well? *'];
-			$this->form[] = ['label'=>'Activities Challenges','name'=>'ar_ac_challenges','type'=>'textarea','validation'=>'required|min:1|max:255','width'=>'col-sm-10','placeholder'=>'Challenges faced& mitigation measures employed during the activity: *'];
-			$this->form[] = ['label'=>'Activities Improve','name'=>'ar_ac_improve','type'=>'textarea','validation'=>'required|min:1|max:255','width'=>'col-sm-10','placeholder'=>'What could be done to improve next time? *'];
-			$this->form[] = ['label'=>'Activities Ies','name'=>'ar_ac_ies','type'=>'textarea','validation'=>'required|min:1|max:255','width'=>'col-sm-10','placeholder'=>'Follow up activity(ies)/Date *'];
-			$this->form[] = ['label'=>'Activities Recommendations','name'=>'ar_ac_comments','type'=>'textarea','validation'=>'required|min:1|max:255','width'=>'col-sm-10','placeholder'=>'Additional comments/recommendations on the activity: *'];
-			$this->form[] = ['label'=>'Attendance Register','name'=>'ar_at_attendence','type'=>'filemanager','validation'=>'required|min:1|max:255','width'=>'col-sm-10','filemanager_type'=>'file','help'=>'Allowed only pdf or docx copy'];
-			$this->form[] = ['label'=>'Activities Minutes','name'=>'ar_at_minute','type'=>'filemanager','validation'=>'required|min:1|max:255','width'=>'col-sm-10','filemanager_type'=>'file','help'=>'Allowed only pdf or docx copy'];
-			$this->form[] = ['label'=>'Cover Picture','name'=>'ar_at_pic1','type'=>'upload','validation'=>'required|min:1|max:1000','width'=>'col-sm-10','help'=>'Allowed max size is 1000kb.'];
-			$this->form[] = ['label'=>'Picture Two','name'=>'ar_at_pic2','type'=>'upload','width'=>'col-sm-10','help'=>'Allowed max size is 1000kb.'];
-			$this->form[] = ['label'=>'Picture Three','name'=>'ar_at_pic3','type'=>'upload','width'=>'col-sm-10','help'=>'Allowed max size is 1000kb.'];
-			$this->form[] = ['label'=>'Picture Four','name'=>'ar_at_pic4','type'=>'upload','width'=>'col-sm-10','help'=>'Allowed max size is 1000kb.'];
-			$this->form[] = ['label'=>'Picture Five','name'=>'ar_at_pic5','type'=>'upload','width'=>'col-sm-10','help'=>'Allowed max size is 1000kb.'];
-			$this->form[] = ['label'=>'Activities Link','name'=>'ar_at_link','type'=>'text','width'=>'col-sm-10','placeholder'=>'Put your youtube video link'];
-			$this->form[] = ['label'=>'Activities  Action Plan','name'=>'ar_at_actionPlan','type'=>'filemanager','width'=>'col-sm-10','help'=>'Allowed only pdf or docx copy'];
-			$this->form[] = ['label'=>'Activities Others attachment','name'=>'ar_at_others','type'=>'filemanager','width'=>'col-sm-10','help'=>'Allowed only pdf or docx copy'];
+			$this->form[] = ['label'=>'Activities Venue','name'=>'ar_venue','type'=>'custom','validation'=>'required|min:1|max:255','width'=>'col-sm-10','html'=>'<input type=\'text\' title="Activities Venue"               required  placeholder=\'Type your venue\'  maxlength=255 class=\'form-control\'               name="ar_venue" id="ar_venue" value=\'\'/>        <div class="text-danger"></div>        <div id="ar_venue1"></div>        <p class=\'help-block\'></p><script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>    <script type="text/javascript">        $(\'#ar_venue\').keyup(function(){                        var ar_venue = $(this).val();                        if(ar_venue != \'\'){                             $.ajax({                                url:\'http://localhost/actionaid/public/checkVenue/\'+ ar_venue,                                method:\'GET\',                                success:function(data){                                      $(\'#ar_venue1\').fadeIn();                                    $(\'#ar_venue1\').html(data);                                }                            });                        }                    });                     $(document).on(\'click\',\'li\',function(){                        $(\'#ar_venue\').val($(this).text());                        $(\'#ar_venue1\').fadeOut();                     });    </script>'];
+			$this->form[] = ['label'=>'Implementing Unit','name'=>'ar_implementingUnit','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Activities Child M','name'=>'ar_ap_child_m','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-5'];
+			$this->form[] = ['label'=>'Activities Youth M','name'=>'ar_ap_youth_m','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-5'];
+			$this->form[] = ['label'=>'Activities Adult M','name'=>'ar_ap_adult_m','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-5'];
+			$this->form[] = ['label'=>'Activities Child F','name'=>'ar_ap_child_f','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-5'];
+			$this->form[] = ['label'=>'Activities Youth F','name'=>'ar_ap_youth_f','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-5'];
+			$this->form[] = ['label'=>'Activities Adult F','name'=>'ar_ap_adult_f','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-5'];
+			$this->form[] = ['label'=>'Total Participant','name'=>'ar_ap_total','type'=>'text','validation'=>'required|integer|min:0','width'=>'col-sm-5','readonly'=>'true'];
+			$this->form[] = ['label'=>'Activities Comments','name'=>'ar_comments','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Activities Aims','name'=>'ar_ac_aims','type'=>'wysiwyg','validation'=>'required|min:1','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Activities Follow Up','name'=>'ar_ac_follow','type'=>'wysiwyg','validation'=>'required|min:1','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Activities Process','name'=>'ar_ac_process','type'=>'wysiwyg','validation'=>'required|min:1','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Activities Challenges','name'=>'ar_ac_challenges','type'=>'wysiwyg','validation'=>'required|min:1','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Activities Improve','name'=>'ar_ac_improve','type'=>'wysiwyg','validation'=>'required|min:1','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Activities Ies','name'=>'ar_ac_ies','type'=>'wysiwyg','validation'=>'required|min:1','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Activities Comments','name'=>'ar_ac_comments','type'=>'wysiwyg','validation'=>'required|min:1','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Attendance Register','name'=>'ar_at_attendence','type'=>'filemanager','validation'=>'required|min:1|max:1000','width'=>'col-sm-10','filemanager_type'=>'file','help'=>'upload your docx or pdf (max:1000 KB)'];
+			$this->form[] = ['label'=>'Activities Minutes','name'=>'ar_at_minute','type'=>'filemanager','validation'=>'required|min:1|max:1000','width'=>'col-sm-10','filemanager_type'=>'file','help'=>'upload your docx or pdf (max:1000 KB)'];
+			$this->form[] = ['label'=>'Cover Picture','name'=>'ar_at_pic1','type'=>'upload','validation'=>'required|min:1|max:1000','width'=>'col-sm-10','help'=>'All image are allowed only 1000 Kb'];
+			$this->form[] = ['label'=>'Picture Two','name'=>'ar_at_pic2','type'=>'upload','validation'=>'max:1000','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Picture Three','name'=>'ar_at_pic3','type'=>'upload','validation'=>'max:1000','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Picture Four','name'=>'ar_at_pic4','type'=>'upload','validation'=>'max:1000','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Picture Five','name'=>'ar_at_pic5','type'=>'upload','validation'=>'max:1000','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Extra Link','name'=>'ar_at_link','type'=>'text','validation'=>'max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Activities Action Plan','name'=>'ar_at_actionPlan','type'=>'upload','validation'=>'max:1000','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Others Attachment','name'=>'ar_at_others','type'=>'upload','validation'=>'max:1000','width'=>'col-sm-10'];
 			# END FORM DO NOT REMOVE THIS LINE
- 
+
+			# OLD START FORM
+			//$this->form = [];
+			//$this->form[] = ['label'=>'Activities Name','name'=>'cn_id','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'ai_concept_note,acn_name','help'=>'For conducted must approve your concept note.','datatable_where'=>'acn_status = 100'];
+			//$this->form[] = ['label'=>'Line Manager','name'=>'flow_id','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'cms_users,name','datatable_where'=>'id_cms_privileges=10 && status = "Active"'];
+			//$this->form[] = ['label'=>'Activities Date','name'=>'ar_date','type'=>'date','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Activities Venue','name'=>'ar_venue','type'=>'custom','validation'=>'required|min:1|max:255','width'=>'col-sm-10','html'=>'<input type=\'text\' title="Activities Venue"               required  placeholder=\'Type your venue\'  maxlength=255 class=\'form-control\'               name="ar_venue" id="ar_venue" value=\'\'/>        <div class="text-danger"></div>        <div id="ar_venue1"></div>        <p class=\'help-block\'></p><script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>    <script type="text/javascript">        $(\'#ar_venue\').keyup(function(){                        var ar_venue = $(this).val();                        if(ar_venue != \'\'){                             $.ajax({                                url:\'http://localhost/actionaid/public/checkVenue/\'+ ar_venue,                                method:\'GET\',                                success:function(data){                                      $(\'#ar_venue1\').fadeIn();                                    $(\'#ar_venue1\').html(data);                                }                            });                        }                    });                     $(document).on(\'click\',\'li\',function(){                        $(\'#ar_venue\').val($(this).text());                        $(\'#ar_venue1\').fadeOut();                     });    </script>'];
+			//$this->form[] = ['label'=>'Implementing Unit','name'=>'ar_implementingUnit','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Activities Child M','name'=>'ar_ap_child_m','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-5'];
+			//$this->form[] = ['label'=>'Activities Youth M','name'=>'ar_ap_youth_m','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-5'];
+			//$this->form[] = ['label'=>'Activities Adult M','name'=>'ar_ap_adult_m','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-5'];
+			//$this->form[] = ['label'=>'Activities Child F','name'=>'ar_ap_child_f','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-5'];
+			//$this->form[] = ['label'=>'Activities Youth F','name'=>'ar_ap_youth_f','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-5'];
+			//$this->form[] = ['label'=>'Activities Adult F','name'=>'ar_ap_adult_f','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-5'];
+			//$this->form[] = ['label'=>'Total Participant','name'=>'ar_ap_total','type'=>'text','validation'=>'required|integer|min:0','width'=>'col-sm-5','readonly'=>'true'];
+			//$this->form[] = ['label'=>'Activities Comments','name'=>'ar_comments','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Activities Aims','name'=>'ar_ac_aims','type'=>'wysiwyg','validation'=>'required|min:1','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Activities Follow Up','name'=>'ar_ac_follow','type'=>'wysiwyg','validation'=>'required|min:1','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Activities Process','name'=>'ar_ac_process','type'=>'wysiwyg','validation'=>'required|min:1','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Activities Challenges','name'=>'ar_ac_challenges','type'=>'wysiwyg','validation'=>'required|min:1','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Activities Improve','name'=>'ar_ac_improve','type'=>'wysiwyg','validation'=>'required|min:1','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Activities Ies','name'=>'ar_ac_ies','type'=>'wysiwyg','validation'=>'required|min:1','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Activities Comments','name'=>'ar_ac_comments','type'=>'wysiwyg','validation'=>'required|min:1','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Attendance Register','name'=>'ar_at_attendence','type'=>'filemanager','validation'=>'required|min:1|max:1000','width'=>'col-sm-10','filemanager_type'=>'file','help'=>'upload your docx or pdf (max:1000 KB)'];
+			//$this->form[] = ['label'=>'Activities Minutes','name'=>'ar_at_minute','type'=>'filemanager','validation'=>'required|min:1|max:1000','width'=>'col-sm-10','filemanager_type'=>'file','help'=>'upload your docx or pdf (max:1000 KB)'];
+			//$this->form[] = ['label'=>'Cover Picture','name'=>'ar_at_pic1','type'=>'upload','validation'=>'required|min:1|max:1000','width'=>'col-sm-10','help'=>'All image are allowed only 1000 Kb'];
+			//$this->form[] = ['label'=>'Picture Two','name'=>'ar_at_pic2','type'=>'upload','validation'=>'max:1000','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Picture Three','name'=>'ar_at_pic3','type'=>'upload','validation'=>'max:1000','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Picture Four','name'=>'ar_at_pic4','type'=>'upload','validation'=>'max:1000','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Picture Five','name'=>'ar_at_pic5','type'=>'upload','validation'=>'max:1000','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Extra Link','name'=>'ar_at_link','type'=>'text','validation'=>'max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Activities Action Plan','name'=>'ar_at_actionPlan','type'=>'upload','validation'=>'max:1000','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Others Attachment','name'=>'ar_at_others','type'=>'upload','validation'=>'max:1000','width'=>'col-sm-10'];
+			# OLD END FORM
+
 			/* 
 	        | ---------------------------------------------------------------------- 
 	        | Sub Module
@@ -178,28 +203,26 @@
 	        | $this->script_js = "function() { ... }";
 	        |
 	        */
-	        $this->script_js = " 
-	        	 $('#ar_ap_adult_f').blur(function(){
+	        $this->script_js = "$('#ar_ap_adult_f').blur(function(){
 
-                        var ar_ap_male 		= 	$('#ar_ap_male').val();
-                        var ar_ap_female 	= 	$('#ar_ap_female').val();
+                        // var acn_ap_male 	= 	$('#acn_ap_male').val();
+                        // var acn_ap_female 	= 	$('#acn_ap_female').val();
                         var ar_ap_child_m 	= 	$('#ar_ap_child_m').val();
-                        var ar_ap_child_f 	= 	$('#ar_ap_child_f').val();
                         var ar_ap_youth_m 	= 	$('#ar_ap_youth_m').val();
-                        var ar_ap_youth_f 	= 	$('#ar_ap_youth_f').val();
                         var ar_ap_adult_m 	= 	$('#ar_ap_adult_m').val();
+                        var ar_ap_child_f 	= 	$('#ar_ap_child_f').val();
+                        var ar_ap_youth_f 	= 	$('#ar_ap_youth_f').val();
                         var ar_ap_adult_f 	= 	$('#ar_ap_adult_f').val();
 
-                        var sum1 = +ar_ap_female + +ar_ap_male; 
-                        var sum2 = +ar_ap_child_m + +ar_ap_child_f + +ar_ap_youth_m+ +ar_ap_youth_f+ +ar_ap_adult_m+ +ar_ap_adult_f; 
-                        if(sum1 != sum2){
-                        	alert('Your total participant is :'+ sum1 +' But you given :'+ sum2 +' . Please try again!'); 
-                        	document.getElementById('ar_ap_adult_f').value = '';
-                        } else{ 
-                        	document.getElementById('ar_ap_total').value = sum1;
-                        }
-                   });    
-	        ";
+                       // var sum1 = +acn_ap_male + +acn_ap_female; 
+                         var sum2 = +ar_ap_child_m + +ar_ap_youth_m + +ar_ap_adult_m+ +ar_ap_child_f+ +ar_ap_youth_f+ +ar_ap_adult_f; 
+                        // if(sum1 != sum2){
+                        // 	alert('Your total participant is :'+ sum1 +' But you given :'+ sum2 +' . Please try again!'); 
+                        // 	document.getElementById('acn_ap_adult_f').value = '';
+                        // } else{ 
+                        	document.getElementById('ar_ap_total').value = sum2;
+                        //}
+                   });  ";
 
 
             /*
@@ -246,9 +269,7 @@
 	        | $this->style_css = ".style{....}";
 	        |
 	        */
-	        $this->style_css = "
-	        	.className{margin:10px;}
-	        ";
+	        $this->style_css = NULL;
 	        
 	        
 	        
@@ -289,9 +310,6 @@
 	    */
 	    public function hook_query_index(&$query) {
 	        //Your code here
-	        if(!CRUDBooster::isSuperadmin()){
-	        	$query->where('user_id',CRUDBooster::myId())->orwhere('flow_id',CRUDBooster::myId());
-	        }
 	            
 	    }
 
@@ -313,33 +331,24 @@
 	    |
 	    */
 	    public function hook_before_add(&$postdata) {        
-	        //Your code here 
-	        $postdata['user_id'] = CRUDBooster::myId(); 
-	        $sum1 	= $postdata['ar_ap_female']+$postdata['ar_ap_male'];
-	        $sum2	= $postdata['ar_ap_child_m']+$postdata['ar_ap_child_f']+$postdata['ar_ap_adult_m']+$postdata['ar_ap_adult_f']+$postdata['ar_ap_youth_m']+$postdata['ar_ap_youth_f'];
-	        if($sum1 != $sum2){
-	    		CRUDBooster::redirectBack(
-               	 'Sorry Your Total Participant Dose not match!' 
-         	   );
-	    	}
-	    	$Cn = $postdata['act_id'];
-	    	$Cnn = DB::table('ai_activities')->where('id',$Cn)->first();
-	    	if($Cnn->is_parent != NULL){
-		    	$conducted	 =	DB::table('ai_activities')->where('id',$Cn)->update(['is_conduct'=> 0]);	
-		    	if($conducted){
-		    		DB::table('ai_concept_note')->where('act_id',$Cn)->update(['acn_status'=> 101]);	
-		    	}
-	    	}
+	        //Your code here
+	        $postdata['user_Id'] = CRUDBooster::myId(); 
+	        $postdata['ar_ap_male']	= $postdata['ar_ap_child_m']+$postdata['ar_ap_youth_m']+$postdata['ar_ap_adult_m'];
+	        $postdata['ar_ap_female'] = $postdata['ar_ap_child_f']+$postdata['ar_ap_youth_f']+$postdata['ar_ap_adult_f'];
 
-	        $flow_id =  $postdata['flow_id']; 
-	    	CRUDBooster::sendNotification($config=[
-	        	'content' 		=> 'Conducts An Activities',
-	        	'to'			=>	CRUDBooster::mainpath(),
-	        	'id_cms_users'	=>	[$flow_id],
-	        ]);
+	        $parents = DB::table('ai_concept_note')->where('id',$postdata['cn_id'])->first();
+	        $postdata['pri_id'] 	= $parents->pri_id;
+	        $postdata['foc_id'] 	= $parents->foc_id;
+	        $postdata['ind_id'] 	= $parents->ind_id;
+	        $postdata['p_act_id'] 	= $parents->p_act_id;
 
-	  		//$data = ['name'=>'John Doe','address'=>'Lorem ipsum dolor...'];
-			// CRUDBooster::sendEmail(['to'=>'john@gmail.com','data'=>$data,'template'=>'order_success']);
+	        $time = time();
+			$month = date("m",$time);
+			$year = date("Y",$time); 
+
+	        $postdata['reporting_month']	= $month;
+	        $postdata['reporting_year']		= $year;
+	        //dd($postdata);
 
 	    }
 
@@ -352,17 +361,24 @@
 	    */
 	    public function hook_after_add($id) {        
 	        //Your code here
-	        // $row = CRUDBooster::first($this->table,$id);
-	        // dd($row);
-	    	// echo $id.' id';
-	    	// $result = DB::table('ai_activity_report')->where('id',$id)->first();
-	    	// dd($result);
-	     //    CRUDBooster::sendNotification($config=[
-	     //    	'content' 		=> 'Conducts An Activities',
-	     //    	'to'			=>	url("admin/ai_activity_report/detail/$id"),
-	     //    	'id_cms_users'	=>	$result->flow_id,
-	     //    ]);
+	    	// $ar = CRUDBooster::first('ai_activity_report',$id);
+	    	// dd($ar);
+	    	// echo $id;
+	    	$conducted = DB::table('ai_activity_report')
+	    			->join('ai_concept_note','ai_concept_note.id','=','ai_activity_report.cn_id')
+	    			->where('ai_activity_report.id','=',$id)
+	    			->first();
+	    	// dd($conducted);
 
+	    	CRUDBooster::sendNotification($config=[
+				'content'	=> 'An Activities Report Has Been Conducted',
+				'to'		=> url('admin/ai_concept_note/detail/'.$id),
+				'id_cms_users'	=> [$conducted->flow_id,$conducted->meOfficer,$conducted->headOfficer]
+			]);
+
+			DB::table('ai_concept_note')->where('id',$conducted->cn_id)->update(['acn_status' => '101']);
+			// dd($conducted->cn_id);
+			// exit();
 	    }
 
 	    /* 
@@ -375,13 +391,14 @@
 	    */
 	    public function hook_before_edit(&$postdata,$id) {        
 	        //Your code here
-	        $sum1 	= $postdata['ar_ap_female']+$postdata['ar_ap_male'];
-	        $sum2	= $postdata['ar_ap_child_m']+$postdata['ar_ap_child_f']+$postdata['ar_ap_adult_m']+$postdata['ar_ap_adult_f']+$postdata['ar_ap_youth_m']+$postdata['ar_ap_youth_f'];
-	        if($sum1 != $sum2){
-	    		CRUDBooster::redirectBack(
-               	 'Sorry Your Total Participant Dose not match!' 
-         	   );
-	    	}
+	        $postdata['ar_ap_male']	= $postdata['ar_ap_child_m']+$postdata['ar_ap_youth_m']+$postdata['ar_ap_adult_m'];
+	        $postdata['ar_ap_female'] = $postdata['ar_ap_child_f']+$postdata['ar_ap_youth_f']+$postdata['ar_ap_adult_f'];
+
+	        $parents = DB::table('ai_concept_note')->where('id',$postdata['cn_id'])->first();
+	        $postdata['pri_id'] 	= $parents->pri_id;
+	        $postdata['foc_id'] 	= $parents->foc_id;
+	        $postdata['ind_id'] 	= $parents->ind_id;
+	        $postdata['p_act_id'] 	= $parents->p_act_id;
 
 	    }
 
@@ -421,7 +438,6 @@
 
 	    }
 
-
 	    public function getDetail($id) {
 		  //Create an Auth
 		  if(!CRUDBooster::isRead() && $this->global_privilege==FALSE || $this->button_edit==FALSE) {    
@@ -431,13 +447,12 @@
 		  $data = [];
 		  $data['page_title'] = 'Detail Data';
 		  $data['row'] = DB::table('ai_activity_report')
-		  	->join('ai_activities', 'ai_activities.id', '=', 'ai_activity_report.act_id') 
+		  	->join('ai_activities', 'ai_activities.id', '=', 'ai_activity_report.p_act_id') 
 		  	->join('cms_users', 'cms_users.id', '=', 'ai_activity_report.user_id') 
 		  	->where('ai_activity_report.id',$id)->first(); 
 
 		  $this->cbView('admin.DetailsActivitiesReport',$data);
 		}
-
 
 	    //By the way, you can still create your own method in here... :) 
 

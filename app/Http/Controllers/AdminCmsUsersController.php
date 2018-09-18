@@ -52,8 +52,14 @@ class AdminCmsUsersController extends \crocodicstudio\crudbooster\controllers\CB
 		$this->form[] = array("label"=>"Contract Expire(Date)","name"=>"date_expaire",'readonly'=>true,'required'=>true,'validation'=>'required');
 		}
 		$this->form[] = array("label"=>"Photo","name"=>"photo","type"=>"upload","help"=>"Recommended resolution is 200x200px",'required'=>true,'validation'=>'required|image|max:1000','resize_width'=>90,'resize_height'=>90);											
-		$this->form[] = array("label"=>"Privilege","name"=>"id_cms_privileges","type"=>"select","datatable"=>"cms_privileges,name",'required'=>true);						
+		$this->form[] = array("label"=>"Privilege","name"=>"id_cms_privileges","type"=>"select","datatable"=>"cms_privileges,name",'required'=>true);
+
+		$url = url()->current();
+	        $ss = explode('/',$url);
+	        $s = array_search("add",$ss);
+	        if($ss[$s] != 'add'){ 
 		$this->form[] = array("label"=>"Password","name"=>"password","type"=>"password","help"=>"Please leave empty if not change");
+	        }				
 		# END FORM DO NOT REMOVE THIS LINE
 		/* 
 	        | ---------------------------------------------------------------------- 
@@ -102,6 +108,27 @@ class AdminCmsUsersController extends \crocodicstudio\crudbooster\controllers\CB
 
 				
 	}
+
+	public function hook_before_add(&$postdata) {  
+		$rand_string = str_random(6);
+	    $password = \Hash::make($rand_string); 
+		$postdata['password'] = $password; 
+		//CRUDBooster::sendEmail(['to' => $postdata['email'], 'data' => $postdata, 'template' => 'send_user_password']);
+		//dd($postdata);
+	}
+	// public function hook_after_add($id) {        
+	//         //Your code here
+	//         echo $id.' Id';
+	//          $row = CRUDBooster::first($this->table,$id);
+	//          dd($row);
+	//         //  CRUDBooster::sendNotification($config=[
+	//         // 	'content' 		=> 'Conducts An Activities',
+	//         // 	'to'			=>	url("admin/ai_activity_report/detail/$id"),
+	//         // 	'id_cms_users'	=>	$row->flow_id,
+	//         // ]);
+
+	//     }
+
 
 	public function getProfile() {			
 

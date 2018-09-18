@@ -71,7 +71,7 @@
 					}elseif($row->acn_status == '101'){
 						return '<span class="label label-success">Conducted</span>';
 					} 
-			 	}elseif (CRUDBooster::myPrivilegeId() == 5 || CRUDBooster::myPrivilegeId() == 6) { //hopp & Hord
+			 	}elseif (CRUDBooster::myPrivilegeId() == 5 || CRUDBooster::myPrivilegeId() == 3) { //hopp & hofsp
 			 		if($row->acn_status == '3'){
 						return '<span class="label label-info">New</span>';
 					}elseif($row->acn_status == '99'){
@@ -91,26 +91,32 @@
 					}elseif($row->acn_status == '101'){
 						return '<span class="label label-success">Conducted</span>';
 					} 
-			 	}else{ //admin and hord
-			 		return '<span class="label label-primary">Approved1</span>';
+			 	}else{ //admin and hofsp
+			 		return '<span class="label label-primary">Approved</span>';
 			 	} 
 			}];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
+
+			$this->form[] = ['label'=>'Priority Area','name'=>'pri_id','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'ai_priorityarea,pri_name','default'=>'Select Priority Area'];
+			$this->form[] = ['label'=>'Focus Area','name'=>'foc_id','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'ai_focusarea,foc_name','parent_select'=>'pri_id','default'=>'Select Focus Area'];
+			$this->form[] = ['label'=>'Indicator Name','name'=>'ind_id','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'ai_indicators,ind_name','parent_select'=>'foc_id','default'=>'Select Indicator Name'];
+			$this->form[] = ['label'=>'Parent Activities','name'=>'p_act_id','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'ai_activities,act_name','datatable_where'=>'act_status = 1','parent_select'=>'ind_id','default'=>'Select Activities Name'];
+
 			$this->form[] = ['label'=>'Activities Name','name'=>'acn_name','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10','placeholder'=>'Name of your concept note..'];
 			$this->form[] = ['label'=>'Date to Conduct','name'=>'acn_date','type'=>'date','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Activities Venue','name'=>'acn_venue','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10','placeholder'=>'Type your venue'];
 			$this->form[] = ['label'=>'Implement Unit','name'=>'acn_implementUnit','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10','placeholder'=>'Implementing Unit'];
-			$this->form[] = ['label'=>'Participant Male','name'=>'acn_ap_male','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-5'];
-			$this->form[] = ['label'=>'Participant Female','name'=>'acn_ap_female','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-5'];
-			$this->form[] = ['label'=>'Child Male','name'=>'acn_ap_child_m','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-5'];
-			$this->form[] = ['label'=>'Child Female','name'=>'acn_ap_child_f','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-5'];
-			$this->form[] = ['label'=>'Youth Male','name'=>'acn_ap_youth_m','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-5'];
-			$this->form[] = ['label'=>'Youth Female','name'=>'acn_ap_youth_f','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-5'];
-			$this->form[] = ['label'=>'Adult Male','name'=>'acn_ap_adult_m','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-5'];
-			$this->form[] = ['label'=>'Adult Female','name'=>'acn_ap_adult_f','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-5'];
+			// $this->form[] = ['label'=>'Participant Male','name'=>'acn_ap_male','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-5'];
+			// $this->form[] = ['label'=>'Participant Female','name'=>'acn_ap_female','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-5'];
+			$this->form[] = ['label'=>'Target Child Male','name'=>'acn_ap_child_m','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-5'];
+			$this->form[] = ['label'=>'Target Child Female','name'=>'acn_ap_child_f','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-5'];
+			$this->form[] = ['label'=>'Target Youth Male','name'=>'acn_ap_youth_m','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-5'];
+			$this->form[] = ['label'=>'Target Youth Female','name'=>'acn_ap_youth_f','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-5'];
+			$this->form[] = ['label'=>'Target Adult Male','name'=>'acn_ap_adult_m','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-5'];
+			$this->form[] = ['label'=>'Target Adult Female','name'=>'acn_ap_adult_f','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-5'];
 			$this->form[] = ['label'=>'Participant Total','name'=>'acn_ap_total','type'=>'text','validation'=>'required|integer|min:0','width'=>'col-sm-5','readonly'=>'true'];
 			$this->form[] = ['label'=>'Activities Aim(s)','name'=>'acn_aim','type'=>'wysiwyg','validation'=>'required|min:0','width'=>'col-sm-10','help'=>'Aim(s) of the activity'];
 			$this->form[] = ['label'=>'Activities Objectives','name'=>'acn_objective','type'=>'wysiwyg','validation'=>'required|min:0','width'=>'col-sm-10','help'=>'Write about objectives of the activity'];
@@ -119,7 +125,12 @@
 			$this->form[] = ['label'=>'Activities Follow Up','name'=>'acn_follow','type'=>'wysiwyg','validation'=>'required|min:0','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Activities Budget','name'=>'acn_budget','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Activities Budget Code','name'=>'acn_budgetCode','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			if(CRUDBooster::myPrivilegeId() == 13){
+			$custom_element = view('admin.customInputHead')->render();
+			$this->form[] = ['label'=>'Head of Dapartment','name'=>'headOfficer','type'=>'custom','validation'=>'required|min:1|max:255','width'=>'col-sm-10','html'=>$custom_element];
+			}else{
 			$this->form[] = ['label'=>'Line Manager','name'=>'lineManager','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'cms_users,name','datatable_where'=>'id_cms_privileges=10 && status = "Active"','default'=>'Please Select Line Manager'];
+			}
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
@@ -247,8 +258,8 @@
 	        $this->script_js = " 
 	        	 $('#acn_ap_adult_f').blur(function(){
 
-                        var acn_ap_male 	= 	$('#acn_ap_male').val();
-                        var acn_ap_female 	= 	$('#acn_ap_female').val();
+                        // var acn_ap_male 	= 	$('#acn_ap_male').val();
+                        // var acn_ap_female 	= 	$('#acn_ap_female').val();
                         var acn_ap_child_m 	= 	$('#acn_ap_child_m').val();
                         var acn_ap_child_f 	= 	$('#acn_ap_child_f').val();
                         var acn_ap_youth_m 	= 	$('#acn_ap_youth_m').val();
@@ -256,14 +267,14 @@
                         var acn_ap_adult_m 	= 	$('#acn_ap_adult_m').val();
                         var acn_ap_adult_f 	= 	$('#acn_ap_adult_f').val();
 
-                        var sum1 = +acn_ap_male + +acn_ap_female; 
-                        var sum2 = +acn_ap_child_m + +acn_ap_child_f + +acn_ap_youth_m+ +acn_ap_youth_f+ +acn_ap_adult_m+ +acn_ap_adult_f; 
-                        if(sum1 != sum2){
-                        	alert('Your total participant is :'+ sum1 +' But you given :'+ sum2 +' . Please try again!'); 
-                        	document.getElementById('acn_ap_adult_f').value = '';
-                        } else{ 
-                        	document.getElementById('acn_ap_total').value = sum1;
-                        }
+                       // var sum1 = +acn_ap_male + +acn_ap_female; 
+                         var sum2 = +acn_ap_child_m + +acn_ap_child_f + +acn_ap_youth_m+ +acn_ap_youth_f+ +acn_ap_adult_m+ +acn_ap_adult_f; 
+                        // if(sum1 != sum2){
+                        // 	alert('Your total participant is :'+ sum1 +' But you given :'+ sum2 +' . Please try again!'); 
+                        // 	document.getElementById('acn_ap_adult_f').value = '';
+                        // } else{ 
+                        	document.getElementById('acn_ap_total').value = sum2;
+                        //}
                    });    
 	        ";
 
@@ -356,7 +367,7 @@
 	        // if(CRUDBooster::isSuperadmin()){ //super Admin
 	        // 	$query->where('acn_status',100)->orwhere('userId', CRUDBooster::myId());
 	        //}else
-	        if(CRUDBooster::myPrivilegeId() == 5 || CRUDBooster::myPrivilegeId() == 6){ //HOPP & HORD
+	        if(CRUDBooster::myPrivilegeId() == 5 || CRUDBooster::myPrivilegeId() == 3){ //HOPP & hofsp
 	        	$query->where('headOfficer',CRUDBooster::myId())->orwhere('userId', CRUDBooster::myId());
 	        }elseif (CRUDBooster::myPrivilegeId() == 10) { //line manager
 	        	$query->where('lineManager',CRUDBooster::myId())->orwhere('userId', CRUDBooster::myId());
@@ -387,21 +398,9 @@
 	    public function hook_before_add(&$postdata) {        
 	        //Your code here
 	        $postdata['userId'] = CRUDBooster::myId(); 
-	        $sum1 	= $postdata['acn_ap_female']+$postdata['acn_ap_male'];
-	        $sum2	= $postdata['acn_ap_child_m']+$postdata['acn_ap_child_f']+$postdata['acn_ap_adult_m']+$postdata['acn_ap_adult_f']+$postdata['acn_ap_youth_m']+$postdata['acn_ap_youth_f'];
-	        if($sum1 != $sum2){
-	    		CRUDBooster::redirectBack(
-               	 'Sorry Your Total Participant Dose not match!' 
-         	   );
-	    	}
-
-	        $flow_id =  $postdata['lineManager']; 
-	    	CRUDBooster::sendNotification($config=[
-	        	'content' 		=> 'Conducted An Concept Note...',
-	        	'to'			=>	CRUDBooster::mainpath(),
-	        	'id_cms_users'	=>	[$flow_id],
-	        ]);
-
+	        $postdata['acn_ap_male']	= $postdata['acn_ap_child_m']+$postdata['acn_ap_adult_m']+$postdata['acn_ap_youth_m'];
+	        $postdata['acn_ap_female'] = $postdata['acn_ap_child_f']+$postdata['acn_ap_adult_f']+$postdata['acn_ap_youth_f'];
+	        $flow_id =  $postdata['lineManager'];   
 	    }
 
 	    /* 
@@ -411,8 +410,13 @@
 	    | @id = last insert id
 	    | 
 	    */
-	    public function hook_after_add($id) {        
-	        //Your code here
+	    public function hook_after_add($id) {   
+	    $row = CRUDBooster::first($this->table,$id);     
+	       CRUDBooster::sendNotification($config=[
+	        	'content' 		=> 'Conducted An Concept Note...',
+	        	'to'			=>	CRUDBooster::mainpath($id),
+	        	'id_cms_users'	=>	[$row->lineManager],
+	        ]);
 
 	    }
 
@@ -424,16 +428,26 @@
 	    | @id       = current id 
 	    | 
 	    */
-	    public function hook_before_edit(&$postdata,$id) {        
+	    public function hook_before_edit(&$postdata,$id) { 
+	     	$postdata['acn_ap_male']	= $postdata['acn_ap_child_m']+$postdata['acn_ap_adult_m']+$postdata['acn_ap_youth_m'];
+	        $postdata['acn_ap_female'] = $postdata['acn_ap_child_f']+$postdata['acn_ap_adult_f']+$postdata['acn_ap_youth_f']; 
+	        if(CRUDBooster::myPrivilegeId() == 13) { 
+	        	$time = time();
+				$time = date("Y-m-d H:m:s",$time); 
+				$postdata['acn_status'] = 3;
+				$postdata['me_date'] = $time;
+				//$postdata['headOfficer'] = $postdata['headOfficer']; 
+				//dd($postdata);
+	        }      
 	        //Your code here
-	        $postdata['userId'] = CRUDBooster::myId(); 
-	        $sum1 	= $postdata['acn_ap_female']+$postdata['acn_ap_male'];
-	        $sum2	= $postdata['acn_ap_child_m']+$postdata['acn_ap_child_f']+$postdata['acn_ap_adult_m']+$postdata['acn_ap_adult_f']+$postdata['acn_ap_youth_m']+$postdata['acn_ap_youth_f'];
-	        if($sum1 != $sum2){
-	    		CRUDBooster::redirectBack(
-               	 'Sorry Your Total Participant Dose not match!' 
-         	   );
-	    	}
+	     //    $postdata['userId'] = CRUDBooster::myId(); 
+	     //    $sum1 	= $postdata['acn_ap_female']+$postdata['acn_ap_male'];
+	     //    $sum2	= $postdata['acn_ap_child_m']+$postdata['acn_ap_child_f']+$postdata['acn_ap_adult_m']+$postdata['acn_ap_adult_f']+$postdata['acn_ap_youth_m']+$postdata['acn_ap_youth_f'];
+	     //    if($sum1 != $sum2){
+	    	// 	CRUDBooster::redirectBack(
+      //          	 'Sorry Your Total Participant Dose not match!' 
+      //    	   );
+	    	// }
 
 	    }
 
@@ -446,37 +460,61 @@
 	    */
 	    public function hook_after_edit($id) {
 	        //Your code here 
-	        $result = CRUDBooster::first($this->table,$id);
-	    	if($result->acn_status == 99 && $result->rejected_by != NULL){
-	    		$userRole = DB::table(cms_users)->where('id',$result->rejected_by)->first(); 
-	    		if($userRole->id_cms_privileges == 10){ //line manager
-	    			DB::table($this->table)->where('id', $id)->update([
-	    				'rejected_by'=> NULL, 'rejected_date'=> NULL,'rejected_comment'=> NULL,'acn_status' => 1,
-	    			]);
-	    			CRUDBooster::sendNotification($config=[
-			        	'content' 		=> 'A rejected concept is back to review again...',
-			        	'to'			=>	url('/admin/ai_concept_note/detail/'.$id),
-			        	'id_cms_users'	=>	[$userRole->id],
-			        ]);
-	    		}elseif ($userRole->id_cms_privileges == 13) { //M&E Officer
-	    			DB::table($this->table)->where('id', $id)->update([
-	    				'rejected_by'=> NULL, 'rejected_date'=> NULL,'rejected_comment'=> NULL,'acn_status' => 2,
-	    			]);
-	    			CRUDBooster::sendNotification($config=[
-			        	'content' 		=> 'A rejected concept is back to check again...',
-			        	'to'			=>	url('/admin/ai_concept_note/detail/'.$id),
-			        	'id_cms_users'	=>	[$userRole->id],
-			        ]);
-	    		}elseif ($userRole->id_cms_privileges == 5 || $userRole->id_cms_privileges == 6 ) { //HOPP & HORD
-	    			DB::table($this->table)->where('id', $id)->update([
-	    				'rejected_by'=> NULL, 'rejected_date'=> NULL,'rejected_comment'=> NULL,'acn_status' => 3,
-	    			]);
-	    			CRUDBooster::sendNotification($config=[
-			        	'content' 		=> 'A rejected concept is back to approvement...',
-			        	'to'			=>	url('/admin/ai_concept_note/detail/'.$id),
-			        	'id_cms_users'	=>	[$userRole->id],
-			        ]);
-	    		}  
+	        if(CRUDBooster::myPrivilegeId() == 11){
+		        $result = CRUDBooster::first($this->table,$id);
+		    	if($result->acn_status == 99 && $result->rejected_by != NULL){
+		    		$userRole = DB::table(cms_users)->where('id',$result->rejected_by)->first(); 
+		    		if($userRole->id_cms_privileges == 10){ //line manager
+		    			DB::table($this->table)->where('id', $id)->update([
+		    				'rejected_by'=> NULL, 'rejected_date'=> NULL,'rejected_comment'=> NULL,'acn_status' => 1,
+		    			]);
+		    			CRUDBooster::sendNotification($config=[
+				        	'content' 		=> 'A rejected concept is back to review again...',
+				        	'to'			=>	url('/admin/ai_concept_note/detail/'.$id),
+				        	'id_cms_users'	=>	[$userRole->id],
+				        ]);
+		    		}elseif ($userRole->id_cms_privileges == 13) { //M&E Officer
+		    			DB::table($this->table)->where('id', $id)->update([
+		    				'rejected_by'=> NULL, 'rejected_date'=> NULL,'rejected_comment'=> NULL,'acn_status' => 2,
+		    			]);
+		    			CRUDBooster::sendNotification($config=[
+				        	'content' 		=> 'A rejected concept is back to check again...',
+				        	'to'			=>	url('/admin/ai_concept_note/detail/'.$id),
+				        	'id_cms_users'	=>	[$userRole->id],
+				        ]);
+		    		}elseif ($userRole->id_cms_privileges == 5 || $userRole->id_cms_privileges == 3 ) { //HOPP & hofsp
+		    			DB::table($this->table)->where('id', $id)->update([
+		    				'rejected_by'=> NULL, 'rejected_date'=> NULL,'rejected_comment'=> NULL,'acn_status' => 3,
+		    			]);
+		    			CRUDBooster::sendNotification($config=[
+				        	'content' 		=> 'A rejected concept is back to approvement...',
+				        	'to'			=>	url('/admin/ai_concept_note/detail/'.$id),
+				        	'id_cms_users'	=>	[$userRole->id],
+				        ]);
+		    		}  
+		    	}
+	    	}elseif(CRUDBooster::myPrivilegeId() == 13) { //m&e
+	   //  		$time = time();
+				// $time = date("Y-m-d H:m:s",$time);  
+				// $dataCN = [
+				// 	'acn_status'			=> 		3,
+				// 	'headOfficer'			=> 		$request->headOfficer, 
+				// 	'me_date'				=> 		$time,
+				// 	'act_id'				=> 		$act_id,
+				// ];
+				//$done = DB::table('ai_concept_note')->where('id',$request->cNid)->update($dataCN);
+				$result = CRUDBooster::first($this->table,$id);
+				//if($done){
+					CRUDBooster::sendNotification($config=[
+						'content'	=> 'Waiting a Concept Note For Check...',
+						'to'		=> url('admin/ai_concept_note/detail/'.$id),
+						'id_cms_users'	=> [$result->headOfficer],
+					]);
+					// $to = url('/admin/ai_concept_note');
+					// $message = "Approved Successfull";
+					// $type	= "info";
+					// \CRUDBooster::redirect($to,$message,$type);
+				//}	
 	    	}
 	    }
 
@@ -515,6 +553,7 @@
 		  }
 		  
 		  $data = [];
+		  $data['currentId'] = $id;
 		  $data['page_title'] = 'Detail Data';
 		  $data['row'] = DB::table('ai_concept_note')
 		  	//->join('ai_activities', 'ai_activities.id', '=', 'ai_concept_note.act_id') 

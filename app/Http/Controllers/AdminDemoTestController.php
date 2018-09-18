@@ -67,19 +67,21 @@
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
-			// $id = CRUDBooster::getCurrentId();
-			// $row = CRUDBooster::first($this->table,$id);
-			// $custom_element = view('admin.MultitextInput',compact('row'))->render(); 
-
-			// $this->form[] = ['label'=>'Title','name'=>'title','type'=>'custom','validation'=>'required|min:1|max:255','width'=>'col-sm-10','html'=>$custom_element];
-			$this->form[] = ['label'=>'Title','name'=>'title','type'=>'checkbox','datatable'=>'sss,value'];
+			$this->form[] = ['label'=>'Title','name'=>'title','type'=>'checkbox','width'=>'col-sm-10','datatable'=>'sss,value'];
 			$this->form[] = ['label'=>'Description','name'=>'description','type'=>'wysiwyg','validation'=>'required|min:5|max:5000','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Line Manager','name'=>'flow_id','type'=>'select','width'=>'col-sm-10','datatable'=>'cms_users,name','datatable_where'=>'id_cms_privileges=10'];
+			// $this->form[] = ['label'=>'Line Manager','name'=>'flow_id','type'=>'select','width'=>'col-sm-10','datatable'=>'cms_users,name','datatable_where'=>'id_cms_privileges=5','datatable_where'=>'id_cms_privileges=6','datatable_format'=>'name,\'-\'email'];
+			$custom_element = view('admin.customInputHead')->render();
+			$this->form[] = ['label'=>'Head of Dapartment','name'=>'flow_id','type'=>'custom','validation'=>'required|min:1|max:255','width'=>'col-sm-10','html'=>$custom_element];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
 			//$this->form = [];
-			//$this->form[] = ['label'=>'Title','name'=>'title','type'=>'datamodal','validation'=>'required|min:0','width'=>'col-sm-10','datamodal_table'=>'sss','datamodal_columns'=>'level,value','datamodal_size'=>'small'];
+			//// $id = CRUDBooster::getCurrentId();
+			//// $row = CRUDBooster::first($this->table,$id);
+			//// $custom_element = view('admin.MultitextInput',compact('row'))->render();
+			//
+			//// $this->form[] = ['label'=>'Title','name'=>'title','type'=>'custom','validation'=>'required|min:1|max:255','width'=>'col-sm-10','html'=>$custom_element];
+			//$this->form[] = ['label'=>'Title','name'=>'title','type'=>'checkbox','datatable'=>'sss,value'];
 			//$this->form[] = ['label'=>'Description','name'=>'description','type'=>'wysiwyg','validation'=>'required|min:5|max:5000','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Line Manager','name'=>'flow_id','type'=>'select','width'=>'col-sm-10','datatable'=>'cms_users,name','datatable_where'=>'id_cms_privileges=10'];
 			# OLD END FORM
@@ -158,7 +160,7 @@
 	        */
 	        $this->index_button = array();//["label"=>"Print Report","icon"=>"fa fa-print","url"=>CRUDBooster::mainpath('print-report')];
 
-
+	        //dd($this->index_button);
 
 	        /* 
 	        | ---------------------------------------------------------------------- 
@@ -326,6 +328,9 @@
 	    |
 	    */
 	    public function hook_before_add(&$postdata) {   
+	    	// $url = url()->current();
+	    	// echo $url;
+	    	// exit();
 	    //dd($postdata);     
 	    	// if($postdata['title'] != '2'){
 	    	// 	CRUDBooster::redirectBack(
@@ -358,9 +363,9 @@
 	    */
 	    public function hook_after_add($id) {        
 	        //Your code here
-	        echo $id.' Id';
-	         $row = CRUDBooster::first($this->table,$id);
-	         dd($row);
+
+	         // $row = CRUDBooster::first($this->table,$id);
+	         // dd($row);
 	        //  CRUDBooster::sendNotification($config=[
 	        // 	'content' 		=> 'Conducts An Activities',
 	        // 	'to'			=>	url("admin/ai_activity_report/detail/$id"),
@@ -379,6 +384,17 @@
 	    */
 	    public function hook_before_edit(&$postdata,$id) {        
 	        //Your code here
+	        $url = "http://localhost/actionaid/public/admin/demo_test/edit/18";
+	        $url = url()->current();
+	        $ss = explode('/',$url);
+	        if($ss[7] != 'add'){
+	        	echo "edit";
+	        }else{
+	        	echo "add";
+	        }
+	     //    dd($ss);
+	    	// echo $url;
+	    	exit();
 
 	    }
 

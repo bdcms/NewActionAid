@@ -12,7 +12,7 @@
 			# START CONFIGURATION DO NOT REMOVE THIS LINE
 			$this->title_field = "imp_name";
 			$this->limit = "20";
-			$this->orderby = "id,desc";
+			$this->orderby = "id,asc";
 			$this->global_privilege = false;
 			$this->button_table_action = true;
 			$this->button_bulk_action = true;
@@ -30,38 +30,35 @@
 
 			# START COLUMNS DO NOT REMOVE THIS LINE
 			$this->col = [];
+			$this->col[] = ["label"=>"Id","name"=>"id","width"=>"50"];
 			$this->col[] = ["label"=>"Name","name"=>"imp_name","width"=>"200"];
-			$this->col[] = ["label"=>"Email","name"=>"imp_email","width"=>"200"];
 			$this->col[] = ["label"=>"MouStart","name"=>"imp_mouStart","width"=>"100"];
 			$this->col[] = ["label"=>"MouEnd","name"=>"imp_mouEnd","width"=>"100"];
 			$this->col[] = ["label"=>"Implementin Area","name"=>"imp_area","width"=>"150"];
 			$this->col[] = ["label"=>"Amount","name"=>"imp_amount","width"=>"100"];
+			$this->col[] = ["label"=>"Reporting Date","name"=>"imp_reportingDate","width"=>"120"];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
 			$this->form[] = ['label'=>'Partner Name','name'=>'imp_name','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Partner Email','name'=>'imp_email','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Partner Location','name'=>'imp_location','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Partner MouStart','name'=>'imp_mouStart','type'=>'date','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Partner MouEnd','name'=>'imp_mouEnd','type'=>'date','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Implementing Area','name'=>'imp_area','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Amount Allocated','name'=>'imp_amount','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Partner Reporting Date','name'=>'imp_reportingDate','type'=>'date','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Partner Contact','name'=>'imp_contact','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Partner Contact','name'=>'imp_contact','type'=>'textarea','validation'=>'required|min:1|max:500','width'=>'col-sm-10'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
 			//$this->form = [];
-			//$this->form[] = ["label"=>"Imp Name","name"=>"imp_name","type"=>"text","required"=>TRUE,"validation"=>"required|min:1|max:255"];
-			//$this->form[] = ["label"=>"Imp Email","name"=>"imp_email","type"=>"text","required"=>TRUE,"validation"=>"required|min:1|max:255"];
-			//$this->form[] = ["label"=>"Imp Location","name"=>"imp_location","type"=>"text","required"=>TRUE,"validation"=>"required|min:1|max:255"];
-			//$this->form[] = ["label"=>"Imp MouStart","name"=>"imp_mouStart","type"=>"text","required"=>TRUE,"validation"=>"required|min:1|max:255"];
-			//$this->form[] = ["label"=>"Imp MouEnd","name"=>"imp_mouEnd","type"=>"text","required"=>TRUE,"validation"=>"required|min:1|max:255"];
-			//$this->form[] = ["label"=>"Imp Area","name"=>"imp_area","type"=>"text","required"=>TRUE,"validation"=>"required|min:1|max:255"];
-			//$this->form[] = ["label"=>"Imp Amount","name"=>"imp_amount","type"=>"number","required"=>TRUE,"validation"=>"required|integer|min:0"];
-			//$this->form[] = ["label"=>"Imp ReportingDate","name"=>"imp_reportingDate","type"=>"text","required"=>TRUE,"validation"=>"required|min:1|max:255"];
-			//$this->form[] = ["label"=>"Imp Contact","name"=>"imp_contact","type"=>"text","required"=>TRUE,"validation"=>"required|min:1|max:255"];
+			//$this->form[] = ['label'=>'Partner Name','name'=>'imp_name','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Partner MouStart','name'=>'imp_mouStart','type'=>'date','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Partner MouEnd','name'=>'imp_mouEnd','type'=>'date','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Implementing Area','name'=>'imp_area','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Amount Allocated','name'=>'imp_amount','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Partner Reporting Date','name'=>'imp_reportingDate','type'=>'date','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Partner Contact','name'=>'imp_contact','type'=>'textarea','validation'=>'required|min:1|max:500','width'=>'col-sm-10'];
 			# OLD END FORM
 
 			/* 

@@ -110,10 +110,10 @@ class AdminCmsUsersController extends \crocodicstudio\crudbooster\controllers\CB
 	}
 
 	public function hook_before_add(&$postdata) {  
-		$rand_string = str_random(6);
+		$rand_string = str_random(8);
 	    $password = \Hash::make($rand_string); 
 		$postdata['password'] = $password; 
-		//CRUDBooster::sendEmail(['to' => $postdata['email'], 'data' => $postdata, 'template' => 'send_user_password']);
+		CRUDBooster::sendEmail(['to' => $postdata['email'], 'data' => $postdata, 'template' => 'send_user_password']);
 		//dd($postdata);
 	}
 	// public function hook_after_add($id) {        

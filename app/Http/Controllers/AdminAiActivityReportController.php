@@ -457,6 +457,7 @@
 		  }
 		  
 		  $data = [];
+		  $data['currentID'] = $id;
 		  $data['page_title'] = 'Detail Data';
 		  $data['row'] = DB::table('ai_activity_report')
 		  	->join('ai_activities', 'ai_activities.id', '=', 'ai_activity_report.p_act_id') 

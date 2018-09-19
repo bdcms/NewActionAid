@@ -22,10 +22,7 @@ table thead tr{width: 100%;float: left; font-size: 10px;}
 /*.nav li,.panel-body ul,.panel-body{float: left;width: 100%;}*/
   </style>
 </head>
-<body>
- 
-
-  
+<body> 
     <div class='panel-body'>  
       
             <ul class="nav">

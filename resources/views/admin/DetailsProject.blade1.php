@@ -22,11 +22,6 @@
             .pcontent{border: 1px solid; padding: 6px; width: 97%; min-height: 80px;}
             .img1 {width: 20%; float: left; }
             .img1 img{height: 150px; width: auto; margin: 5px; padding: 5px; border: 1px dotted #ccc; border-radius: 8px;}
-            .project_details li{float: left;width: 100%;}
-            .project_details li label{width: 14%;float: left;}
-            .project_descip{    float: left;
-    margin-left: 16%;
-    width: 84%;}
   </style>
   <div class='panel panel-default'>
     <div class='panel-heading'>Add Form</div>
@@ -40,14 +35,14 @@
 
         
       </form> --}}
-      <ul class="nav project_details">
+      <ul class="nav">
         <li class="activity_report_heading">
           <label>Project Name:</label>
           <p> {{$row->pro_name}} </p>
         </li>
         <li class="activity_report_heading">
-          <label>Project Desctiprion:</label> 
-          <div class="project_descip">{!!$row->pro_desc!!}</div>
+          <label>Project Desctiprion:</label><br/>
+          {!!$row->pro_desc!!}
         </li> 
         <li class="activity_report_heading">
           <label>Project Donor:</label>
@@ -59,12 +54,12 @@
           <p>{{$row->pri_name}}</p>
         </li> 
         <li class="activity_report_heading">
-          <label>Implementing Partners:</label>  
+          <label>Implementing Partners:</label><br>
           <?php
             $partners = explode(';', $row->patnerId);
             foreach ($partners as $partner) {  
               $partner = DB::table('ai_implementing_patner')->where('id',$partner)->first(); ?> 
-           <p style="float: left;margin-left: 16%;    width: 86%;"> {{$partner->imp_name}}</p>
+           <p> {{$partner->imp_name}}</p>
           <?php  } ?> 
         </li> 
         <li class="activity_report_heading">

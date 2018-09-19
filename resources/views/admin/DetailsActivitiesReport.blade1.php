@@ -19,12 +19,9 @@
               border-radius: 0px;margin-bottom: 100px;background: #4F81BD}
               .activity_row h6{color:#4F81BD;font-size: 16px;}
               .activity_row h5,.activity_report_heading p {color:red;}
-            .pcontent{  padding: 6px; width: 97%; min-height: 80px;}
+            .pcontent{border: 1px solid; padding: 6px; width: 97%; min-height: 80px;}
             .img1 {width: 20%; float: left; }
             .img1 img{height: 150px; width: auto; margin: 5px; padding: 5px; border: 1px dotted #ccc; border-radius: 8px;}
-            .table-bordered, .table-bordered>thead>tr>th, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>tbody>tr>td, .table-bordered>tfoot>tr>td{border: 1px solid #ccc;}
-            .pcontent{display: none;}
-            .headding{color: green;}
   </style>
   
 <div class='panel panel-default'>
@@ -123,34 +120,32 @@
               </li>   
               <br>
               <li class="activity_body_content">
-                <label class="headding">Were the activity aims met?*If yes, how? If not, why?</label>
-                {!! $row->ar_ac_aims !!}
+                <label>Were the activity aims met?*If yes, how? If not, why?</label>
+                <p class="pcontent">{{$row->ar_ac_aims}}</p>
               </li>
               <li class="activity_body_content">
-                <label class="headding">How does the activity follow on from previous interventions, if any?</label>
-                {!!$row->ar_ac_follow!!}
+                <label>How does the activity follow on from previous interventions, if any?</label>
+                <p class="pcontent">{{$row->ar_ac_follow}}</p>
               </li>
               <li class="activity_body_content">
-                <label class="headding">Activity Process: What took place? What went well? *</label>
-                {!!$row->ar_ac_process!!}
+                <label>Activity Process: What took place? What went well? *</label>
+                <p class="pcontent">{{$row->ar_ac_process}}</p>
               </li> 
               <li class="activity_body_content">
-                <label class="headding">Challenges faced& mitigation measures employed during the activity:</label>
-                {!!$row->ar_ac_challenges!!}
+                <label>Challenges faced& mitigation measures employed during the activity:</label>
+                <p class="pcontent">{{$row->ar_ac_challenges}}</p>
               </li> 
               <li class="activity_body_content">
-                <label class="headding">What could be done to improve next time?</label>
-                {!!$row->ar_ac_improve!!}
+                <label>What could be done to improve next time?</label>
+                <p class="pcontent">{{$row->ar_ac_improve}}</p>
               </li>
               <li class="activity_body_content">
-                <label class="headding">Follow up activity(ies)/Date</label>
-                <p>{!!$row->ar_ac_ies!!}
+                <label>Follow up activity(ies)/Date</label>
+                <p>{{$row->ar_ac_ies}}</p>
               </li>
-
               <li class="activity_body_content">
-                <label class="headding">Additional comments/recommendations on the activity:</label>
-                {!! $row->ar_ac_comments !!}
-
+                <label>Additional comments/recommendations on the activity:</label>
+                <p class="pcontent">{{$row->ar_ac_comments}}</p>
               </li>
 
               <li class="activity_body_content">
@@ -158,35 +153,35 @@
                 <div class="images">
                   @if(!empty($row->ar_at_pic1))
                     <div class="img1">
-                      <a target="_blank" href="{{url($row->ar_at_pic1)}}">
+                      <a href="{{url($row->ar_at_pic1)}}">
                         <img src="{{url($row->ar_at_pic1)}}">
                       </a>
                     </div>
                   @endif
                   @if(!empty($row->ar_at_pic2))
                     <div class="img1">
-                      <a target="_blank" href="{{url($row->ar_at_pic2)}}">
+                      <a href="{{url($row->ar_at_pic2)}}">
                         <img src="{{url($row->ar_at_pic2)}}">
                       </a>
                     </div>
                   @endif 
                   @if(!empty($row->ar_at_pic3))
                     <div class="img1">
-                      <a target="_blank" href="{{url($row->ar_at_pic3)}}">
+                      <a href="{{url($row->ar_at_pic3)}}">
                         <img src="{{url($row->ar_at_pic3)}}">
                       </a>
                     </div>
                   @endif 
                   @if(!empty($row->ar_at_pic4))
                     <div class="img1">
-                      <a target="_blank" href="{{url($row->ar_at_pic4)}}">
+                      <a href="{{url($row->ar_at_pic4)}}">
                         <img src="{{url($row->ar_at_pic4)}}">
                       </a>
                     </div>
                   @endif 
                   @if(!empty($row->ar_at_pic5))
                     <div class="img1">
-                      <a target="_blank" href="{{url($row->ar_at_pic5)}}">
+                      <a href="{{url($row->ar_at_pic5)}}">
                         <img src="{{url($row->ar_at_pic5)}}">
                       </a>
                     </div>
@@ -194,9 +189,9 @@
                 </div> 
               </li>
 
- 
-              <li class="activity_body_content" style="float: left;width: 100%;"> 
-                
+
+              <li class="activity_body_content"> 
+                <hr>
                 <label>ATTACH THE FOLLOWING FILES TO THIS REPORT</label>
                 <table class="table"> 
                     <tbody style="width:50%;"> 
@@ -229,7 +224,7 @@
                     </tbody>
                   </table> 
               </li>
-              <li  style="float: left;width: 100%;" class="activity_body_content"><h5>A COMPLETE ACTIVITY REPORTS HAS ALL THE FIELDS VALUES <strong>AND</strong> ATTACHMENTS</h5></li> 
+              <li class="activity_body_content"><h5>A COMPLETE ACTIVITY REPORTS HAS ALL THE FIELDS VALUES <strong>AND</strong> ATTACHMENTS</h5></li> 
             </ul>
 
             <hr>
@@ -237,7 +232,7 @@
           <div style="float: left; margin-right: 15px;"><img src="{{url($row->photo)}}" height="80" width="70" style="margin-top: -5px;"></div>
             <label>Created By:</label>
             <p>{{$row->name}}</p>
-            <p><span class="text-primary">ON </span> {{$row->created_at}}</p>
+            <p><span class="text-primary">ON </span> {{$row->ar_date}}</p>
          </div>
             <a href="{{url('admin/ai_activity_report/')}}" class="btn btn-primary">Back</a>
             <a href="{{url('makePDF/'.CRUDBooster::getCurrentId())}}" target="_blank" class="btn btn-primary">Print</a>
@@ -246,5 +241,4 @@
 
     </div>
   </div>
- 
 @endsection

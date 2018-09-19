@@ -19,10 +19,9 @@ font-size: 14px;
 border-radius: 0px;margin-bottom: 100px;background: #4F81BD}
 .activity_row h6{color:#4F81BD;font-size: 16px;}
 .activity_row h5,.activity_report_heading p {color:red;}
-.pcontent{  padding: 6px; width: 97%; min-height: 80px;}
+.pcontent{border: 1px solid; padding: 6px; width: 97%; min-height: 80px;}
 .img1 {width: 20%; float: left; }
 .img1 img{height: 150px; width: auto; margin: 5px; padding: 5px; border: 1px dotted #ccc; border-radius: 8px;}
-.table-bordered, .table-bordered>thead>tr>th, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>tbody>tr>td, .table-bordered>tfoot>tr>td{border: 1px solid #ccc;}
 </style>
 <!-- Your html goes here -->
 <div class='panel panel-default'>
@@ -177,23 +176,23 @@ border-radius: 0px;margin-bottom: 100px;background: #4F81BD}
     <br>
     <li class="activity_body_content">
       <label>Activities Aims?</label>
-      {!!$row->acn_aim!!}
+      <p class="pcontent">{{strip_tags($row->acn_aim)}}</p>
     </li>
     <li class="activity_body_content">
       <label>Activities Objectives  </label>
-      {!!$row->acn_objective!!}
+      <p class="pcontent">{{strip_tags($row->acn_objective)}}</p>
     </li>
     <li class="activity_body_content">
       <label>Activities Outcomes</label>
-      {!!$row->acn_outcome!!}
+      <p class="pcontent">{{strip_tags($row->acn_outcome)}}</p>
     </li>
     <li class="activity_body_content">
       <label>Activities Follows</label>
-      {!!$row->acn_follow!!}
+      <p class="pcontent">{{strip_tags($row->acn_follow)}}</p>
     </li>
     <li class="activity_body_content">
       <label>Follow up activity(ies)/Date</label>
-      {!!$row->acn_ies!!}
+      <p class="pcontent">{{strip_tags($row->acn_ies)}}</p>
     </li>
   </ul>
   <hr>

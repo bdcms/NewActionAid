@@ -40,7 +40,12 @@
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
+			$url = url()->current();
+	        $ss = explode('/',$url);
+	        $s = array_search("edit",$ss);
+	        if($ss[$s] != 'edit'){ 
 			$this->form[] = ['label'=>'Activities Name','name'=>'cn_id','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'ai_concept_note,acn_name','help'=>'For conducted must approve your concept note.','datatable_where'=>'acn_status = 100 && userId ='.CRUDBooster::myId()];
+			}
 			$this->form[] = ['label'=>'Line Manager','name'=>'flow_id','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'cms_users,name','datatable_where'=>'id_cms_privileges=10 && status = "Active"'];
 			$this->form[] = ['label'=>'Activities Date','name'=>'ar_date','type'=>'date','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Activities Venue','name'=>'ar_venue','type'=>'custom','validation'=>'required|min:1|max:255','width'=>'col-sm-10','html'=>'<input type=\'text\' title="Activities Venue"               required  placeholder=\'Type your venue\'  maxlength=255 class=\'form-control\'               name="ar_venue" id="ar_venue" value=\'\'/>        <div class="text-danger"></div>        <div id="ar_venue1"></div>        <p class=\'help-block\'></p><script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>    <script type="text/javascript">        $(\'#ar_venue\').keyup(function(){                        var ar_venue = $(this).val();                        if(ar_venue != \'\'){                             $.ajax({                                url:\'http://localhost/actionaid/public/checkVenue/\'+ ar_venue,                                method:\'GET\',                                success:function(data){                                      $(\'#ar_venue1\').fadeIn();                                    $(\'#ar_venue1\').html(data);                                }                            });                        }                    });                     $(document).on(\'click\',\'li\',function(){                        $(\'#ar_venue\').val($(this).text());                        $(\'#ar_venue1\').fadeOut();                     });    </script>'];
@@ -310,6 +315,9 @@
 	    */
 	    public function hook_query_index(&$query) {
 	        //Your code here
+	        if(!CRUDBooster::isSuperadmin()){ 
+                $query->where('userId',CRUDBooster::myId());
+             }
 	            
 	    }
 
@@ -393,12 +401,16 @@
 	        //Your code here
 	        $postdata['ar_ap_male']	= $postdata['ar_ap_child_m']+$postdata['ar_ap_youth_m']+$postdata['ar_ap_adult_m'];
 	        $postdata['ar_ap_female'] = $postdata['ar_ap_child_f']+$postdata['ar_ap_youth_f']+$postdata['ar_ap_adult_f'];
-
-	        $parents = DB::table('ai_concept_note')->where('id',$postdata['cn_id'])->first();
+	        $row = CRUDBooster::first($this->table,$id);
+	        // echo $id.' ';
+	        // echo $row->cn_id;
+	        $parents = DB::table('ai_concept_note')->where('id',$row->cn_id)->first();
 	        $postdata['pri_id'] 	= $parents->pri_id;
 	        $postdata['foc_id'] 	= $parents->foc_id;
 	        $postdata['ind_id'] 	= $parents->ind_id;
 	        $postdata['p_act_id'] 	= $parents->p_act_id;
+	        $postdata['cn_id']		= $row->cn_id;
+	        //dd($postdata);
 
 	    }
 

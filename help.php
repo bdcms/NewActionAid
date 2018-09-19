@@ -74,5 +74,17 @@
                 'to'        => url('admin/ai_concept_note/detail/'.$request->id),
                 'id_cms_users'  => [$request->userId],
             ]);
+
+
+
+
+    public function hook_query_index(&$query) {
+             if(!CRUDBooster::isSuperadmin()){ 
+                $query->where('userId',CRUDBooster::myId());
+             }
+                
+        }
+
+
     
 ?>

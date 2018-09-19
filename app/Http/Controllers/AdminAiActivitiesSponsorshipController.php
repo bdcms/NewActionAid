@@ -5,12 +5,12 @@
 	use DB;
 	use CRUDBooster;
 
-	class AdminAiProjectsController extends \crocodicstudio\crudbooster\controllers\CBController {
+	class AdminAiActivitiesSponsorshipController extends \crocodicstudio\crudbooster\controllers\CBController {
 
 	    public function cbInit() {
 
 			# START CONFIGURATION DO NOT REMOVE THIS LINE
-			$this->title_field = "pro_name";
+			$this->title_field = "spo_name";
 			$this->limit = "20";
 			$this->orderby = "id,desc";
 			$this->global_privilege = false;
@@ -24,39 +24,38 @@
 			$this->button_show = true;
 			$this->button_filter = true;
 			$this->button_import = false;
-			$this->button_export = true;
-			$this->table = "ai_projects";
+			$this->button_export = false;
+			$this->table = "ai_activities_sponsorship";
 			# END CONFIGURATION DO NOT REMOVE THIS LINE
 
 			# START COLUMNS DO NOT REMOVE THIS LINE
 			$this->col = [];
-			$this->col[] = ["label"=>"Name","name"=>"pro_name","width"=>"200"];
-			$this->col[] = ["label"=>"Descriptions","name"=>"pro_desc","width"=>"250","callback_php"=>'str_limit(strip_tags($row->pro_desc,100))'];
-			$this->col[] = ["label"=>"Prioriry Area","name"=>"priotiryId","join"=>"ai_priorityarea,pri_name","width"=>"120"];
-			$this->col[] = ["label"=>"Donor","name"=>"donorId","join"=>"ai_donor,don_name","width"=>"100"];
-			$this->col[] = ["label"=>"Partners","name"=>"patnerName","width"=>"250"];
+			$this->col[] = ["label"=>"Activity Name","name"=>"spo_name","width"=>"200"];
+			$this->col[] = ["label"=>"Activity Date","name"=>"spo_date","width"=>"100"];
+			$this->col[] = ["label"=>"Description","name"=>"spo_desc","width"=>"200"];
+			$this->col[] = ["label"=>"Outcomes","name"=>"spo_outcome","width"=>"150"];
+			$this->col[] = ["label"=>"Supporting evidence","name"=>"sop_evidence","width"=>"150"];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
-			$this->form[] = ['label'=>'Project Name','name'=>'pro_name','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Grant Id','name'=>'pro_grant','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-9'];
-			$this->form[] = ['label'=>'Project Descriptions','name'=>'pro_desc','type'=>'wysiwyg','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Prioriry Area','name'=>'priotiryId','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'ai_priorityarea,pri_name'];
-			$this->form[] = ['label'=>'Donor','name'=>'donorId','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'ai_donor,don_name'];
-			$this->form[] = ['label'=>'Partners','name'=>'patnerId','type'=>'checkbox','validation'=>'required|min:1|max:255','width'=>'col-sm-10','datatable'=>'ai_implementing_patner,imp_name'];
-			$this->form[] = ['label'=>'Project Contract No.','name'=>'pro_contractNo','type'=>'number','validation'=>'required|min:1','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Activity Name','name'=>'spo_name','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Activity Date','name'=>'spo_date','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Description','name'=>'spo_desc','type'=>'textarea','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10','placeholder'=>'Description of outputs (reach)'];
+			$this->form[] = ['label'=>'Outcome','name'=>'spo_outcome','type'=>'textarea','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10','placeholder'=>'Outcome (actual or anticipated)'];
+			$this->form[] = ['label'=>'Follow-Ups','name'=>'spo_followUp','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Supporting evidence','name'=>'sop_evidence','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
 			//$this->form = [];
-			//$this->form[] = ['label'=>'Project Name','name'=>'pro_name','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Grant Id','name'=>'pro_grant','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-9'];
-			//$this->form[] = ['label'=>'Project Descriptions','name'=>'pro_desc','type'=>'wysiwyg','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Prioriry Area','name'=>'priotiryId','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'ai_priorityarea,pri_name'];
-			//$this->form[] = ['label'=>'Donor','name'=>'donorId','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'ai_donor,don_name'];
-			//$this->form[] = ['label'=>'Partners','name'=>'patnerId','type'=>'checkbox','validation'=>'required|min:1|max:255','width'=>'col-sm-10','datatable'=>'ai_implementing_patner,imp_name'];
-			//$this->form[] = ['label'=>'Project Contract No.','name'=>'pro_contractNo','type'=>'number','validation'=>'required|min:1','width'=>'col-sm-10'];
+			//$this->form[] = ["label"=>"Spo Name","name"=>"spo_name","type"=>"text","required"=>TRUE,"validation"=>"required|min:1|max:255"];
+			//$this->form[] = ["label"=>"Spo Date","name"=>"spo_date","type"=>"text","required"=>TRUE,"validation"=>"required|min:1|max:255"];
+			//$this->form[] = ["label"=>"Spo Desc","name"=>"spo_desc","type"=>"textarea","required"=>TRUE,"validation"=>"required|string|min:5|max:5000"];
+			//$this->form[] = ["label"=>"Spo Outcome","name"=>"spo_outcome","type"=>"textarea","required"=>TRUE,"validation"=>"required|string|min:5|max:5000"];
+			//$this->form[] = ["label"=>"Spo FollowUp","name"=>"spo_followUp","type"=>"text","required"=>TRUE,"validation"=>"required|min:1|max:255"];
+			//$this->form[] = ["label"=>"Sop Evidence","name"=>"sop_evidence","type"=>"text","required"=>TRUE,"validation"=>"required|min:1|max:255"];
+			//$this->form[] = ["label"=>"Spo FlowId","name"=>"spo_flowId","type"=>"number","required"=>TRUE,"validation"=>"required|integer|min:0"];
 			# OLD END FORM
 
 			/* 
@@ -71,8 +70,8 @@
 			| @parent_columns = Sparate with comma, e.g : name,created_at
 	        | 
 	        */
-	       //$this->sub_module = array('label'=>'Donor','path'=>'ai_donor','parent_columns'=>'pro_name,pro_desc','foreign_key'=>'donorId','button_color'=>'success','button_icon'=>'fa fa-bars');
-	       // $this->sub_module[] = ['label'=>'Photos','path'=>'ai_donor','parent_columns'=>'pro_name,pro_desc','foreign_key'=>'id','button_color'=>'success','button_icon'=>'fa fa-bars'];
+	        $this->sub_module = array();
+
 
 	        /* 
 	        | ---------------------------------------------------------------------- 
@@ -98,7 +97,7 @@
 	        | Then about the action, you should code at actionButtonSelected method 
 	        | 
 	        */
-	       $this->button_selected[] = ['label'=>'Set Active','icon'=>'fa fa-check','name'=>'set_active'];
+	        $this->button_selected = array();
 
 	                
 	        /* 
@@ -244,9 +243,9 @@
 	    */
 	    public function hook_query_index(&$query) {
 	        //Your code here
-	        if(!CRUDBooster::isSuperadmin()){
-	        	$query->where('userId',CRUDBooster::myId());
-	        }	
+	        if(!CRUDBooster::isSuperadmin()){ 
+                $query->where('spo_userId',CRUDBooster::myId());
+             }
 	            
 	    }
 
@@ -269,20 +268,8 @@
 	    */
 	    public function hook_before_add(&$postdata) {        
 	        //Your code here
-	        $time = time();
-			$time = date("Y-m-d H:m:s",$time); 
-			$postdata['pro_date']	= $time;
-	        $postdata['userId'] = CRUDBooster::myId();
-
-	        $imps = explode(';',$postdata['patnerId']);
-	        foreach ($imps as $imp) {
-	        	$datas = DB::table('ai_implementing_patner')->where('id',$imp)->first();
-	        	//dd($datas);
-	        	$impNames .= $datas->imp_name.'||';
-	        }
-	        $impNames = rtrim($impNames,'||');
-	        $postdata['patnerName'] = $impNames;
-	        
+	        $postdata['spo_userId'] = CRUDBooster::myId();
+	        $postdata['spo_flowId'] = 1;
 
 	    }
 
@@ -294,9 +281,7 @@
 	    | 
 	    */
 	    public function hook_after_add($id) {        
-	        // $row = CRUDBooster::first($this->table,$id);
-
-	        // dd($row);
+	        //Your code here
 
 	    }
 
@@ -310,14 +295,6 @@
 	    */
 	    public function hook_before_edit(&$postdata,$id) {        
 	        //Your code here
-	        $imps = explode(';',$postdata['patnerId']);
-	        foreach ($imps as $imp) {
-	        	$datas = DB::table('ai_implementing_patner')->where('id',$imp)->first();
-	        	//dd($datas);
-	        	$impNames .= $datas->imp_name.'||';
-	        }
-	        $impNames = rtrim($impNames,'||');
-	        $postdata['patnerName'] = $impNames;
 
 	    }
 
@@ -356,23 +333,6 @@
 	        //Your code here
 
 	    }
-
-	    public function getDetail($id) {
-		  //Create an Auth
-		  if(!CRUDBooster::isRead() && $this->global_privilege==FALSE || $this->button_edit==FALSE) {    
-		    CRUDBooster::redirect(CRUDBooster::adminPath(),trans("crudbooster.denied_access"));
-		  }
-		  
-		  $data = [];
-		  $data['page_title'] = 'Detail Data';
-		  $data['row'] = DB::table('ai_projects')
-		  	->join('ai_priorityarea', 'ai_priorityarea.id', '=', 'ai_projects.priotiryId') 
-		  	->join('ai_donor', 'ai_donor.id', '=', 'ai_projects.donorId') 
-		  	->join('cms_users', 'cms_users.id', '=', 'ai_projects.userId') 
-		  	->where('ai_projects.id',$id)->first(); 
-
-		  $this->cbView('admin.DetailsProject',$data);
-		}
 
 
 

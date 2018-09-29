@@ -141,6 +141,14 @@ class SystemController extends Controller{
 		}	
 	}
 
+	public function performance(){
+		$data = [];
+	   	$data['page_title'] = 'Products Data';
+	   	$data['result'] = DB::table('demo_test')->orderby('id','desc')->paginate(10);
+		return view('admin.performance',$data);
+		//echo "string";
+	}
+
 
 //ajax request
 	public function checkVenue($value){

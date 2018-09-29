@@ -456,4 +456,17 @@
 		  $this->cbView('admin.testDeatil',$data);
 		}
 
+		public function getIndex() {
+		  //First, Add an auth
+		   if(!CRUDBooster::isView()) CRUDBooster::denyAccess();
+		   
+		   //Create your own query 
+		   $data = [];
+		   $data['page_title'] = 'Products Data';
+		   $data['result'] = DB::table('demo_test')->orderby('id','desc')->paginate(10);
+		    
+		   //Create a view. Please use `cbView` method instead of view method from laravel.
+		   $this->cbView('admin.test',$data);
+		}
+
 }

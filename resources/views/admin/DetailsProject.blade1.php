@@ -32,7 +32,17 @@
           <input type='text' name='label1' required class='form-control'/>
         </div>
          
-
+<div class='panel panel-default'>
+    <div class='panel-heading'>Add Form</div>
+    <div class='panel-body'>
+      {{-- <form method='post' action='{{CRUDBooster::mainpath('add-save')}}'>
+        <div class='form-group'>
+          <label>Label 1</label>
+          <input type='text' name='label1' required class='form-control'/>
+        </div>
+        asdfasd
+        </div>
+        
         
       </form> --}}
       <ul class="nav">
@@ -70,13 +80,14 @@
           <label>Created By:</label>
           <p>{{$row->name}}</p>
         </li> 
-
       </ul>  
-
-
     </div>
     <div class='panel-footer'>
       <input type='submit' class='btn btn-primary' value='Save changes'/>
     </div>
   </div>
+        <div class='panel-footer'>
+      <input type='submit' class='btn btn-primary' value='Save changes'/>
+    </div>
+        
 @endsection

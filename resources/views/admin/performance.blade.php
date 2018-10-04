@@ -1,260 +1,165 @@
 @extends('crudbooster::admin_template')
 @section('content')
-<?php?>
-<form>
-  <select>
-    <option>all</option>
-    <option>pri 1</option>
-    <option>pri 2</option>
-    <option>pri 3</option>
-  </select>
-  <button>asdf</button>
-</form>
-<table class='table table-striped table-bordered'>
-  <thead>
-      <tr>
-        <th>Actitities Name</th>
-        <th>Field</th> 
-        <th>Jan</th> 
-        <th>Feb</th> 
-        <th>Mar</th> 
-        <th>Apr</th> 
-        <th>May</th> 
-        <th>Jun</th> 
-        <th>Jul</th> 
-        <th>Aug</th> 
-        <th>Sep</th> 
-        <th>Oct</th> 
-        <th>Nov</th> 
-        <th>Dec</th> 
-        <th>Cur-Total</th> 
-        <th>Terget & Achivement</th>  
-       </tr>
-  </thead>
-  <tbody>
-    {{-- @foreach($result as $row) --}}
-      <tr>
-        <td rowspan="7" style="max-width: 170px; min-width: 137px; word-wrap: break-word;/*vertical-align: middle*/;">Support and link women, young people, their organizatio</td>
-        <td>Male</td> 
-        <td>51</td> 
-        <td>15</td> 
-        <td>15</td> 
-        <td>15</td> 
-        <td>35</td> 
-        <td>15</td> 
-        <td>85</td> 
-        <td>0</td> 
-        <td>4</td> 
-        <td>13</td> 
-        <td>15</td> 
-        <td>35</td> 
-        <td>15</td> 
-        <td rowspan="6" style="text-align: center;vertical-align: middle;">Current yea
-        Target 2300<br>
-         Achieve 200<br>
-          Variance 100<br>
-           Total Target 2022 <br>
-            Target 2300 <br>
-          Achieve 200<br>
-           Variance 100</td> 
-        {{-- <td>
-          <!-- To make sure we have read access, wee need to validate the privilege -->
-          @if(CRUDBooster::isUpdate() && $button_edit)
-          <a class='btn btn-success btn-sm' href='{{CRUDBooster::mainpath("edit/$row->id")}}'>Edit</a>
-          @endif
-          
-          @if(CRUDBooster::isDelete() && $button_edit)
-          <a class='btn btn-success btn-sm' href='{{CRUDBooster::mainpath("delete/$row->id")}}'>Delete</a>
-          @endif
-        </td> --}}
-       </tr> 
-       <?php for($i=0;$i<6;$i++){?>
-        <tr> 
-        <td>Male</td> 
-        <td>51</td> 
-        <td>15</td> 
-        <td>15</td> 
-        <td>15</td> 
-        <td>35</td> 
-        <td>15</td> 
-        <td>85</td> 
-        <td>0</td> 
-        <td>4</td> 
-        <td>13</td> 
-        <td>15</td> 
-        <td>35</td> 
-        <td>15</td>  
-         
-       </tr>
-       <?php }?>
-       <tr style="color: red; background: yellow">
-        <td></td>
-       <td>Total</td> 
-        <td>51</td> 
-        <td>15</td> 
-        <td>15</td> 
-        <td>15</td> 
-        <td>35</td> 
-        <td>15</td> 
-        <td>85</td> 
-        <td>0</td> 
-        <td>4</td> 
-        <td>13</td> 
-        <td>15</td> 
-        <td>35</td> 
-        <td>15</td> 
-        <td style="text-align: center;">351</td> 
-        </tr>
 
-       <tr>
-        <td rowspan="7" style="max-width: 170px; min-width: 137px; word-wrap: break-word;">Conscientize women, girls and their organizations on policy and legal framework promoting their economic rights of adequate access and control of productive resources, reduction of unpaid care work and decent work environments</td>
-        <td>Male</td> 
-        <td>51</td> 
-        <td>15</td> 
-        <td>15</td> 
-        <td>15</td> 
-        <td>35</td> 
-        <td>15</td> 
-        <td>85</td> 
-        <td>0</td> 
-        <td>4</td> 
-        <td>13</td> 
-        <td>15</td> 
-        <td>35</td> 
-        <td>15</td> 
-        <td rowspan="7" style="text-align: center;vertical-align: middle;">Current yea
-        Target 2300<br>
-         Achieve 200<br>
-          Variance 100<br>
-           Total Target 2022 <br>
-            Target 2300 <br>
-          Achieve 200<br>
-           Variance 100</td> 
-        {{-- <td>
-          <!-- To make sure we have read access, wee need to validate the privilege -->
-          @if(CRUDBooster::isUpdate() && $button_edit)
-          <a class='btn btn-success btn-sm' href='{{CRUDBooster::mainpath("edit/$row->id")}}'>Edit</a>
-          @endif
-          
-          @if(CRUDBooster::isDelete() && $button_edit)
-          <a class='btn btn-success btn-sm' href='{{CRUDBooster::mainpath("delete/$row->id")}}'>Delete</a>
-          @endif
-        </td> --}}
-       </tr> 
-       <?php for($i=0;$i<6;$i++){?>
-        <tr> 
-        <td>Male</td> 
-        <td>51</td> 
-        <td>15</td> 
-        <td>15</td> 
-        <td>15</td> 
-        <td>35</td> 
-        <td>15</td> 
-        <td>85</td> 
-        <td>0</td> 
-        <td>4</td> 
-        <td>13</td> 
-        <td>15</td> 
-        <td>35</td> 
-        <td>15</td>  
-         
-       </tr>
-       <?php }?>
-       <tr style="color: red; background: yellow">
-        <td></td>
-       <td>Total</td> 
-        <td>51</td> 
-        <td>15</td> 
-        <td>15</td> 
-        <td>15</td> 
-        <td>35</td> 
-        <td>15</td> 
-        <td>85</td> 
-        <td>0</td> 
-        <td>4</td> 
-        <td>13</td> 
-        <td>15</td> 
-        <td>35</td> 
-        <td>15</td> 
-        <td style="text-align: center;">351</td> 
-        </tr>
-       <br>
-       <tr>
-        <td rowspan="7" style="text-align: center;vertical-align: middle;">Activites 3</td>
-        <td>Male</td> 
-        <td>51</td> 
-        <td>15</td> 
-        <td>15</td> 
-        <td>15</td> 
-        <td>35</td> 
-        <td>15</td> 
-        <td>85</td> 
-        <td>0</td> 
-        <td>4</td> 
-        <td>13</td> 
-        <td>15</td> 
-        <td>35</td> 
-        <td>15</td> 
-        <td rowspan="7" style="text-align: center;vertical-align: middle;">Current yea
-        Target 2300<br>
-         Achieve 200<br>
-          Variance 100<br>
-           Total Target 2022 <br>
-            Target 2300 <br>
-          Achieve 200<br>
-           Variance 100</td> 
-        {{-- <td>
-          <!-- To make sure we have read access, wee need to validate the privilege -->
-          @if(CRUDBooster::isUpdate() && $button_edit)
-          <a class='btn btn-success btn-sm' href='{{CRUDBooster::mainpath("edit/$row->id")}}'>Edit</a>
-          @endif
-          
-          @if(CRUDBooster::isDelete() && $button_edit)
-          <a class='btn btn-success btn-sm' href='{{CRUDBooster::mainpath("delete/$row->id")}}'>Delete</a>
-          @endif
-        </td> --}}
-       </tr> 
-       <?php for($i=0;$i<6;$i++){?>
-        <tr> 
-        <td>Male</td> 
-        <td>51</td> 
-        <td>15</td> 
-        <td>15</td> 
-        <td>15</td> 
-        <td>35</td> 
-        <td>15</td> 
-        <td>85</td> 
-        <td>0</td> 
-        <td>4</td> 
-        <td>13</td> 
-        <td>15</td> 
-        <td>35</td> 
-        <td>15</td>  
-         
-       </tr>
-       <?php }?>
-       <tr style="color: red; background: yellow">
-        <td></td>
-       <td>Total</td> 
-        <td>51</td> 
-        <td>15</td> 
-        <td>15</td> 
-        <td>15</td> 
-        <td>35</td> 
-        <td>15</td> 
-        <td>85</td> 
-        <td>0</td> 
-        <td>4</td> 
-        <td>13</td> 
-        <td>15</td> 
-        <td>35</td> 
-        <td>15</td> 
-        <td style="text-align: center;">351</td> 
-        </tr>
-  {{--  @endforeach --}}
-  </tbody>
-</table>
+<form role="form" action="{{url('datafilter/')}}" method="post"> 
+  {{csrf_field()}}
+  
+<section class="content-header">
+  <select name="priority" style="    padding: 4px 10px; margin: 0px;">
+    <option value="">Priority All</option>
+    @foreach($prioritys as $priority)
+    <option value="{{$priority->id}}">{{$priority->pri_name}}</option> 
+    @endforeach
+  </select>
+  <input type="submit" name="submit" class="btn btn-sm btn-primary" value="Filter" >
+   
+</form>
+  <a href="{{url('performance_export/')}}" id="btn_show_data" class="btn btn-sm btn-primary" title="Show Data"> <i class="fa fa-upload"></i> Export Report</a>
+</section>
+ 
+ 
+
+{{-- <div class="observer_reg_class"><div class="linkk"><a href="export.php?users='users'">Export</a></div> --}}
+<style type="text/css">
+.performance{margin-top: 30px;background: #ecf0f5;font-size: 12px !important}
+  .performance,.performance ul,.performance ul li ul{float: left;width: 100%; }
+  .performance ul li{float: left;padding: 0px;text-align: center;width: 43px; }
+  .subtotal span{float: left;width: 100%;
+  }
+   
+</style>
+ 
+
+<div class="performance">
+  <ul style="padding: 0px; float: left;width: 100%;list-style: none;font-weight: bold; border:1px solid #ccc;margin:0px;line-height: 22px;padding-left:5px;">
+    <li style="width:15%;text-align: left;">Activity Name</li>
+    <li style="width:12%;text-align: left;">Indicator </li>
+    <li style="width: 63%;">
+      <ul style="padding: 0px; float: left;width: 100%;list-style: none;">
+          <li style="width:80px;text-align: left;">Male</li>
+          <li>Jan</li> 
+          <li>Feb</li> 
+          <li>Mar</li> 
+          <li>Apr</li> 
+          <li>May</li> 
+          <li>Jun</li> 
+          <li>Jul</li> 
+          <li>Aug</li> 
+          <li>Sep</li> 
+          <li>Oct</li> 
+          <li>Nov</li> 
+          <li>Dec</li>
+          <li>Total</li>
+          <li>Subtotal</li>
+      </ul>
+    </li> 
+    <li style="width:10%;">Ter&A</li>
+  </ul> 
+  {{-- __________________________________________________________________________________________________________________ --}}
+  <?php 
+    for ($i=0; $i <$count ; $i++) {  
+      if(isset($info[$i]["activity_name"]->act_name)){ 
+  ?>
+  <ul style="padding: 0px; float: left;width: 100%;list-style: none; border:1px solid #ccc;padding-left:5px;">
+    <li style="width:15%;text-align: left;padding-right: 5px;">{{$info[$i]["activity_name"]->act_name}}</li>
+    <li style="width:12%;text-align: left;padding-right: 5px;">{{$info[$i]["indicator_name"]->ind_name}}</li>
+    <li style="width: 63%;">
+       
+      <ul style="padding: 0px; float: left;width: 100%;list-style: none; border-bottom: 1px solid #ccc;">
+          <li style="width:80px;text-align: left;">Child Male</li>
+          <?php for ($j=1; $j <=12 ; $j++) { ?>
+            <li>{{$info[$i]["child_male"][$j]}}</li>  
+          <?php } ?>
+          <li>{{$info[$i]["c_male_t"]}}</li>
+          <li>{{$info[$i]['y_ttl_mel_child']}}</li>
+      </ul>
+
+      <ul style="padding: 0px; float: left;width: 100%;list-style: none; border-bottom: 1px solid #ccc;">
+          <li style="width:80px;text-align: left;">Child Female</li>
+          <?php for ($j=1; $j <=12 ; $j++) { ?>
+            <li>{{$info[$i]["child_f_male"][$j]}}</li>  
+          <?php } ?>
+          <li>{{$info[$i]["c_F_male_t"]}}</li>
+          <li>{{$info[$i]["y_ttl_fmel_child"]}}</li>
+      </ul>
+
+      <ul style="padding: 0px; float: left;width: 100%;list-style: none; border-bottom: 1px solid #ccc;">
+          <li style="width:80px;text-align: left;">Youth Male</li>
+          <?php for ($j=1; $j <=12 ; $j++) { ?>
+            <li>{{$info[$i]["youth_male"][$j]}}</li>  
+          <?php } ?>
+          <li>{{$info[$i]["youth_male_T"]}}</li>
+          <li>{{$info[$i]["y_ttl_youth_mel"]}}</li>
+      </ul>
+      <ul style="padding: 0px; float: left;width: 100%;list-style: none; border-bottom: 1px solid #ccc;">
+          <li style="width:80px;text-align: left;">youth Female</li>
+          <?php for ($j=1; $j <=12 ; $j++) { ?>
+            <li>{{$info[$i]["youth_f_male"][$j]}}</li>  
+          <?php } ?>
+          <li>{{$info[$i]["youth_f_male_T"]}}</li>
+          <li>{{$info[$i]["y_ttl_youth_F_mel"]}}</li>
+      </ul>
+      <ul style="padding: 0px; float: left;width: 100%;list-style: none; border-bottom: 1px solid #ccc;">
+          <li style="width:80px;text-align: left;">Audult Male</li>
+          <?php for ($j=1; $j <=12 ; $j++) { ?>
+            <li>{{$info[$i]["audult_male"][$j]}}</li>  
+          <?php } ?>
+          <li>{{$info[$i]["audult_male_t"]}}</li>
+          <li>{{$info[$i]["y_ttl_adult_mel"]}}</li>
+      </ul>
+      <ul style="padding: 0px; float: left;width: 100%;list-style: none; border-bottom: 1px solid #ccc;">
+          <li style="width:80px;text-align: left;">Audult Female</li>
+          <?php for ($j=1; $j <=12 ; $j++) { ?>
+            <li>{{$info[$i]["audult_F_male"][$j]}}</li>  
+          <?php } ?>
+          <li>{{$info[$i]["audult_F_male_t"]}}</li>
+          <li>{{$info[$i]["y_ttl_adult_F_mel"]}}</li>
+      </ul>  
+
+      <ul style="padding: 0px; float: left;width: 100%;list-style: none; border-bottom: 1px solid #ccc;background: #B8CCE4;">
+          <li style="width:80px;text-align: left;">Total Male</li>
+          <?php for ($j=1; $j <=12 ; $j++) { ?>
+            <li>{{$info[$i]["male"][$j]}}</li>  
+          <?php } ?>
+          <li>{{$info[$i]["male_total"]}}</li>
+          <li>{{$info[$i]["y_ttl_total_mel"]}}</li>
+      </ul>
+      <ul style="padding: 0px; float: left;width: 100%;list-style: none; border-bottom: 1px solid #ccc;background: #B8CCE4;">
+          <li style="width:80px;text-align: left;">Total FeMale</li>
+          <?php for ($j=1; $j <=12 ; $j++) { ?>
+            <li>{{$info[$i]['female'][$j]}}</li>  
+          <?php } ?>
+          <li>{{$info[$i]["female_total"]}}</li>
+          <li>{{$info[$i]["y_ttl_total_F_mel"]}}</li>
+      </ul>
+
+     <ul style="padding: 0px; float: left;width: 100%;list-style: none; border-bottom: 1px solid #ccc;background: #95B3D7;font-weight: bold;">
+          <li style="width:80px;text-align: left;">Total Monthly</li>
+          <?php for ($j=1; $j <=12 ; $j++) { ?>
+            <li>{{$info[$i]['female_sub_to'][$j]}}</li>  
+          <?php } ?>
+          <li>{{$info[$i]["female_total"]+$info[$i]["male_total"]}}</li>
+          <li>{{$info[$i]["y_ttl_total_sub"]}}</li>
+      </ul>
+ 
+       
+       
+    </li> 
+    <li class="subtotal" style="width:10%;text-align: left;padding-left: 3px;">
+      <span style="background: #254061;color:#fff;">Target Yearly 202300</span> 
+      <span>Achieve: 200</span>   
+      <span>Variance: 100</span>                                     
+      <span style="background:#254061;color:#fff; ">Total Target 2002022</span>                
+      <span>Target: 2300  </span>         
+      <span>Achieve: 200 </span>  
+      <span>Variance: 100</span>
+    </li>
+  </ul>
+  <?php }} ?>
+  {{-- _________________________________________________________________________________________________________ --}}
+
+</div>
 
 <!-- ADD A PAGINATION -->
-<p>{!! urldecode(str_replace("/?","?",$result->appends(Request::all())->render())) !!}</p>
+ 
 @endsection

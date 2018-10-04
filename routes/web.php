@@ -26,6 +26,8 @@ Route::post('/CNreject/', 'SystemController@CNreject');
 Route::get('/lmApprove/{cNid}', 'SystemController@is_LineManagerApprove'); 
 Route::post('/meApprove/', 'SystemController@is_MEOfficerApprove'); 
 Route::get('/headApprove/{cNid}/{userId}', 'SystemController@is_HeadOfficerApprove'); 
+Route::post('/datafilter/', 'SystemController@performance'); 
+Route::get('/performance_export/', 'SystemController@performance_export'); ////////////////////////////////
 
 //ajax request
 Route::get('/checkVenue/{value}', 'SystemController@checkVenue'); 
@@ -34,3 +36,5 @@ Route::get('admin/ai_activity_report/getDataTable1/{fk_value}', 'SystemControlle
 //pdf request
 Route::get('/makePDF/{id}','SystemController@makePDF');
 Route::get('/makeCnPDF/{id}','SystemController@makeCnPDF');
+
+

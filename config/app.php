@@ -159,7 +159,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-
+        Cyberduck\LaravelExcel\ExcelServiceProvider::class, 
         //crudbooster
         crocodicstudio\crudbooster\CRUDBoosterServiceProvider::class,
 

@@ -89,14 +89,6 @@
             //Your code here
             $postdata['userId'] = CRUDBooster::myId();     
         }
-
-
-
-
-
-
-
-
 //lrp
         $this->form[] = ['label'=>'LRP','name'=>'lrp_id','type'=>'select','width'=>'col-sm-10','validation'=>'required|min:1|max:255','datatable'=>'ai_location,loc_name','datatable_where'=>'is_lrp="LRP"'];
     

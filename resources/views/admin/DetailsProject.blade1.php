@@ -30,9 +30,7 @@
         <div class='form-group'>
           <label>Label 1</label>
           <input type='text' name='label1' required class='form-control'/>
-        </div>
-         
-
+        </div> 
         
       </form> --}}
       <ul class="nav">
@@ -70,13 +68,10 @@
           <label>Created By:</label>
           <p>{{$row->name}}</p>
         </li> 
-
       </ul>  
-
-
     </div>
     <div class='panel-footer'>
       <input type='submit' class='btn btn-primary' value='Save changes'/>
     </div>
-  </div>
+        
 @endsection

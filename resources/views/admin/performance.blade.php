@@ -1,5 +1,6 @@
 @extends('crudbooster::admin_template')
 @section('content')
+<?php?>
 <form>
   <select>
     <option>all</option>

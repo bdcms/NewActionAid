@@ -33,6 +33,7 @@
 			$this->col[] = ["label"=>"Period Under Review","name"=>"chi_periodReview","width"=>"150"];
 			 $this->col[] = ["label"=>"#of total links","name"=>"totalLinks_t","width"=>"80"];
 			$this->col[] = ["label"=>"#of messages collected","name"=>"msgCollected_t","width"=>"80"];
+			$this->col[] = ["label"=>"#of Photos collected","name"=>"photosCollected_t","width"=>"80"];
 			$this->col[] = ["label"=>"#of outstanding messages","name"=>"outstandingMsg_t","width"=>"80"];
 			$this->col[] = ["label"=>"#of outstanding photos","name"=>"outstandingPhotos_t","width"=>"80"];
 			$this->col[] = ["label"=>"#of queries","name"=>"queriesFollow_t","width"=>"80"];
@@ -209,10 +210,10 @@
 	        | ---------------------------------------------------------------------- 
 	        | @label, @count, @icon, @color 
 	        |
-	        */
-	        $this->index_statistic = array();
-
-
+	        */ 
+	        $this->index_statistic[] = ['label'=>'# of Message Collected','count'=>DB::table('ai_child_sponsorship')->sum('msgCollected_t'),'icon'=>'fa fa-envelope-square','color'=>'primary'];
+	        $this->index_statistic[] = ['label'=>'# of Photos Collected','count'=>DB::table('ai_child_sponsorship')->sum('photosCollected_t'),'icon'=>'fa fa-camera-retro','color'=>'primary'];
+	        $this->index_statistic[] = ['label'=>'# of Links Collected','count'=>DB::table('ai_child_sponsorship')->sum('totalLinks_t'),'icon'=>'fa fa-link','color'=>'primary']; 
 
 	        /*
 	        | ---------------------------------------------------------------------- 
@@ -282,6 +283,7 @@
 	        |
 	        */
 	        $this->load_css = array();
+
 	        
 	        
 	    }

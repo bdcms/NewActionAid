@@ -5,12 +5,12 @@
 	use DB;
 	use CRUDBooster;
 
-	class AdminAiLocationController extends \crocodicstudio\crudbooster\controllers\CBController {
+	class AdminAiSuccessStoriesController extends \crocodicstudio\crudbooster\controllers\CBController {
 
 	    public function cbInit() {
 
 			# START CONFIGURATION DO NOT REMOVE THIS LINE
-			$this->title_field = "loc_name";
+			$this->title_field = "suc_name";
 			$this->limit = "20";
 			$this->orderby = "id,desc";
 			$this->global_privilege = false;
@@ -23,27 +23,40 @@
 			$this->button_detail = true;
 			$this->button_show = true;
 			$this->button_filter = true;
-			$this->button_import = false;
+			$this->button_import = true;
 			$this->button_export = false;
-			$this->table = "ai_location";
+			$this->table = "ai_success_stories";
 			# END CONFIGURATION DO NOT REMOVE THIS LINE
 
 			# START COLUMNS DO NOT REMOVE THIS LINE
 			$this->col = [];
-			$this->col[] = ["label"=>"Location Name","name"=>"loc_name","width"=>"200"];
-			$this->col[] = ["label"=>"Is LRP","name"=>"is_lrp","width"=>"200"];
+			$this->col[] = ["label"=>"Name of Story","name"=>"suc_name","width"=>"150"];
+			//$this->col[] = ["label"=>"Comment","name"=>"suc_comment","width"=>"100","callback_php"=>'str_limit(strip_tags($row->suc_comment,5))'];
+			$this->col[] = ["label"=>"Comment","name"=>"suc_comment","width"=>"200","callback_php"=>'str_limit(strip_tags($row->suc_comment,100))'];
+			$this->col[] = ["label"=>"Attached file","name"=>"suc_document","width"=>"80"];
+			$this->col[] = ["label"=>"Supervisor","name"=>"flowId","width"=>"100","join"=>"cms_users,name"];
+			$this->col[] = ["label"=>"Created By","name"=>"userId","width"=>"100","join"=>"cms_users,name"];
+			//$this->col[] = ["label"=>"Date","name"=>"created_at","width"=>"100","callback_php"=>"date('Y-m-d', strtotime($row->created_at));"];
+			$this->col[] = ["label"=>"Date","name"=>"created_at","width"=>"100","callback"=>function($row) {
+return date('d M\'y', strtotime($row->created_at));}];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
-			$this->form[] = ['label'=>'Location Name','name'=>'loc_name','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Is LRP','name'=>'is_lrp','type'=>'checkbox','validation'=>'required','width'=>'col-sm-10','dataenum'=>'LRP'];
+			$this->form[] = ['label'=>'Name of Story','name'=>'suc_name','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Comment','name'=>'suc_comment','type'=>'wysiwyg','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Attached file','name'=>'suc_document','type'=>'filemanager','validation'=>'required|min:1|max:255','width'=>'col-sm-10','filemanager_type'=>'file','help'=>'Allowed for word of PDF documents'];
+			$this->form[] = ['label'=>'Supervisor','name'=>'flowId','type'=>'select','width'=>'col-sm-10','datatable'=>'cms_users,name','datatable_where'=>'id_cms_privileges=5','datatable_where'=>'id_cms_privileges=6'];
+			//$this->form[] = ['label'=>'Supervisor','name'=>'flowId','type'=>'text','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
 			//$this->form = [];
-			//$this->form[] = ['label'=>'Location Name','name'=>'loc_name','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Is LRP','name'=>'is_lrp','type'=>'checkbox','validation'=>'required','width'=>'col-sm-10'];
+			//$this->form[] = ["label"=>"Suc Name","name"=>"suc_name","type"=>"text","required"=>TRUE,"validation"=>"required|min:1|max:255"];
+			//$this->form[] = ["label"=>"Suc Comment","name"=>"suc_comment","type"=>"textarea","required"=>TRUE,"validation"=>"required|string|min:5|max:5000"];
+			//$this->form[] = ["label"=>"Suc Document","name"=>"suc_document","type"=>"text","required"=>TRUE,"validation"=>"required|min:1|max:255"];
+			//$this->form[] = ["label"=>"FlowId","name"=>"flowId","type"=>"number","required"=>TRUE,"validation"=>"required|integer|min:0"];
+			//$this->form[] = ["label"=>"UserId","name"=>"userId","type"=>"number","required"=>TRUE,"validation"=>"required|integer|min:0"];
 			# OLD END FORM
 
 			/* 
@@ -231,6 +244,9 @@
 	    */
 	    public function hook_query_index(&$query) {
 	        //Your code here
+	        if(!CRUDBooster::isSuperadmin()){ 
+                $query->where('userId',CRUDBooster::myId())->orwhere('flowId', CRUDBooster::myId());
+             }
 	            
 	    }
 
@@ -253,10 +269,7 @@
 	    */
 	    public function hook_before_add(&$postdata) {        
 	        //Your code here
-	       if($postdata['is_lrp'] == ''){
-	    		$postdata['is_lrp'] = 'None';
-	    	}
-
+	    	$postdata['userId'] = CRUDBooster::myId(); 
 	    }
 
 	    /* 
@@ -281,10 +294,7 @@
 	    */
 	    public function hook_before_edit(&$postdata,$id) {        
 	        //Your code here
-	    	if($postdata['is_lrp'] == ''){
-	    		$postdata['is_lrp'] = 'None';
-	    	}
-	    	//dd($postdata);
+
 	    }
 
 	    /* 

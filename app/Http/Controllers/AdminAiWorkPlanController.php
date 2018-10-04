@@ -5,12 +5,12 @@
 	use DB;
 	use CRUDBooster;
 
-	class AdminAiLocationController extends \crocodicstudio\crudbooster\controllers\CBController {
+	class AdminAiWorkPlanController extends \crocodicstudio\crudbooster\controllers\CBController {
 
 	    public function cbInit() {
 
 			# START CONFIGURATION DO NOT REMOVE THIS LINE
-			$this->title_field = "loc_name";
+			$this->title_field = "wp_name";
 			$this->limit = "20";
 			$this->orderby = "id,desc";
 			$this->global_privilege = false;
@@ -25,25 +25,33 @@
 			$this->button_filter = true;
 			$this->button_import = false;
 			$this->button_export = false;
-			$this->table = "ai_location";
+			$this->table = "ai_work_plan";
 			# END CONFIGURATION DO NOT REMOVE THIS LINE
 
 			# START COLUMNS DO NOT REMOVE THIS LINE
 			$this->col = [];
-			$this->col[] = ["label"=>"Location Name","name"=>"loc_name","width"=>"200"];
-			$this->col[] = ["label"=>"Is LRP","name"=>"is_lrp","width"=>"200"];
+			$this->col[] = ["label"=>"Name","name"=>"wp_name","width"=>"150"];
+			$this->col[] = ["label"=>"Attached File","name"=>"wp_document","width"=>"200"];
+			$this->col[] = ["label"=>"Created By","name"=>"userId","width"=>"100","join"=>"cms_users,name"];
+			$this->col[] = ["label"=>"Type","name"=>"type","width"=>"100"];
+			$this->col[] = ["label"=>"Date","name"=>"created_at","width"=>"100","callback"=>function($row) {
+return date('d M\'y', strtotime($row->created_at));}];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
-			$this->form[] = ['label'=>'Location Name','name'=>'loc_name','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Is LRP','name'=>'is_lrp','type'=>'checkbox','validation'=>'required','width'=>'col-sm-10','dataenum'=>'LRP'];
+			$this->form[] = ['label'=>'Name of WorkPlan','name'=>'wp_name','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Attached File','name'=>'wp_document','type'=>'filemanager','validation'=>'required|min:1|max:255','width'=>'col-sm-10','filemanager_type'=>'file','help'=>'Recommend only exel, pdf, word file'];
+			$this->form[] = ['label'=>'Type','name'=>'type','type'=>'select','validation'=>'required|min:1|max:255','width'=>'col-sm-10','dataenum'=>'Annual;Bi-annual;Monthly;Quarterly;Weekly'];
+			$this->form[] = ['label'=>'Supervisor','name'=>'flowId','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'cms_users,name','datatable_where'=>'status = "Active"'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
 			//$this->form = [];
-			//$this->form[] = ['label'=>'Location Name','name'=>'loc_name','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Is LRP','name'=>'is_lrp','type'=>'checkbox','validation'=>'required','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Name of WorkPlan','name'=>'wp_name','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Attached File','name'=>'wp_document','type'=>'filemanager','validation'=>'required|min:1|max:255','width'=>'col-sm-10','filemanager_type'=>'file','help'=>'Recommend only exel, pdf, word file'];
+			//$this->form[] = ['label'=>'Type','name'=>'type','type'=>'select','validation'=>'required|min:1|max:255','width'=>'col-sm-10','dataenum'=>'Annual;Bi-annual;Monthly;Quarterly;Weekly'];
+			//$this->form[] = ['label'=>'Supervisor','name'=>'flowId','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'cms_users,name','datatable_where'=>'status = "Active"'];
 			# OLD END FORM
 
 			/* 
@@ -231,6 +239,9 @@
 	    */
 	    public function hook_query_index(&$query) {
 	        //Your code here
+	        if(!CRUDBooster::isSuperadmin()){ 
+                $query->where('userId',CRUDBooster::myId());
+             }
 	            
 	    }
 
@@ -253,9 +264,7 @@
 	    */
 	    public function hook_before_add(&$postdata) {        
 	        //Your code here
-	       if($postdata['is_lrp'] == ''){
-	    		$postdata['is_lrp'] = 'None';
-	    	}
+	        $postdata['userId'] = CRUDBooster::myId(); 
 
 	    }
 
@@ -281,10 +290,7 @@
 	    */
 	    public function hook_before_edit(&$postdata,$id) {        
 	        //Your code here
-	    	if($postdata['is_lrp'] == ''){
-	    		$postdata['is_lrp'] = 'None';
-	    	}
-	    	//dd($postdata);
+
 	    }
 
 	    /* 

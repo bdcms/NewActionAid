@@ -16,6 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('admin/performance','SystemController@performance');
+//Route::get('admin','SystemController@dashboardcustom');
 
 Route::get('/useractive/{id}', 'AdminCmsUsersController@useractive'); 
 Route::get('/userdeactive/{id}', 'AdminCmsUsersController@userdeactive'); 

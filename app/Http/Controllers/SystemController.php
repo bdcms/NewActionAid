@@ -149,6 +149,10 @@ class SystemController extends Controller{
 		//echo "string";
 	}
 
+	public function dashboardcustom(){
+		return view('admin.AdminDashboard');
+	}
+
 
 //ajax request
 	public function checkVenue($value){

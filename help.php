@@ -84,7 +84,13 @@
              }
                 
         }
-
+//for online check
+        public function hook_query_index(&$query) {
+             if(!CRUDBooster::isSuperadmin()){ 
+                $query->where('userId',CRUDBooster::myId());
+             }
+                
+        }
 
     
 ?>

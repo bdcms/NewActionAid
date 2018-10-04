@@ -26,7 +26,7 @@ Route::get('/lmApprove/{cNid}', 'SystemController@is_LineManagerApprove');
 Route::post('/meApprove/', 'SystemController@is_MEOfficerApprove'); 
 Route::get('/headApprove/{cNid}/{userId}', 'SystemController@is_HeadOfficerApprove'); 
 Route::post('/datafilter/', 'SystemController@performance'); 
-Route::get('/performance_export/', 'SystemController@performance_export'); 
+Route::get('/performance_export/', 'SystemController@performance_export'); ////////////////////////////////
 
 //ajax request
 Route::get('/checkVenue/{value}', 'SystemController@checkVenue'); 

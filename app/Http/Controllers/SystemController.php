@@ -231,10 +231,7 @@ public function performance_export(Request $request){
 	 	->join('ai_focusarea','ai_activity_report.foc_id','=','ai_focusarea.id')  
 	 	->join('ai_indicators','ai_activity_report.ind_id','=','ai_indicators.id')
 	 	->join('cms_users','ai_activity_report.user_id','=','cms_users.id')
-	 	->where('ai_activity_report.ar_status',1)->get();
-	 	// ->join('cms_users','ai_activity_report.flow_id','=','cms_users.id') 
-
-	 	// ->select('ai_activities.act_name','ai_priorityarea.pri_name','ai_focusarea.foc_name','ai_indicators.ind_name','cms_users.name','ai_activity_report.ar_date','ai_activity_report.ar_venue','ai_activity_report.ar_implementingUnit','ai_activity_report.ar_ap_female','ai_activity_report.ar_ap_male','ai_activity_report.ar_ap_youth_m','ai_activity_report.ar_ap_adult_m','ai_activity_report.ar_ap_child_f','ai_activity_report.ar_ap_youth_f','ai_activity_report.ar_ap_adult_f','ai_activity_report.ar_ap_total','ai_activity_report.reporting_month','ai_activity_report.reporting_year');
+	 	->where('ai_activity_report.ar_status',1)->get(); 
 
  
 	 	// dd($query);
@@ -297,23 +294,7 @@ public function performance_export(Request $request){
  
 	}
 
-// public function performance_export(Request $request){
  
-// 	 	$query = DB::table('ai_activity_report')
-// 	 	->join('ai_activities','ai_activity_report.p_act_id','=','ai_activities.id')
-// 	 	->join('ai_priorityarea','ai_activity_report.pri_id','=','ai_priorityarea.id')
-// 	 	->join('ai_focusarea','ai_activity_report.foc_id','=','ai_focusarea.id')  
-// 	 	->join('ai_indicators','ai_activity_report.ind_id','=','ai_indicators.id')
-// 	 	->join('cms_users','ai_activity_report.user_id','=','cms_users.id')
-// 	 	// ->join('cms_users','ai_activity_report.flow_id','=','cms_users.id') 
-
-// 	 	->select('ai_activities.act_name','ai_priorityarea.pri_name','ai_focusarea.foc_name','ai_indicators.ind_name','cms_users.name','ai_activity_report.ar_date','ai_activity_report.ar_venue','ai_activity_report.ar_implementingUnit','ai_activity_report.ar_ap_female','ai_activity_report.ar_ap_male','ai_activity_report.ar_ap_youth_m','ai_activity_report.ar_ap_adult_m','ai_activity_report.ar_ap_child_f','ai_activity_report.ar_ap_youth_f','ai_activity_report.ar_ap_adult_f','ai_activity_report.ar_ap_total','ai_activity_report.reporting_month','ai_activity_report.reporting_year');
-// 	 	// dd($query);
-// 		$excel = Exporter::make('Excel');
-// 		$excel->loadQuery($query);
-// 		return $excel->stream("report.xls");
- 
-// 	}
 
 //ajax request
 	public function checkVenue($value){

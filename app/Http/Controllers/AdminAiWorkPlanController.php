@@ -36,10 +36,12 @@
 			$this->col[] = ["label"=>"Type","name"=>"type","width"=>"100"];
 			$this->col[] = ["label"=>"Date","name"=>"created_at","width"=>"100","callback"=>function($row) {
 return date('d M\'y', strtotime($row->created_at));}];
+			$this->col[] = ["label"=>"LRP","name"=>"lrp_id","join"=>"ai_location,loc_name","width"=>"100"];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
+			$this->form[] = ['label'=>'LRP','name'=>'lrp_id','type'=>'select','width'=>'col-sm-10','validation'=>'required|min:1|max:255','datatable'=>'ai_location,loc_name','datatable_where'=>'is_lrp="LRP"'];
 			$this->form[] = ['label'=>'Name of WorkPlan','name'=>'wp_name','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Attached File','name'=>'wp_document','type'=>'filemanager','validation'=>'required|min:1|max:255','width'=>'col-sm-10','filemanager_type'=>'file','help'=>'Recommend only exel, pdf, word file'];
 			$this->form[] = ['label'=>'Type','name'=>'type','type'=>'select','validation'=>'required|min:1|max:255','width'=>'col-sm-10','dataenum'=>'Annual;Bi-annual;Monthly;Quarterly;Weekly'];

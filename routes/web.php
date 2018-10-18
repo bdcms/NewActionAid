@@ -16,10 +16,10 @@ Route::get('/', function () {
 });
 
 Route::get('admin/performance','SystemController@performance');
-//Route::get('admin','SystemController@dashboardcustom');
+Route::get('/childSponserShip/','SystemController@childSponserShip');
 
 Route::get('/useractive/{id}', 'AdminCmsUsersController@useractive'); 
-Route::get('/userdeactive/{id}', 'AdminCmsUsersController@userdeactive'); 
+Route::get('/userdeactive/{id}', 'AdminCmsUsersController@userdeactive');
 Route::post('/CNreject/', 'SystemController@CNreject'); 
 
 

@@ -37,6 +37,7 @@
 			$this->col[] = ["label"=>"Implementin Area","name"=>"imp_area","width"=>"150"];
 			$this->col[] = ["label"=>"Amount","name"=>"imp_amount","width"=>"100"];
 			$this->col[] = ["label"=>"Reporting Date","name"=>"imp_reportingDate","width"=>"120"];
+			$this->col[] = ["label"=>"Donor","name"=>"donorId","join"=>"ai_donor,don_name","width"=>"100"];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
@@ -48,6 +49,7 @@
 			$this->form[] = ['label'=>'Amount Allocated','name'=>'imp_amount','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Partner Reporting Date','name'=>'imp_reportingDate','type'=>'date','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Partner Contact','name'=>'imp_contact','type'=>'textarea','validation'=>'required|min:1|max:500','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Donor','name'=>'donorId','type'=>'select','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'ai_donor,don_name'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM

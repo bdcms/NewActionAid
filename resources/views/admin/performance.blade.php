@@ -6,9 +6,9 @@
   
 <section class="content-header">
   <select name="priority" style="    padding: 4px 10px; margin: 0px;">
-    <option value="">Priority All</option>
-    @foreach($prioritys as $priority)
-    <option value="{{$priority->id}}">{{$priority->pri_name}}</option> 
+    <option value="">Priority All</option>  
+    @foreach($prioritys as $priority) 
+      <option value="{{$priority->id}}" @if(isset($priorityId) && $priority->id == $priorityId) selected @endif>{{$priority->pri_name}}</option> 
     @endforeach
   </select>
   <input type="submit" name="submit" class="btn btn-sm btn-primary" value="Filter" >

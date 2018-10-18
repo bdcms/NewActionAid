@@ -90,6 +90,8 @@
             $postdata['userId'] = CRUDBooster::myId();     
         }
 //lrp
+        $this->col[] = ["label"=>"LRP","name"=>"lrp_id","join"=>"ai_location,loc_name","width"=>"100"]; 
+        
         $this->form[] = ['label'=>'LRP','name'=>'lrp_id','type'=>'select','width'=>'col-sm-10','validation'=>'required|min:1|max:255','datatable'=>'ai_location,loc_name','datatable_where'=>'is_lrp="LRP"'];
     
 ?>

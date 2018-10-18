@@ -220,7 +220,7 @@ class SystemController extends Controller{
         }//Activity Count for Loop exit Audult Male
         // dd($info[0]['year_total']);
 
-		return view('admin.performance',$data)->with('count',$activity_count)->with('info',$info)->with('prioritys',$priority);
+		return view('admin.performance',$data)->with('count',$activity_count)->with('info',$info)->with('prioritys',$priority)->with('priorityId',$area);
 		//echo "string"; male_total
 	}
 public function performance_export(Request $request){
@@ -297,6 +297,17 @@ public function performance_export(Request $request){
 	// public function dashboardcustom(){
 	// 	return view('admin.AdminDashboard');
 	// }
+
+
+  public function childSponserShip(){
+  	return view('admin.childSponserShip');
+  }
+
+
+
+
+
+
 
 //ajax request
 	public function checkVenue($value){

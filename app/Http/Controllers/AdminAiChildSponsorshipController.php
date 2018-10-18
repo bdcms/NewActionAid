@@ -30,7 +30,7 @@
 
 			# START COLUMNS DO NOT REMOVE THIS LINE
 			$this->col = [];
-			$this->col[] = ["label"=>"Period Under Review","name"=>"chi_periodReview","width"=>"150"];
+			$this->col[] = ["label"=>"Period Under Review","name"=>"chi_periodReview","width"=>"150","callback_php"=>'str_limit(strip_tags($row->chi_periodReview,50))'];
 			 $this->col[] = ["label"=>"#of total links","name"=>"totalLinks_t","width"=>"80"];
 			$this->col[] = ["label"=>"#of messages collected","name"=>"msgCollected_t","width"=>"80"];
 			$this->col[] = ["label"=>"#of Photos collected","name"=>"photosCollected_t","width"=>"80"];
@@ -41,10 +41,12 @@
 			$this->col[] = ["label"=>"follow ups completed","name"=>"completedFollow_t","width"=>"80"];
 			$this->col[] = ["label"=>"#of new links","name"=>"newLinks_t","width"=>"80"];
 			$this->col[] = ["label"=>"Lead By","name"=>"chi_userId","join"=>"cms_users,name","width"=>"100"]; 
+			$this->col[] = ["label"=>"LRP","name"=>"lrp_id","join"=>"ai_location,loc_name","width"=>"100"]; 
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
+			$this->form[] = ['label'=>'LRP','name'=>'lrp_id','type'=>'select','width'=>'col-sm-10','validation'=>'required|min:1|max:255','datatable'=>'ai_location,loc_name','datatable_where'=>'is_lrp="LRP"'];
 			$this->form[] = ['label'=>'Period under Review','name'=>'chi_periodReview','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'#of Total Links F','name'=>'totalLinks_f','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-5'];
 			$this->form[] = ['label'=>'#of Total Links M','name'=>'totalLinks_m','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-5'];
@@ -369,6 +371,15 @@
 	    */
 	    public function hook_before_edit(&$postdata,$id) {        
 	        //Your code here
+	        $postdata['totalLinks_t'] = $postdata['totalLinks_f']+$postdata['totalLinks_m'];
+	        $postdata['msgCollected_t'] = $postdata['msgCollected_f']+$postdata['msgCollected_m'];
+	        $postdata['outstandingMsg_t'] = $postdata['outstandingMsg_f']+$postdata['outstandingMsg_m'];
+	        $postdata['photosCollected_t'] = $postdata['photosCollected_f']+$postdata['photosCollected_m'];
+	        $postdata['outstandingPhotos_t'] = $postdata['outstandingPhotos_f']+$postdata['outstandingPhotos_m'];
+	        $postdata['queriesFollow_t'] = $postdata['queriesFollow_f']+$postdata['queriesFollow_m'];
+	        $postdata['outstandingFollow_t'] = $postdata['outstandingFollow_f']+$postdata['outstandingFollow_m'];
+	        $postdata['completedFollow_t'] = $postdata['completedFollow_f']+$postdata['completedFollow_m'];
+	        $postdata['newLinks_t'] = $postdata['newLinks_f']+$postdata['newLinks_m'];
 
 	    }
 

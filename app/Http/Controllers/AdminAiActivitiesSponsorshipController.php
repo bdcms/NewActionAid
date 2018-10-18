@@ -35,12 +35,14 @@
 			$this->col[] = ["label"=>"Description","name"=>"spo_desc","width"=>"200"];
 			$this->col[] = ["label"=>"Outcomes","name"=>"spo_outcome","width"=>"150"];
 			$this->col[] = ["label"=>"Supporting evidence","name"=>"sop_evidence","width"=>"150"];
+			$this->col[] = ["label"=>"LRP","name"=>"lrp_id","join"=>"ai_location,loc_name","width"=>"100"]; 
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
+			$this->form[] = ['label'=>'LRP','name'=>'lrp_id','type'=>'select','validation'=>'required|min:1|max:255','width'=>'col-sm-10','datatable'=>'ai_location,loc_name','datatable_where'=>'is_lrp="LRP"'];
 			$this->form[] = ['label'=>'Activity Name','name'=>'spo_name','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Activity Date','name'=>'spo_date','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Activity Date','name'=>'spo_date','type'=>'date','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Description','name'=>'spo_desc','type'=>'textarea','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10','placeholder'=>'Description of outputs (reach)'];
 			$this->form[] = ['label'=>'Outcome','name'=>'spo_outcome','type'=>'textarea','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10','placeholder'=>'Outcome (actual or anticipated)'];
 			$this->form[] = ['label'=>'Follow-Ups','name'=>'spo_followUp','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
@@ -49,13 +51,13 @@
 
 			# OLD START FORM
 			//$this->form = [];
-			//$this->form[] = ["label"=>"Spo Name","name"=>"spo_name","type"=>"text","required"=>TRUE,"validation"=>"required|min:1|max:255"];
-			//$this->form[] = ["label"=>"Spo Date","name"=>"spo_date","type"=>"text","required"=>TRUE,"validation"=>"required|min:1|max:255"];
-			//$this->form[] = ["label"=>"Spo Desc","name"=>"spo_desc","type"=>"textarea","required"=>TRUE,"validation"=>"required|string|min:5|max:5000"];
-			//$this->form[] = ["label"=>"Spo Outcome","name"=>"spo_outcome","type"=>"textarea","required"=>TRUE,"validation"=>"required|string|min:5|max:5000"];
-			//$this->form[] = ["label"=>"Spo FollowUp","name"=>"spo_followUp","type"=>"text","required"=>TRUE,"validation"=>"required|min:1|max:255"];
-			//$this->form[] = ["label"=>"Sop Evidence","name"=>"sop_evidence","type"=>"text","required"=>TRUE,"validation"=>"required|min:1|max:255"];
-			//$this->form[] = ["label"=>"Spo FlowId","name"=>"spo_flowId","type"=>"number","required"=>TRUE,"validation"=>"required|integer|min:0"];
+			//$this->form[] = ['label'=>'LRP','name'=>'lrp_id','type'=>'select','width'=>'col-sm-10','validation'=>'required|min:1|max:255','datatable'=>'ai_location,loc_name','datatable_where'=>'is_lrp="LRP"'];
+			//$this->form[] = ['label'=>'Activity Name','name'=>'spo_name','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Activity Date','name'=>'spo_date','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Description','name'=>'spo_desc','type'=>'textarea','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10','placeholder'=>'Description of outputs (reach)'];
+			//$this->form[] = ['label'=>'Outcome','name'=>'spo_outcome','type'=>'textarea','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10','placeholder'=>'Outcome (actual or anticipated)'];
+			//$this->form[] = ['label'=>'Follow-Ups','name'=>'spo_followUp','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Supporting evidence','name'=>'sop_evidence','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			# OLD END FORM
 
 			/* 
